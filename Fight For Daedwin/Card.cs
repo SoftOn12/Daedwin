@@ -47,7 +47,6 @@ namespace Fight_For_Daedwin
             int vitality = 10,
             int cost = 2)
         {
-            Console.WriteLine("Создание объекта Card");
             Name = name;
             Race = race;
             Type = type;

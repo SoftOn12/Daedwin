@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
     <Grid ShowGridLines="True">
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,62,0,0" Width="1252"  >
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,50,0,0" Width="1252" Height="315"  >
             <Grid Name ="Shop" HorizontalAlignment="Left" Height="298" Margin="1,1,1,0" VerticalAlignment="Top" Width="1252" ShowGridLines="True" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -62,12 +62,15 @@
                         <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="113" Grid.Column="3" Margin="1,0,0,0"/>
                     </Grid>
                 </Border>
+                <Button x:Name="RestartButton" Content="Обновить (2)" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="100" Click="RestartButton_Click" Height="40" RenderTransformOrigin="0.47,3.95"/>
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,370,0,0" Height="310" >
             <Grid HorizontalAlignment="Left" Height="305" Margin="1,1,1,1" VerticalAlignment="Top" Width="270">
                 <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" Height="40" Click="Button_Click"/>
-                <Button x:Name="RestartButton" Content="Перезапустить" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="250" Height="40" Click="Button_Click"/>
+                <ScrollViewer x:Name="GameLogParent" HorizontalAlignment="Left" Height="240" Margin="10,55,0,0" VerticalAlignment="Top" Width="250" Visibility="Hidden">
+                    <TextBlock x:Name="GameLog" TextWrapping="Wrap" Text=""/>
+                </ScrollViewer>
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,370,0,0" Height="310" Width="274">

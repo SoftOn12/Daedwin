@@ -28,10 +28,15 @@ namespace Fight_For_Daedwin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            StartButton.IsEnabled = false;
+            GameLogParent.Visibility = Visibility.Visible;
+
+            UIClass.AddTextToLog(GameLog, "Игра началась");
+
             string FileName = "CardDeck.xml";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
 
-            Card Test = new Card("Боба");
+            //Card Test = new Card("Боба");
 
             ShopClass.CardList =  ShopClass.XMLParser(Path);
             
@@ -50,54 +55,105 @@ namespace Fight_For_Daedwin
             BuyFirstSlot.IsEnabled = true;
             BuySecondSlot.IsEnabled = true;
             BuyThirdSlot.IsEnabled = true;
-
-            Console.WriteLine(CrewClass.Slot1.Name);
-            Console.WriteLine(CrewClass.Slot2.Name);
-            Console.WriteLine(CrewClass.Slot3.Name);
-            Console.WriteLine(CrewClass.Slot4.Name);
-            Console.WriteLine(CrewClass.Slot5.Name);
         }
 
         private void BuyFirstSlot_Click_1(object sender, RoutedEventArgs e)
         {
-            ShopClass.Money -= ShopClass.FirstSlot.Cost;
-            MoneyCounter.Content = ShopClass.Money.ToString();
-            BuyFirstSlot.IsEnabled = false;
-            BuyFirstSlot.Content = "Куплено!";
-            ShopClass.FromShopToCrew(ShopClass.FirstSlot);
+            if (ShopClass.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
+            {
+                ShopClass.Money -= ShopClass.SecondSlot.Cost;
+                MoneyCounter.Content = ShopClass.Money.ToString();
+                BuyFirstSlot.IsEnabled = false;
+                BuyFirstSlot.Content = "Куплено!";
+                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
-            UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            Console.WriteLine(CrewClass.CrewSize);
+                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+            }
+            else if (CrewClass.CrewSize > 4)
+            {
+                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                BuyFirstSlot.IsEnabled = false;
+            }
+            else
+            {
+                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+            }
 
-            Console.WriteLine(CrewClass.Slot1.Name);
-            Console.WriteLine(CrewClass.Slot2.Name);
-            Console.WriteLine(CrewClass.Slot3.Name);
-            Console.WriteLine(CrewClass.Slot4.Name);
-            Console.WriteLine(CrewClass.Slot5.Name);
         }
 
         private void BuySecondSlot_Click(object sender, RoutedEventArgs e)
         {
-            ShopClass.Money -= ShopClass.SecondSlot.Cost;
-            MoneyCounter.Content = ShopClass.Money.ToString();
-            BuySecondSlot.IsEnabled = false;
-            BuySecondSlot.Content = "Куплено!";
-            ShopClass.FromShopToCrew(ShopClass.SecondSlot);
+            if (ShopClass.Money >= ShopClass.SecondSlot.Cost && CrewClass.CrewSize <= 4)
+            {
+                ShopClass.Money -= ShopClass.SecondSlot.Cost;
+                MoneyCounter.Content = ShopClass.Money.ToString();
+                BuySecondSlot.IsEnabled = false;
+                BuySecondSlot.Content = "Куплено!";
+                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
-            UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            Console.WriteLine(CrewClass.CrewSize);
+                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+            }
+            else if (CrewClass.CrewSize > 4)
+            {
+                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                BuySecondSlot.IsEnabled = false;
+            }
+            else
+            {
+                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+            }
         }
 
         private void BuyThirdSlot_Click(object sender, RoutedEventArgs e)
         {
-            ShopClass.Money -= ShopClass.ThirdSlot.Cost;
-            MoneyCounter.Content = ShopClass.Money.ToString();
-            BuyThirdSlot.IsEnabled = false;
-            BuyThirdSlot.Content = "Куплено!";
-            ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
+            if (ShopClass.Money >= ShopClass.ThirdSlot.Cost && CrewClass.CrewSize <= 4)
+            {
+                ShopClass.Money -= ShopClass.ThirdSlot.Cost;
+                MoneyCounter.Content = ShopClass.Money.ToString();
+                BuyThirdSlot.IsEnabled = false;
+                BuyThirdSlot.Content = "Куплено!";
+                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
-            UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            Console.WriteLine(CrewClass.CrewSize);
+                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+            }
+            else if(CrewClass.CrewSize > 4)
+            {
+                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                BuyThirdSlot.IsEnabled = false;
+            }
+            else
+            {
+                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+            }
+        }
+
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ShopClass.Money >= 2)
+            {
+                ShopClass.Money -= 2;
+                MoneyCounter.Content = ShopClass.Money.ToString();
+
+                ShopClass.RandomCardToShop();
+
+                Console.WriteLine(CrewClass.Slot1.Name);
+
+                UIClass.UIAddToSlotInShop(FirstSlot, ShopClass.FirstSlot);
+                UIClass.UIAddToSlotInShop(SecondSlot, ShopClass.SecondSlot);
+                UIClass.UIAddToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
+
+                BuyFirstSlot.Content = "Купить";
+                BuySecondSlot.Content = "Купить";
+                BuyThirdSlot.Content = "Купить";
+
+                BuyFirstSlot.IsEnabled = true;
+                BuySecondSlot.IsEnabled = true;
+                BuyThirdSlot.IsEnabled = true;
+            }
+            else
+            {
+                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+            }
         }
     }
 }

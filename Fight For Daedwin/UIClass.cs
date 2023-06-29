@@ -44,11 +44,23 @@ namespace Fight_For_Daedwin
         public static void UIRefreshCrew(ListBox Slot1, ListBox Slot2, ListBox Slot3,
                                          ListBox Slot4, ListBox Slot5)
         {
+
             UIAddToSlotInCrew(Slot1, CrewClass.Slot1);
+
             UIAddToSlotInCrew(Slot2, CrewClass.Slot2);
+
             UIAddToSlotInCrew(Slot3, CrewClass.Slot3);
+
             UIAddToSlotInCrew(Slot4, CrewClass.Slot4);
+
             UIAddToSlotInCrew(Slot5, CrewClass.Slot5);
+        }
+
+        public static void AddTextToLog(TextBlock GameLogBox, string Text)
+        {
+            DateTime now = DateTime.Now;
+
+            GameLogBox.Text += now.ToString("hh:mm:ss") + ": " + Text + "\r\n";
         }
     }
 }

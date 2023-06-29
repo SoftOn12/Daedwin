@@ -32,8 +32,8 @@ namespace Fight_For_Daedwin
                 xmlWriter.WriteEndElement();                     // </Data>
                 xmlWriter.Close();
 
-                Card newAllert = new Card("Биба");
-                newAllert.AddToXML(PathToXML);
+                Card newCard = new Card("Биба");
+                newCard.AddToXML(PathToXML);
             }
 
             xDoc.Load(PathToXML);
@@ -85,7 +85,7 @@ namespace Fight_For_Daedwin
         }
 
         public static void RandomCardToShop()
-        {//Тут где-то баг :C
+        {
             if (CardList.Count != 0)
             {
                 Random Rnd = new Random();
@@ -126,39 +126,61 @@ namespace Fight_For_Daedwin
             }
         }
 
-        static public void NewRoll (Card First, Card Second, Card Third)
-        {
-            FirstSlot = First;
-            SecondSlot = Second;
-            ThirdSlot = Third;
-        }
-
         static public void FromShopToCrew(Card CardFromShop)
         {
             switch (CrewClass.CrewSize)
             { 
                 case 0:
-                    CrewClass.Slot1 = CardFromShop;
+                    CrewClass.Slot1.Name = CardFromShop.Name;
+                    CrewClass.Slot1.Race = CardFromShop.Race;
+                    CrewClass.Slot1.Type = CardFromShop.Type;
+                    CrewClass.Slot1.Health= CardFromShop.Health;
+                    CrewClass.Slot1.Attack = CardFromShop.Attack;
+                    CrewClass.Slot1.Vitality = CardFromShop.Vitality;
+                    CrewClass.Slot1.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
                     break;
                 case 1:
-                    CrewClass.Slot2 = CardFromShop;
+                    CrewClass.Slot2.Name = CardFromShop.Name;
+                    CrewClass.Slot2.Race = CardFromShop.Race;
+                    CrewClass.Slot2.Type = CardFromShop.Type;
+                    CrewClass.Slot2.Health = CardFromShop.Health;
+                    CrewClass.Slot2.Attack = CardFromShop.Attack;
+                    CrewClass.Slot2.Vitality = CardFromShop.Vitality;
+                    CrewClass.Slot2.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
                     break;
                 case 2:
-                    CrewClass.Slot3 = CardFromShop;
+                    CrewClass.Slot3.Name = CardFromShop.Name;
+                    CrewClass.Slot3.Race = CardFromShop.Race;
+                    CrewClass.Slot3.Type = CardFromShop.Type;
+                    CrewClass.Slot3.Health = CardFromShop.Health;
+                    CrewClass.Slot3.Attack = CardFromShop.Attack;
+                    CrewClass.Slot3.Vitality = CardFromShop.Vitality;
+                    CrewClass.Slot3.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
                     break;
                 case 3:
-                    CrewClass.Slot4 = CardFromShop;
+                    CrewClass.Slot4.Name = CardFromShop.Name;
+                    CrewClass.Slot4.Race = CardFromShop.Race;
+                    CrewClass.Slot4.Type = CardFromShop.Type;
+                    CrewClass.Slot4.Health = CardFromShop.Health;
+                    CrewClass.Slot4.Attack = CardFromShop.Attack;
+                    CrewClass.Slot4.Vitality = CardFromShop.Vitality;
+                    CrewClass.Slot4.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
                     break;
                 case 4:
-                    CrewClass.Slot5 = CardFromShop;
+                    CrewClass.Slot5.Name = CardFromShop.Name;
+                    CrewClass.Slot5.Race = CardFromShop.Race;
+                    CrewClass.Slot5.Type = CardFromShop.Type;
+                    CrewClass.Slot5.Health = CardFromShop.Health;
+                    CrewClass.Slot5.Attack = CardFromShop.Attack;
+                    CrewClass.Slot5.Vitality = CardFromShop.Vitality;
+                    CrewClass.Slot5.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
                     break;
                 default:
-                    Console.WriteLine("Больше бойцов купить нельзя!");
                     break;
             }
         }
