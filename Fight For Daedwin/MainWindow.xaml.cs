@@ -61,11 +61,11 @@ namespace Fight_For_Daedwin
         {
             if (ShopClass.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
             {
-                ShopClass.Money -= ShopClass.SecondSlot.Cost;
+                ShopClass.Money -= ShopClass.FirstSlot.Cost;
                 MoneyCounter.Content = ShopClass.Money.ToString();
                 BuyFirstSlot.IsEnabled = false;
                 BuyFirstSlot.Content = "Куплено!";
-                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
+                ShopClass.FromShopToCrew(ShopClass.FirstSlot);
 
                 UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
             }
@@ -89,7 +89,7 @@ namespace Fight_For_Daedwin
                 MoneyCounter.Content = ShopClass.Money.ToString();
                 BuySecondSlot.IsEnabled = false;
                 BuySecondSlot.Content = "Куплено!";
-                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
+                ShopClass.FromShopToCrew(ShopClass.SecondSlot);
 
                 UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
             }
