@@ -15,7 +15,12 @@ namespace Fight_For_Daedwin
         static public Card SecondSlot = new Card();
         static public Card ThirdSlot = new Card();
 
-        static public List<Card> CardList;
+        static public Item FirstItemSlot = new Item();
+        static public Item SecondItemSlot = new Item();
+        static public Item ThirdItemSlot = new Item();
+
+        static public List<Card> UnitList;
+        static public List<Item> ItemList;
 
         static public int Money = 20;
 
@@ -33,7 +38,7 @@ namespace Fight_For_Daedwin
                 xmlWriter.Close();
 
                 Card newCard = new Card("Биба");
-                newCard.AddToXML(PathToXML);
+                newCard.AddUnitToXML(PathToXML);
             }
 
             xDoc.Load(PathToXML);
@@ -84,40 +89,140 @@ namespace Fight_For_Daedwin
             return AllertList;
         }
 
-        public static void RandomCardToShop()
+        public static List<Item> XMLItemParser(string PathToXML)
         {
-            if (CardList.Count != 0)
+            List<Item> AllertList = new List<Item>();
+            XmlDocument xDoc = new XmlDocument();
+
+            if (!File.Exists(PathToXML))
+            {
+                var xmlWriter = new XmlTextWriter(PathToXML, null);
+                xmlWriter.WriteStartDocument();                  // <?xml version="1.0"?>
+                xmlWriter.WriteStartElement("Data");             // <Data> 
+                xmlWriter.WriteEndElement();                     // </Data>
+                xmlWriter.Close();
+
+                Item newCard = new Item("Монетка");
+                newCard.AddItemToXML(PathToXML);
+            }
+
+            xDoc.Load(PathToXML);
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            if (xRoot != null)
+            {
+                // обход всех узлов в корневом элементе
+                foreach (XmlElement xNode in xRoot)
+                {
+                    // получаем атрибут name
+                    Item AllertObj = new Item();
+                    XmlNode attr = xNode.Attributes.GetNamedItem("Name");
+                    AllertObj.Name = attr.Value;
+
+                    // обходим все дочерние узлы элемента user
+                    foreach (XmlNode childnode in xNode.ChildNodes)
+                    {
+                        // если узел - company
+                        if (childnode.Name == "Type")
+                        {
+                            AllertObj.Type = childnode.InnerText;
+                        }
+                        if (childnode.Name == "HealthBuff")
+                        {
+                            AllertObj.HealthBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "AttackBuff")
+                        {
+                            AllertObj.AttackBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "VitalityBuff")
+                        {
+                            AllertObj.VitalityBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "Cost")
+                        {
+                            AllertObj.Cost = Int32.Parse(childnode.InnerText);
+                        }
+                    }
+                    AllertList.Add(AllertObj);
+                }
+            }
+            return AllertList;
+        }
+
+        public static void RandomUnitToShop()
+        {
+            if (UnitList.Count != 0)
             {
                 Random Rnd = new Random();
-                int Seed = Rnd.Next(CardList.Count);
+                int Seed = Rnd.Next(UnitList.Count);
 
-                FirstSlot.Name = CardList[Seed].Name;
-                FirstSlot.Race = CardList[Seed].Race;
-                FirstSlot.Type = CardList[Seed].Type;
-                FirstSlot.Health = CardList[Seed].Health;
-                FirstSlot.Attack = CardList[Seed].Attack;
-                FirstSlot.Vitality = CardList[Seed].Vitality;
-                FirstSlot.Cost = CardList[Seed].Cost;
+                FirstSlot.Name = UnitList[Seed].Name;
+                FirstSlot.Race = UnitList[Seed].Race;
+                FirstSlot.Type = UnitList[Seed].Type;
+                FirstSlot.Health = UnitList[Seed].Health;
+                FirstSlot.Attack = UnitList[Seed].Attack;
+                FirstSlot.Vitality = UnitList[Seed].Vitality;
+                FirstSlot.Cost = UnitList[Seed].Cost;
 
-                Seed = Rnd.Next(CardList.Count);
+                Seed = Rnd.Next(UnitList.Count);
 
-                SecondSlot.Name = CardList[Seed].Name;
-                SecondSlot.Race = CardList[Seed].Race;
-                SecondSlot.Type = CardList[Seed].Type;
-                SecondSlot.Health = CardList[Seed].Health;
-                SecondSlot.Attack = CardList[Seed].Attack;
-                SecondSlot.Vitality = CardList[Seed].Vitality;
-                SecondSlot.Cost = CardList[Seed].Cost;
+                SecondSlot.Name = UnitList[Seed].Name;
+                SecondSlot.Race = UnitList[Seed].Race;
+                SecondSlot.Type = UnitList[Seed].Type;
+                SecondSlot.Health = UnitList[Seed].Health;
+                SecondSlot.Attack = UnitList[Seed].Attack;
+                SecondSlot.Vitality = UnitList[Seed].Vitality;
+                SecondSlot.Cost = UnitList[Seed].Cost;
 
-                Seed = Rnd.Next(CardList.Count);
+                Seed = Rnd.Next(UnitList.Count);
 
-                ThirdSlot.Name = CardList[Seed].Name;
-                ThirdSlot.Race = CardList[Seed].Race;
-                ThirdSlot.Type = CardList[Seed].Type;
-                ThirdSlot.Health = CardList[Seed].Health;
-                ThirdSlot.Attack = CardList[Seed].Attack;
-                ThirdSlot.Vitality = CardList[Seed].Vitality;
-                ThirdSlot.Cost = CardList[Seed].Cost;
+                ThirdSlot.Name = UnitList[Seed].Name;
+                ThirdSlot.Race = UnitList[Seed].Race;
+                ThirdSlot.Type = UnitList[Seed].Type;
+                ThirdSlot.Health = UnitList[Seed].Health;
+                ThirdSlot.Attack = UnitList[Seed].Attack;
+                ThirdSlot.Vitality = UnitList[Seed].Vitality;
+                ThirdSlot.Cost = UnitList[Seed].Cost;
+            }
+            else
+            {
+                Console.WriteLine("Список карт пуст!");
+                return;
+            }
+        }
+
+        public static void RandomItemToShop()
+        {
+            if (ItemList.Count != 0)
+            {
+                Random Rnd = new Random();
+                int Seed = Rnd.Next(ItemList.Count);
+
+                FirstItemSlot.Name = ItemList[Seed].Name;
+                FirstItemSlot.Type = ItemList[Seed].Type;
+                FirstItemSlot.HealthBuff = ItemList[Seed].HealthBuff;
+                FirstItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
+                FirstItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
+                FirstItemSlot.Cost = ItemList[Seed].Cost;
+
+                Seed = Rnd.Next(ItemList.Count);
+
+                SecondItemSlot.Name = ItemList[Seed].Name;
+                SecondItemSlot.Type = ItemList[Seed].Type;
+                SecondItemSlot.HealthBuff = ItemList[Seed].HealthBuff;
+                SecondItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
+                SecondItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
+                SecondItemSlot.Cost = ItemList[Seed].Cost;
+
+                Seed = Rnd.Next(ItemList.Count);
+
+                ThirdItemSlot.Name = ItemList[Seed].Name;
+                ThirdItemSlot.Type = ItemList[Seed].Type;
+                ThirdItemSlot.HealthBuff = ItemList[Seed].HealthBuff;
+                ThirdItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
+                ThirdItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
+                ThirdItemSlot.Cost = ItemList[Seed].Cost;
             }
             else
             {
@@ -179,6 +284,8 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot5.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot5.Cost = CardFromShop.Cost;
                     CrewClass.CrewSize++;
+
+                    //GameState.CurentStage = GameState.Stage.ItemShopStage;
                     break;
                 default:
                     break;

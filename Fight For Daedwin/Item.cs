@@ -1,107 +1,98 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
-using System.Windows.Controls;
 
 namespace Fight_For_Daedwin
 {
-    class Card : IEquatable<Card>
+    class Item : IEquatable<Item>
     {
+
         public string Name;
-        public string Race;
         public string Type;
 
-        public int Health;
-        public int Attack;
-        public int Vitality;
+        public int HealthBuff;
+        public int AttackBuff;
+        public int VitalityBuff;
 
         public int Cost;
 
-        public int Exp;
-        public int Level;
-
-        public bool Equals(Card other)
+        public bool Equals(Item other)
         {
             if (other is null)
                 return false;
 
             return this.Name == other.Name &&
-                   this.Race == other.Race &&
                    this.Type == other.Type &&
-                   this.Health == other.Health &&
-                   this.Attack == other.Attack &&
-                   this.Vitality == other.Vitality &&
+                   this.HealthBuff == other.HealthBuff &&
+                   this.AttackBuff == other.AttackBuff &&
+                   this.VitalityBuff == other.VitalityBuff &&
                    this.Cost == other.Cost;
         }
 
         public override bool Equals(object obj) => Equals(obj as Card);
-        public override int GetHashCode() => (Name, Race, Type, Health, Attack, Vitality, Cost).GetHashCode();
+        public override int GetHashCode() => (Name, Type, HealthBuff, AttackBuff, VitalityBuff, Cost).GetHashCode();
 
-        public Card() { }
-        public Card(string name = "Копейщик",
-            string race = "Человек",
-            string type = "Ближний бой",
-            int health = 100,
-            int attack = 1,
-            int vitality = 10,
-            int cost = 2)
+        public Item() { }
+        public Item(string name = "Монетка",
+            string type = "Обычный",
+            int health = 0,
+            int attack = 0,
+            int vitality = 1,
+            int cost = 1)
         {
             Name = name;
-            Race = race;
             Type = type;
-            Health = health;
-            Attack = attack;
-            Vitality = vitality;
+            HealthBuff = health;
+            AttackBuff = attack;
+            VitalityBuff = vitality;
             Cost = cost;
         }
 
-        public void AddUnitToXML(string path)
+        public void AddItemToXML(string path)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             XmlElement xRoot = xDoc.DocumentElement;
 
             // создаем новый элемент person
-            XmlElement CardElem = xDoc.CreateElement("Card");
+            XmlElement CardElem = xDoc.CreateElement("Item");
 
             // создаем атрибут name
             XmlAttribute NameAttr = xDoc.CreateAttribute("Name");
 
             // создаем элементы company и age
-            XmlElement RaceElem = xDoc.CreateElement("Race");
             XmlElement TypeElem = xDoc.CreateElement("Type");
-            XmlElement HealthElem = xDoc.CreateElement("Health");
-            XmlElement AttackElem = xDoc.CreateElement("Attack");
-            XmlElement VitalityElem = xDoc.CreateElement("Vitality");
+            XmlElement HealthBuffElem = xDoc.CreateElement("HealthBuff");
+            XmlElement AttackBuffElem = xDoc.CreateElement("AttackBuff");
+            XmlElement VitalityBuffElem = xDoc.CreateElement("VitalityBuff");
             XmlElement CostElem = xDoc.CreateElement("Cost");
 
             // создаем текстовые значения для элементов и атрибута
             XmlText NameText = xDoc.CreateTextNode(this.Name);
-            XmlText RaceText = xDoc.CreateTextNode(this.Race);
             XmlText TypeText = xDoc.CreateTextNode(this.Type);
-            XmlText HealthText = xDoc.CreateTextNode(this.Health.ToString());
-            XmlText AttackText = xDoc.CreateTextNode(this.Attack.ToString());
-            XmlText VitalityText = xDoc.CreateTextNode(this.Vitality.ToString());
+            XmlText HealthBuffText = xDoc.CreateTextNode(this.HealthBuff.ToString());
+            XmlText AttackBuffText = xDoc.CreateTextNode(this.AttackBuff.ToString());
+            XmlText VitalityBuffText = xDoc.CreateTextNode(this.VitalityBuff.ToString());
             XmlText CostText = xDoc.CreateTextNode(this.Cost.ToString());
 
             //добавляем узлы
             NameAttr.AppendChild(NameText);
-            RaceElem.AppendChild(RaceText);
             TypeElem.AppendChild(TypeText);
-            HealthElem.AppendChild(HealthText);
-            AttackElem.AppendChild(AttackText);
-            VitalityElem.AppendChild(VitalityText);
+            HealthBuffElem.AppendChild(HealthBuffText);
+            AttackBuffElem.AppendChild(AttackBuffText);
+            VitalityBuffElem.AppendChild(VitalityBuffText);
             CostElem.AppendChild(CostText);
 
             // добавляем атрибут name
             CardElem.Attributes.Append(NameAttr);
             // добавляем элементы company и age
-            CardElem.AppendChild(RaceElem);
             CardElem.AppendChild(TypeElem);
-            CardElem.AppendChild(HealthElem);
-            CardElem.AppendChild(AttackElem);
-            CardElem.AppendChild(VitalityElem);
+            CardElem.AppendChild(HealthBuffElem);
+            CardElem.AppendChild(AttackBuffElem);
+            CardElem.AppendChild(VitalityBuffElem);
             CardElem.AppendChild(CostElem);
             // добавляем в корневой элемент новый элемент person
             xRoot?.AppendChild(CardElem);

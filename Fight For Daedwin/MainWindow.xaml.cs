@@ -28,6 +28,8 @@ namespace Fight_For_Daedwin
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            GameState.CurentStage = GameState.Stage.UnitShopStage;
+
             StartButton.IsEnabled = false;
             GameLogParent.Visibility = Visibility.Visible;
 
@@ -37,8 +39,6 @@ namespace Fight_For_Daedwin
             string Path = AppContext.BaseDirectory + @"\" + FileName;
 
             //Card Test = new Card("Боба");
-
-            ShopClass.CardList =  ShopClass.XMLParser(Path);
             
             Shop.Visibility = Visibility.Visible;
             MoneyTitle.Visibility = Visibility.Visible;
@@ -46,84 +46,96 @@ namespace Fight_For_Daedwin
             MoneyCounter.Visibility = Visibility.Visible;
             MoneyCounter.Content = ShopClass.Money.ToString();
 
-            ShopClass.RandomCardToShop();
+            ShopClass.UnitList = ShopClass.XMLParser(Path);
+            ShopClass.RandomUnitToShop();
 
-            UIClass.UIAddToSlotInShop(FirstSlot, ShopClass.FirstSlot);
-            UIClass.UIAddToSlotInShop(SecondSlot, ShopClass.SecondSlot);
-            UIClass.UIAddToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
+            UIClass.UIAddUnitToSlotInShop(FirstSlot, ShopClass.FirstSlot);
+            UIClass.UIAddUnitToSlotInShop(SecondSlot, ShopClass.SecondSlot);
+            UIClass.UIAddUnitToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
 
             BuyFirstSlot.IsEnabled = true;
             BuySecondSlot.IsEnabled = true;
             BuyThirdSlot.IsEnabled = true;
+
+            Console.WriteLine(GameState.CurentStage);
         }
 
         private void BuyFirstSlot_Click_1(object sender, RoutedEventArgs e)
         {
-            if (ShopClass.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
+            if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                ShopClass.Money -= ShopClass.FirstSlot.Cost;
-                MoneyCounter.Content = ShopClass.Money.ToString();
-                BuyFirstSlot.IsEnabled = false;
-                BuyFirstSlot.Content = "Куплено!";
-                ShopClass.FromShopToCrew(ShopClass.FirstSlot);
+                if (ShopClass.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
+                {
+                    ShopClass.Money -= ShopClass.FirstSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyFirstSlot.IsEnabled = false;
+                    BuyFirstSlot.Content = "Куплено!";
+                    ShopClass.FromShopToCrew(ShopClass.FirstSlot);
 
-                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            }
-            else if (CrewClass.CrewSize > 4)
-            {
-                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
-                BuyFirstSlot.IsEnabled = false;
-            }
-            else
-            {
-                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                    UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+                }
+                else if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                    //BuyFirstSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
             }
 
         }
 
         private void BuySecondSlot_Click(object sender, RoutedEventArgs e)
         {
-            if (ShopClass.Money >= ShopClass.SecondSlot.Cost && CrewClass.CrewSize <= 4)
+            if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                ShopClass.Money -= ShopClass.SecondSlot.Cost;
-                MoneyCounter.Content = ShopClass.Money.ToString();
-                BuySecondSlot.IsEnabled = false;
-                BuySecondSlot.Content = "Куплено!";
-                ShopClass.FromShopToCrew(ShopClass.SecondSlot);
+                if (ShopClass.Money >= ShopClass.SecondSlot.Cost && CrewClass.CrewSize <= 4)
+                {
+                    ShopClass.Money -= ShopClass.SecondSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuySecondSlot.IsEnabled = false;
+                    BuySecondSlot.Content = "Куплено!";
+                    ShopClass.FromShopToCrew(ShopClass.SecondSlot);
 
-                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            }
-            else if (CrewClass.CrewSize > 4)
-            {
-                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
-                BuySecondSlot.IsEnabled = false;
-            }
-            else
-            {
-                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                    UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+                }
+                else if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                    //BuySecondSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
             }
         }
 
         private void BuyThirdSlot_Click(object sender, RoutedEventArgs e)
         {
-            if (ShopClass.Money >= ShopClass.ThirdSlot.Cost && CrewClass.CrewSize <= 4)
+            if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                ShopClass.Money -= ShopClass.ThirdSlot.Cost;
-                MoneyCounter.Content = ShopClass.Money.ToString();
-                BuyThirdSlot.IsEnabled = false;
-                BuyThirdSlot.Content = "Куплено!";
-                ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
+                if (ShopClass.Money >= ShopClass.ThirdSlot.Cost && CrewClass.CrewSize <= 4)
+                {
+                    ShopClass.Money -= ShopClass.ThirdSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyThirdSlot.IsEnabled = false;
+                    BuyThirdSlot.Content = "Куплено!";
+                    ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
-                UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
-            }
-            else if(CrewClass.CrewSize > 4)
-            {
-                UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
-                BuyThirdSlot.IsEnabled = false;
-            }
-            else
-            {
-                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                    UIClass.UIRefreshCrew(PlayerCrew1, PlayerCrew2, PlayerCrew3, PlayerCrew4, PlayerCrew5);
+                }
+                else if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
             }
         }
 
@@ -134,13 +146,11 @@ namespace Fight_For_Daedwin
                 ShopClass.Money -= 2;
                 MoneyCounter.Content = ShopClass.Money.ToString();
 
-                ShopClass.RandomCardToShop();
+                ShopClass.RandomUnitToShop();
 
-                Console.WriteLine(CrewClass.Slot1.Name);
-
-                UIClass.UIAddToSlotInShop(FirstSlot, ShopClass.FirstSlot);
-                UIClass.UIAddToSlotInShop(SecondSlot, ShopClass.SecondSlot);
-                UIClass.UIAddToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
+                UIClass.UIAddUnitToSlotInShop(FirstSlot, ShopClass.FirstSlot);
+                UIClass.UIAddUnitToSlotInShop(SecondSlot, ShopClass.SecondSlot);
+                UIClass.UIAddUnitToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
 
                 BuyFirstSlot.Content = "Купить";
                 BuySecondSlot.Content = "Купить";
@@ -153,6 +163,31 @@ namespace Fight_For_Daedwin
             else
             {
                 UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+            }
+        }
+
+        private void NextStageButton_Click(object sender, RoutedEventArgs e)
+        {
+            GameState.CurentStage++;
+            if(GameState.CurentStage == GameState.Stage.ItemShopStage)
+            {
+
+                string FileName = "ItemDeck.xml";
+                string Path = AppContext.BaseDirectory + @"\" + FileName;
+                ShopClass.ItemList = ShopClass.XMLItemParser(Path);
+                ShopClass.RandomItemToShop();
+
+                UIClass.UIAddItemToSlotInShop(FirstSlot, ShopClass.FirstItemSlot);
+                UIClass.UIAddItemToSlotInShop(SecondSlot, ShopClass.SecondItemSlot);
+                UIClass.UIAddItemToSlotInShop(ThirdSlot, ShopClass.ThirdItemSlot);
+
+                BuyFirstSlot.Content = "Купить";
+                BuySecondSlot.Content = "Купить";
+                BuyThirdSlot.Content = "Купить";
+
+                BuyFirstSlot.IsEnabled = true;
+                BuySecondSlot.IsEnabled = true;
+                BuyThirdSlot.IsEnabled = true;
             }
         }
     }

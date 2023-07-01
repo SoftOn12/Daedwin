@@ -11,36 +11,32 @@ namespace Fight_For_Daedwin
 {
     static class UIClass
     {
-
-
-        public class ListToStringConverter
-        {
-
-            public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            {
-                if (targetType != typeof(string))
-                    throw new InvalidOperationException("The target must be a String");
-
-                return String.Join(", ", ((List<string>)value).ToArray());
-            }
-
-            public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public static void UIAddToSlotInShop(ListBox Slot, Card Card)
+        public static void UIAddUnitToSlotInShop(ListBox Slot, Card card)
         {
             List<string> AttributeList = new List<string>
             {
-                "Название карты: " + Card.Name,
-                "Раса: " +Card.Race,
-                "Тип: " +Card.Type,
-                "Здоровье: " +Card.Health.ToString(),
-                "Атака: " +Card.Attack.ToString(),
-                "Выносливость: " +Card.Vitality.ToString(),
-                "Стоимость: " +Card.Cost.ToString(),
+                "Юнит: " + card.Name,
+                "Раса: " +card.Race,
+                "Тип: " +card.Type,
+                "Здоровье: " +card.Health.ToString(),
+                "Атака: " +card.Attack.ToString(),
+                "Выносливость: " +card.Vitality.ToString(),
+                "Стоимость: " +card.Cost.ToString(),
+            };
+
+            Slot.ItemsSource = AttributeList;
+        }
+
+        public static void UIAddItemToSlotInShop(ListBox Slot, Item item)
+        {
+            List<string> AttributeList = new List<string>
+            {
+                "Предмет: " + item.Name,
+                "Тип: " + item.Type,
+                "Бонус к Здоровью: " + item.HealthBuff.ToString(),
+                "Бонус к Атаке: " + item.AttackBuff.ToString(),
+                "Бонус к Выносливости: " + item.VitalityBuff.ToString(),
+                "Стоимость: " + item.Cost.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
