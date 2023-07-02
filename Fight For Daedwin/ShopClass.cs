@@ -22,7 +22,7 @@ namespace Fight_For_Daedwin
         static public List<Card> UnitList;
         static public List<Item> ItemList;
 
-        static public int Money = 20;
+        static public int Money = 30;
 
         public static List<Card> XMLParser(string PathToXML)
         {
@@ -234,12 +234,12 @@ namespace Fight_For_Daedwin
         static public void FromShopToCrew(Card CardFromShop)
         {
             switch (CrewClass.CrewSize)
-            { 
+            {
                 case 0:
                     CrewClass.Slot1.Name = CardFromShop.Name;
                     CrewClass.Slot1.Race = CardFromShop.Race;
                     CrewClass.Slot1.Type = CardFromShop.Type;
-                    CrewClass.Slot1.Health= CardFromShop.Health;
+                    CrewClass.Slot1.Health = CardFromShop.Health;
                     CrewClass.Slot1.Attack = CardFromShop.Attack;
                     CrewClass.Slot1.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot1.Cost = CardFromShop.Cost;
@@ -286,6 +286,69 @@ namespace Fight_For_Daedwin
                     CrewClass.CrewSize++;
 
                     //GameState.CurentStage = GameState.Stage.ItemShopStage;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        static public void FromShopToInventory(Item CardFromShop)
+        {
+            switch (InventoryClass.InventorySize)
+            {
+                case 0:
+                    InventoryClass.Slot1.Name = CardFromShop.Name;
+                    InventoryClass.Slot1.Type = CardFromShop.Type;
+                    InventoryClass.Slot1.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot1.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot1.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot1.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
+                    break;
+                case 1:
+                    InventoryClass.Slot2.Name = CardFromShop.Name;
+                    InventoryClass.Slot2.Type = CardFromShop.Type;
+                    InventoryClass.Slot2.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot2.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot2.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot2.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
+                    break;
+                case 2:
+                    InventoryClass.Slot3.Name = CardFromShop.Name;
+                    InventoryClass.Slot3.Type = CardFromShop.Type;
+                    InventoryClass.Slot3.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot3.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot3.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot3.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
+                    break;
+                case 3:
+                    InventoryClass.Slot4.Name = CardFromShop.Name;
+                    InventoryClass.Slot4.Type = CardFromShop.Type;
+                    InventoryClass.Slot4.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot4.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot4.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot4.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
+                    break;
+                case 4:
+                    InventoryClass.Slot5.Name = CardFromShop.Name;
+                    InventoryClass.Slot5.Type = CardFromShop.Type;
+                    InventoryClass.Slot5.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot5.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot5.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot5.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
+                    break;
+                case 5:
+                    InventoryClass.Slot6.Name = CardFromShop.Name;
+                    InventoryClass.Slot6.Type = CardFromShop.Type;
+                    InventoryClass.Slot6.HealthBuff = CardFromShop.HealthBuff;
+                    InventoryClass.Slot6.AttackBuff = CardFromShop.AttackBuff;
+                    InventoryClass.Slot6.VitalityBuff = CardFromShop.VitalityBuff;
+                    InventoryClass.Slot6.Cost = CardFromShop.Cost;
+                    InventoryClass.InventorySize++;
                     break;
                 default:
                     break;

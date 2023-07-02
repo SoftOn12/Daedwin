@@ -72,6 +72,37 @@ namespace Fight_For_Daedwin
             UIAddToSlotInCrew(Slot5, CrewClass.Slot5);
         }
 
+        public static void UIAddToSlotInInventory(ListBox Slot, Item item)
+        {
+            List<string> AttributeList = new List<string>
+            {
+                item.Name,
+                item.Type,
+                item.HealthBuff.ToString(),
+                item.AttackBuff.ToString(),
+                item.VitalityBuff.ToString(),
+            };
+
+            Slot.ItemsSource = AttributeList;
+        }
+
+        public static void UIRefreshInventory(ListBox Slot1, ListBox Slot2, ListBox Slot3,
+                                         ListBox Slot4, ListBox Slot5, ListBox Slot6)
+        {
+
+            UIAddToSlotInInventory(Slot1, InventoryClass.Slot1);
+
+            UIAddToSlotInInventory(Slot2, InventoryClass.Slot2);
+
+            UIAddToSlotInInventory(Slot3, InventoryClass.Slot3);
+
+            UIAddToSlotInInventory(Slot4, InventoryClass.Slot4);
+
+            UIAddToSlotInInventory(Slot5, InventoryClass.Slot5);
+
+            UIAddToSlotInInventory(Slot6, InventoryClass.Slot6);
+        }
+
         public static async void AddTextToLog(TextBlock GameLogBox, string InputText)
         {
             DateTime now = DateTime.Now;

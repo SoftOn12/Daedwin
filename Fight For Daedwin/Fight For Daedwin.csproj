@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="CrewClass.cs" />
     <Compile Include="GameState.cs" />
+    <Compile Include="InventoryClass.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ShopClass.cs" />
     <Compile Include="UIClass.cs" />

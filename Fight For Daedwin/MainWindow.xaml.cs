@@ -84,6 +84,28 @@ namespace Fight_For_Daedwin
                     UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
                 }
             }
+            else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
+            {
+                if (ShopClass.Money >= ShopClass.FirstItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                {
+                    ShopClass.Money -= ShopClass.FirstItemSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyFirstSlot.IsEnabled = false;
+                    BuyFirstSlot.Content = "Куплено!";
+                    ShopClass.FromShopToInventory(ShopClass.FirstItemSlot);
+
+                    UIClass.UIRefreshInventory(Item1, Item2, Item3, Item4, Item5, Item6);
+                }
+                else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
+            }
 
         }
 
@@ -105,6 +127,28 @@ namespace Fight_For_Daedwin
                 {
                     UIClass.AddTextToLog(GameLog, "Отряд укомплектован");
                     //BuySecondSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
+            }
+            else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
+            {
+                if (ShopClass.Money >= ShopClass.SecondItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                {
+                    ShopClass.Money -= ShopClass.SecondItemSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuySecondSlot.IsEnabled = false;
+                    BuySecondSlot.Content = "Куплено!";
+                    ShopClass.FromShopToInventory(ShopClass.SecondItemSlot);
+
+                    UIClass.UIRefreshInventory(Item1, Item2, Item3, Item4, Item5, Item6);
+                }
+                else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
                 }
                 else
                 {
@@ -137,32 +181,83 @@ namespace Fight_For_Daedwin
                     UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
                 }
             }
+            else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
+            {
+                if (ShopClass.Money >= ShopClass.ThirdItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                {
+                    ShopClass.Money -= ShopClass.ThirdItemSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyThirdSlot.IsEnabled = false;
+                    BuyThirdSlot.Content = "Куплено!";
+                    ShopClass.FromShopToInventory(ShopClass.ThirdItemSlot);
+
+                    UIClass.UIRefreshInventory(Item1, Item2, Item3, Item4, Item5, Item6);
+                }
+                else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
+            }
         }
 
         private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ShopClass.Money >= 2)
+            if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                ShopClass.Money -= 2;
-                MoneyCounter.Content = ShopClass.Money.ToString();
+                if (ShopClass.Money >= 2)
+                {
+                    ShopClass.Money -= 2;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
 
-                ShopClass.RandomUnitToShop();
+                    ShopClass.RandomUnitToShop();
 
-                UIClass.UIAddUnitToSlotInShop(FirstSlot, ShopClass.FirstSlot);
-                UIClass.UIAddUnitToSlotInShop(SecondSlot, ShopClass.SecondSlot);
-                UIClass.UIAddUnitToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
+                    UIClass.UIAddUnitToSlotInShop(FirstSlot, ShopClass.FirstSlot);
+                    UIClass.UIAddUnitToSlotInShop(SecondSlot, ShopClass.SecondSlot);
+                    UIClass.UIAddUnitToSlotInShop(ThirdSlot, ShopClass.ThirdSlot);
 
-                BuyFirstSlot.Content = "Купить";
-                BuySecondSlot.Content = "Купить";
-                BuyThirdSlot.Content = "Купить";
+                    BuyFirstSlot.Content = "Купить";
+                    BuySecondSlot.Content = "Купить";
+                    BuyThirdSlot.Content = "Купить";
 
-                BuyFirstSlot.IsEnabled = true;
-                BuySecondSlot.IsEnabled = true;
-                BuyThirdSlot.IsEnabled = true;
+                    BuyFirstSlot.IsEnabled = true;
+                    BuySecondSlot.IsEnabled = true;
+                    BuyThirdSlot.IsEnabled = true;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
             }
-            else
+            else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-                UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                if (ShopClass.Money >= 2)
+                {
+                    ShopClass.Money -= 2;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+
+                    ShopClass.RandomItemToShop();
+
+                    UIClass.UIAddItemToSlotInShop(FirstSlot, ShopClass.FirstItemSlot);
+                    UIClass.UIAddItemToSlotInShop(SecondSlot, ShopClass.SecondItemSlot);
+                    UIClass.UIAddItemToSlotInShop(ThirdSlot, ShopClass.ThirdItemSlot);
+
+                    BuyFirstSlot.Content = "Купить";
+                    BuySecondSlot.Content = "Купить";
+                    BuyThirdSlot.Content = "Купить";
+
+                    BuyFirstSlot.IsEnabled = true;
+                    BuySecondSlot.IsEnabled = true;
+                    BuyThirdSlot.IsEnabled = true;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(GameLog, "Нехватает валюты!");
+                }
             }
         }
 

@@ -80,17 +80,24 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
+                <ListBox Name="Item1" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90"></ListBox>
+                <ListBox Name="Item2" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90" Grid.Column="1"></ListBox>
+                <ListBox Name="Item3" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90" Grid.Column="2"></ListBox>
+                <ListBox Name="Item4" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90" Grid.Row="1"></ListBox>
+                <ListBox Name="Item5" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="1"></ListBox>
+                <ListBox Name="Item6" HorizontalAlignment="Left" Height="117" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="2"></ListBox>
+                
                 <Button Name="UseItem1" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70"/>
                 <Button Name="UseItem2" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1"/>
                 <Button Name="UseItem3" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70" Grid.Column="2"/>
                 <Button Name="UseItem4" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70" Grid.Row="1"/>
                 <Button Name="UseItem5" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70" Grid.Column="1" Grid.Row="1"/>
                 <Button Name="UseItem6" Content="Применить" HorizontalAlignment="Left" Margin="10,122,0,0" VerticalAlignment="Top" Width="70" Grid.Column="2" Grid.Row="1"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
             </Grid>
         </Border>
     </Grid>
