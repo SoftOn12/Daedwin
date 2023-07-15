@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="ShopWindow" Height="720" Width="700">
     <Grid>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="669" Height="441"  >
+        <Border  HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="669" Height="441"  >
             <Grid Name ="Shop" HorizontalAlignment="Left" Height="428" Margin="1,1,0,0" VerticalAlignment="Top" Width="665" ShowGridLines="True" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListBox Name ="FirstSlot"  HorizontalAlignment="Left" Height="167" Margin="10,215,0,0" VerticalAlignment="Top" Width="200">
+                <ListBox Name ="FirstSlot"  HorizontalAlignment="Left" Height="167" Margin="10,215,0,0" VerticalAlignment="Top" Width="200"  >
 
                 </ListBox>
-                <ListBox x:Name ="SecondSlot"  HorizontalAlignment="Left" Height="167" Margin="10,215,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1">
+                <ListBox x:Name ="SecondSlot"  HorizontalAlignment="Left" Height="167" Margin="10,215,0,0" VerticalAlignment="Top" Width="200" Grid.Column="1" >
 
                 </ListBox>
-                <ListBox x:Name ="ThirdSlot"  HorizontalAlignment="Left" Height="167" Margin="11,215,0,0" VerticalAlignment="Top" Width="200" Grid.Column="2">
+                <ListBox x:Name ="ThirdSlot"  HorizontalAlignment="Left" Height="167" Margin="11,215,0,0" VerticalAlignment="Top" Width="200" Grid.Column="2" >
 
                 </ListBox>
                 <Button Name="BuyFirstSlot" Content="Купить" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" Width="200" Height="41" Click="BuyFirstSlot_Click_1"/>
@@ -29,6 +29,12 @@
                 <Image Name="ImageSecondSlot" Grid.Column="1" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
                 <Image Name="ImageFirstSlot" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
                 <Image Name="ImageThirdSlot" Grid.Column="2" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="200"/>
+                <TextBlock Name="SpellFirstSlot" HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="147" Width="200"  Visibility="Hidden"/>
+                <TextBlock Name="SpellSecondSlot" HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="147" Width="200" Grid.Column="1"  Visibility="Hidden"/>
+                <TextBlock Name="SpellThirdSlot" HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="147" Width="200" Grid.Column="2"  Visibility="Hidden"/>
+                <TextBlock Name="SpellCostFirstSlot" HorizontalAlignment="Left" Margin="10,362,0,0" TextWrapping="Wrap" Text="Стоимость: " VerticalAlignment="Top" Height="20" Width="200"  Visibility="Hidden"/>
+                <TextBlock Name="SpellCostSecondSlot" HorizontalAlignment="Left" Margin="10,362,0,0" TextWrapping="Wrap" Text="Стоимость: " VerticalAlignment="Top" Height="20" Width="200" Grid.Column="1"  Visibility="Hidden"/>
+                <TextBlock Name="SpellCostThirdSlot" HorizontalAlignment="Left" Margin="10,362,0,0" TextWrapping="Wrap" Text="Стоимость: " VerticalAlignment="Top" Height="20" Width="200" Grid.Column="2"  Visibility="Hidden"/>
             </Grid>
         </Border>
         <Label x:Name="MoneyTitle" Content="Валюта: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,456,0,0" Height="36" Width="53" />

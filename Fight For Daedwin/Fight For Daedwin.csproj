@@ -63,6 +63,8 @@
     <Compile Include="ShopWindow.xaml.cs">
       <DependentUpon>ShopWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Spell.cs" />
+    <Compile Include="SpellBookClass.cs" />
     <Compile Include="UIClass.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

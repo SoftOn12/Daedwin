@@ -64,11 +64,11 @@ namespace Fight_For_Daedwin
                     BuyFirstSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.FirstSlot);
 
-                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, 
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, 
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, 
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew4, 
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew5);
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -90,14 +90,39 @@ namespace Fight_For_Daedwin
                     BuyFirstSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.FirstItemSlot);
 
-                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1,
-                        ((MainWindow)Application.Current.MainWindow).Item2,
-                        ((MainWindow)Application.Current.MainWindow).Item3,
-                        ((MainWindow)Application.Current.MainWindow).Item4,
-                        ((MainWindow)Application.Current.MainWindow).Item5,
-                        ((MainWindow)Application.Current.MainWindow).Item6);
+                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
+                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
                 else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+            }
+            else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
+            {
+                if (ShopClass.Money >= ShopClass.FirstSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                {
+                    ShopClass.Money -= ShopClass.FirstSpellSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyFirstSlot.IsEnabled = false;
+                    BuyFirstSlot.Content = "Куплено!";
+                    ShopClass.FromShopToSpellBook(ShopClass.FirstSpellSlot);
+
+                    UIClass.UIAddToSlotInSpellBook(((MainWindow)Application.Current.MainWindow).SpellText,
+                                                   ((MainWindow)Application.Current.MainWindow).SpellImage,
+                                                   ((MainWindow)Application.Current.MainWindow).SpellTitle,
+                                                   ShopClass.FirstSpellSlot);
+                }
+                else if (SpellBookClass.SpellBookSize > 0)
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
                     //BuyThirdSlot.IsEnabled = false;
@@ -122,11 +147,11 @@ namespace Fight_For_Daedwin
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.SecondSlot);
 
-                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew4,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew5);
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -148,14 +173,39 @@ namespace Fight_For_Daedwin
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.SecondItemSlot);
 
-                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1,
-                        ((MainWindow)Application.Current.MainWindow).Item2,
-                        ((MainWindow)Application.Current.MainWindow).Item3,
-                        ((MainWindow)Application.Current.MainWindow).Item4,
-                        ((MainWindow)Application.Current.MainWindow).Item5,
-                        ((MainWindow)Application.Current.MainWindow).Item6);
+                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
+                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
                 else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+            }
+            else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
+            {
+                if (ShopClass.Money >= ShopClass.SecondSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                {
+                    ShopClass.Money -= ShopClass.SecondSpellSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuySecondSlot.IsEnabled = false;
+                    BuySecondSlot.Content = "Куплено!";
+                    ShopClass.FromShopToSpellBook(ShopClass.SecondSpellSlot);
+
+                    UIClass.UIAddToSlotInSpellBook(((MainWindow)Application.Current.MainWindow).SpellText,
+                                                   ((MainWindow)Application.Current.MainWindow).SpellImage,
+                                                   ((MainWindow)Application.Current.MainWindow).SpellTitle,
+                                                   ShopClass.SecondSpellSlot);
+                }
+                else if (SpellBookClass.SpellBookSize > 0)
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
                     //BuyThirdSlot.IsEnabled = false;
@@ -179,11 +229,11 @@ namespace Fight_For_Daedwin
                     BuyThirdSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
-                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew4,
-                        ((MainWindow)Application.Current.MainWindow).PlayerCrew5);
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -205,14 +255,39 @@ namespace Fight_For_Daedwin
                     BuyThirdSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.ThirdItemSlot);
 
-                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1,
-                        ((MainWindow)Application.Current.MainWindow).Item2,
-                        ((MainWindow)Application.Current.MainWindow).Item3,
-                        ((MainWindow)Application.Current.MainWindow).Item4,
-                        ((MainWindow)Application.Current.MainWindow).Item5,
-                        ((MainWindow)Application.Current.MainWindow).Item6);
+                    UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
+                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
                 else if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    //BuyThirdSlot.IsEnabled = false;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+            }
+            else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
+            {
+                if (ShopClass.Money >= ShopClass.ThirdSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                {
+                    ShopClass.Money -= ShopClass.ThirdSpellSlot.Cost;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    BuyThirdSlot.IsEnabled = false;
+                    BuyThirdSlot.Content = "Куплено!";
+                    ShopClass.FromShopToSpellBook(ShopClass.ThirdSpellSlot);
+
+                    UIClass.UIAddToSlotInSpellBook(((MainWindow)Application.Current.MainWindow).SpellText, 
+                                                   ((MainWindow)Application.Current.MainWindow).SpellImage,
+                                                   ((MainWindow)Application.Current.MainWindow).SpellTitle,
+                                                   ShopClass.ThirdSpellSlot);
+                }
+                else if (SpellBookClass.SpellBookSize > 0)
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
                     //BuyThirdSlot.IsEnabled = false;
@@ -278,6 +353,32 @@ namespace Fight_For_Daedwin
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
                 }
             }
+            else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
+            {
+                if (ShopClass.Money >= 2)
+                {
+                    ShopClass.Money -= 2;
+                    MoneyCounter.Content = ShopClass.Money.ToString();
+
+                    ShopClass.RandomSpellToShop();
+
+                    UIClass.UIAddSpellToSlotInShop(SpellFirstSlot, SpellCostFirstSlot, ImageFirstSlot, ShopClass.FirstSpellSlot);
+                    UIClass.UIAddSpellToSlotInShop(SpellSecondSlot, SpellCostSecondSlot, ImageSecondSlot, ShopClass.SecondSpellSlot);
+                    UIClass.UIAddSpellToSlotInShop(SpellThirdSlot, SpellCostThirdSlot, ImageThirdSlot, ShopClass.ThirdSpellSlot);
+
+                    BuyFirstSlot.Content = "Купить";
+                    BuySecondSlot.Content = "Купить";
+                    BuyThirdSlot.Content = "Купить";
+
+                    BuyFirstSlot.IsEnabled = true;
+                    BuySecondSlot.IsEnabled = true;
+                    BuyThirdSlot.IsEnabled = true;
+                }
+                else
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+            }
         }
 
         private void NextStageButton_Click(object sender, RoutedEventArgs e)
@@ -285,7 +386,6 @@ namespace Fight_For_Daedwin
             GameState.CurentStage++;
             if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-
                 string FileName = "ItemDeck.xml";
                 string Path = AppContext.BaseDirectory + @"\" + FileName;
                 ShopClass.ItemList = ShopClass.XMLItemParser(Path);
@@ -302,6 +402,41 @@ namespace Fight_For_Daedwin
                 BuyFirstSlot.IsEnabled = true;
                 BuySecondSlot.IsEnabled = true;
                 BuyThirdSlot.IsEnabled = true;
+            }
+            else if(GameState.CurentStage == GameState.Stage.SpellChoiseStage)
+            {
+                string FileName = "SpellDeck.xml";
+                string Path = AppContext.BaseDirectory + @"\" + FileName;
+                ShopClass.SpellList = ShopClass.XMLSpellParser(Path);
+                ShopClass.RandomSpellToShop();
+
+                FirstSlot.Visibility = Visibility.Hidden;
+                SecondSlot.Visibility = Visibility.Hidden;
+                ThirdSlot.Visibility = Visibility.Hidden;
+
+                SpellFirstSlot.Visibility = Visibility.Visible;
+                SpellSecondSlot.Visibility = Visibility.Visible;
+                SpellThirdSlot.Visibility = Visibility.Visible;
+                SpellCostFirstSlot.Visibility = Visibility.Visible;
+                SpellCostSecondSlot.Visibility = Visibility.Visible;
+                SpellCostThirdSlot.Visibility = Visibility.Visible;
+
+                UIClass.UIAddSpellToSlotInShop(SpellFirstSlot, SpellCostFirstSlot, ImageFirstSlot, ShopClass.FirstSpellSlot);
+                UIClass.UIAddSpellToSlotInShop(SpellSecondSlot, SpellCostSecondSlot, ImageSecondSlot, ShopClass.SecondSpellSlot);
+                UIClass.UIAddSpellToSlotInShop(SpellThirdSlot, SpellCostThirdSlot, ImageThirdSlot, ShopClass.ThirdSpellSlot);
+
+                BuyFirstSlot.Content = "Купить";
+                BuySecondSlot.Content = "Купить";
+                BuyThirdSlot.Content = "Купить";
+
+                BuyFirstSlot.IsEnabled = true;
+                BuySecondSlot.IsEnabled = true;
+                BuyThirdSlot.IsEnabled = true;
+                
+            }
+            else if (GameState.CurentStage == GameState.Stage.FightStage)
+            {
+                Close();
             }
         }
     }

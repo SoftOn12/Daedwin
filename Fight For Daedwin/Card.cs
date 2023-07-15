@@ -42,7 +42,12 @@ namespace Fight_For_Daedwin
         public override bool Equals(object obj) => Equals(obj as Card);
         public override int GetHashCode() => (Name, Race, Type, Health, Attack, Vitality, Cost, Image).GetHashCode();
 
-        public Card() { }
+        public Card()
+        {
+            Name = "Не выбрано";
+            Race = "Не выбрано";
+            Type = "Не выбрано";
+            Image = "Default.png"; }
         public Card(string name = "Копейщик",
             string race = "Человек",
             string type = "Ближний бой",
@@ -50,7 +55,7 @@ namespace Fight_For_Daedwin
             int attack = 1,
             int vitality = 10,
             int cost = 2,
-            string image = "Elf.jpg")
+            string image = "ElfArcher.jpg")
         {
             Name = name;
             Race = race;

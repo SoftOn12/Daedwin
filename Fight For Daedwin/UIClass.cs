@@ -45,7 +45,15 @@ namespace Fight_For_Daedwin
             ItemImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Item Arts\" + item.Image));
         }
 
-        public static void UIAddToSlotInCrew(ListBox Slot, Card Card)
+        public static void UIAddSpellToSlotInShop(TextBlock Slot, TextBlock SpellCost, Image SpellImage, Spell spell)
+        {
+            SpellCost.Text += spell.Cost;
+            Slot.Text = spell.Description;
+            //Slot.ItemsSource = AttributeList;
+            SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));
+        }
+
+        public static void UIAddToSlotInCrew(ListBox Slot, Image CardImage, Card Card)
         {
             List<string> AttributeList = new List<string>
             {
@@ -58,24 +66,28 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
+            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Card Arts\" + Card.Image));
         }
 
-        public static void UIRefreshCrew(ListBox Slot1, ListBox Slot2, ListBox Slot3,
-                                         ListBox Slot4, ListBox Slot5)
+        public static void UIRefreshCrew(ListBox Slot1, Image CardImage1, 
+                                         ListBox Slot2, Image CardImage2, 
+                                         ListBox Slot3, Image CardImage3,
+                                         ListBox Slot4, Image CardImage4,
+                                         ListBox Slot5, Image CardImage5)
         {
 
-            UIAddToSlotInCrew(Slot1, CrewClass.Slot1);
+            UIAddToSlotInCrew(Slot1, CardImage1, CrewClass.Slot1);
 
-            UIAddToSlotInCrew(Slot2, CrewClass.Slot2);
+            UIAddToSlotInCrew(Slot2, CardImage2, CrewClass.Slot2);
 
-            UIAddToSlotInCrew(Slot3, CrewClass.Slot3);
+            UIAddToSlotInCrew(Slot3, CardImage3, CrewClass.Slot3);
 
-            UIAddToSlotInCrew(Slot4, CrewClass.Slot4);
+            UIAddToSlotInCrew(Slot4, CardImage4, CrewClass.Slot4);
 
-            UIAddToSlotInCrew(Slot5, CrewClass.Slot5);
+            UIAddToSlotInCrew(Slot5, CardImage5, CrewClass.Slot5);
         }
 
-        public static void UIAddToSlotInInventory(ListBox Slot, Item item)
+        public static void UIAddToSlotInInventory(ListBox Slot, Image ItemImage, Item item)
         {
             List<string> AttributeList = new List<string>
             {
@@ -87,23 +99,37 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
+            ItemImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Item Arts\" + item.Image));
         }
 
-        public static void UIRefreshInventory(ListBox Slot1, ListBox Slot2, ListBox Slot3,
-                                         ListBox Slot4, ListBox Slot5, ListBox Slot6)
+        public static void UIRefreshInventory(ListBox Slot1, Image ItemImage1,
+                                         ListBox Slot2, Image ItemImage2,
+                                         ListBox Slot3, Image ItemImage3,
+                                         ListBox Slot4, Image ItemImage4,
+                                         ListBox Slot5, Image ItemImage5,
+                                         ListBox Slot6, Image ItemImage6)
         {
 
-            UIAddToSlotInInventory(Slot1, InventoryClass.Slot1);
+            UIAddToSlotInInventory(Slot1, ItemImage1, InventoryClass.Slot1);
 
-            UIAddToSlotInInventory(Slot2, InventoryClass.Slot2);
+            UIAddToSlotInInventory(Slot2, ItemImage2, InventoryClass.Slot2);
 
-            UIAddToSlotInInventory(Slot3, InventoryClass.Slot3);
+            UIAddToSlotInInventory(Slot3, ItemImage3, InventoryClass.Slot3);
 
-            UIAddToSlotInInventory(Slot4, InventoryClass.Slot4);
+            UIAddToSlotInInventory(Slot4, ItemImage4, InventoryClass.Slot4);
 
-            UIAddToSlotInInventory(Slot5, InventoryClass.Slot5);
+            UIAddToSlotInInventory(Slot5, ItemImage5, InventoryClass.Slot5);
 
-            UIAddToSlotInInventory(Slot6, InventoryClass.Slot6);
+            UIAddToSlotInInventory(Slot6, ItemImage6, InventoryClass.Slot6);
+        }
+
+        public static void UIAddToSlotInSpellBook(TextBlock Slot, Image SpellImage, TextBlock spellName, Spell spell)
+        {
+            spellName.Text = spell.Name;
+            Slot.Text = spell.Description;
+            //Slot.ItemsSource = AttributeList;
+            SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));
+
         }
 
         public static async void AddTextToLog(TextBlock GameLogBox, string InputText)

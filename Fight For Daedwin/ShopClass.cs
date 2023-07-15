@@ -19,8 +19,13 @@ namespace Fight_For_Daedwin
         static public Item SecondItemSlot = new Item();
         static public Item ThirdItemSlot = new Item();
 
+        static public Spell FirstSpellSlot = new Spell();
+        static public Spell SecondSpellSlot = new Spell();
+        static public Spell ThirdSpellSlot = new Spell();
+
         static public List<Card> UnitList;
         static public List<Item> ItemList;
+        static public List<Spell> SpellList;
 
         static public int Money = 30;
 
@@ -158,6 +163,79 @@ namespace Fight_For_Daedwin
             return AllertList;
         }
 
+        public static List<Spell> XMLSpellParser(string PathToXML)
+        {
+            List<Spell> AllertList = new List<Spell>();
+            XmlDocument xDoc = new XmlDocument();
+
+            if (!File.Exists(PathToXML))
+            {
+                var xmlWriter = new XmlTextWriter(PathToXML, null);
+                xmlWriter.WriteStartDocument();                  // <?xml version="1.0"?>
+                xmlWriter.WriteStartElement("Data");             // <Data> 
+                xmlWriter.WriteEndElement();                     // </Data>
+                xmlWriter.Close();
+
+                Spell newCard = new Spell();
+                newCard.AddUnitToXML(PathToXML);
+            }
+
+            xDoc.Load(PathToXML);
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            if (xRoot != null)
+            {
+                // обход всех узлов в корневом элементе
+                foreach (XmlElement xNode in xRoot)
+                {
+                    // получаем атрибут name
+                    Spell AllertObj = new Spell();
+                    XmlNode attr = xNode.Attributes.GetNamedItem("Name");
+                    AllertObj.Name = attr.Value;
+
+                    // обходим все дочерние узлы элемента user
+                    foreach (XmlNode childnode in xNode.ChildNodes)
+                    {
+                        // если узел - company
+                        if (childnode.Name == "RaceCondition")
+                        {
+                            AllertObj.RaceCondition = childnode.InnerText;
+                        }
+                        if (childnode.Name == "TypeCondition")
+                        {
+                            AllertObj.TypeCondition = childnode.InnerText;
+                        }
+                        if (childnode.Name == "HealthBuff")
+                        {
+                            AllertObj.HealthBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "AttackBuff")
+                        {
+                            AllertObj.AttackBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "VitalityBuff")
+                        {
+                            AllertObj.VitalityBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "Cost")
+                        {
+                            AllertObj.Cost = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "Description")
+                        {
+                            AllertObj.Description = childnode.InnerText;
+                        }
+                        if (childnode.Name == "Image")
+                        {
+                            AllertObj.Image = childnode.InnerText;
+                        }
+                    }
+                    AllertList.Add(AllertObj);
+                }
+            }
+            return AllertList;
+        }
+
         public static void RandomUnitToShop()
         {
             if (UnitList.Count != 0)
@@ -237,6 +315,54 @@ namespace Fight_For_Daedwin
                 ThirdItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
                 ThirdItemSlot.Cost = ItemList[Seed].Cost;
                 ThirdItemSlot.Image = ItemList[Seed].Image;
+            }
+            else
+            {
+                Console.WriteLine("Список карт пуст!");
+                return;
+            }
+        }
+
+        public static void RandomSpellToShop()
+        {
+            if (SpellList.Count != 0)
+            {
+                Random Rnd = new Random();
+                int Seed = Rnd.Next(SpellList.Count);
+
+                FirstSpellSlot.Name = SpellList[Seed].Name;
+                FirstSpellSlot.RaceCondition = SpellList[Seed].RaceCondition;
+                FirstSpellSlot.TypeCondition = SpellList[Seed].TypeCondition;
+                FirstSpellSlot.HealthBuff = SpellList[Seed].HealthBuff;
+                FirstSpellSlot.AttackBuff = SpellList[Seed].AttackBuff;
+                FirstSpellSlot.VitalityBuff = SpellList[Seed].VitalityBuff;
+                FirstSpellSlot.Cost = SpellList[Seed].Cost;
+                FirstSpellSlot.Description = SpellList[Seed].Description;
+                FirstSpellSlot.Image = SpellList[Seed].Image;
+
+                Seed = Rnd.Next(ItemList.Count);
+
+                SecondSpellSlot.Name = SpellList[Seed].Name;
+                SecondSpellSlot.RaceCondition = SpellList[Seed].RaceCondition;
+                SecondSpellSlot.TypeCondition = SpellList[Seed].TypeCondition;
+                SecondSpellSlot.HealthBuff = SpellList[Seed].HealthBuff;
+                SecondSpellSlot.AttackBuff = SpellList[Seed].AttackBuff;
+                SecondSpellSlot.VitalityBuff = SpellList[Seed].VitalityBuff;
+                SecondSpellSlot.Cost = SpellList[Seed].Cost;
+                SecondSpellSlot.Description = SpellList[Seed].Description;
+                SecondSpellSlot.Image = SpellList[Seed].Image;
+
+                Seed = Rnd.Next(ItemList.Count);
+
+                ThirdSpellSlot.Name = SpellList[Seed].Name;
+                ThirdSpellSlot.RaceCondition = SpellList[Seed].RaceCondition;
+                ThirdSpellSlot.TypeCondition = SpellList[Seed].TypeCondition;
+                ThirdSpellSlot.HealthBuff = SpellList[Seed].HealthBuff;
+                ThirdSpellSlot.AttackBuff = SpellList[Seed].AttackBuff;
+                ThirdSpellSlot.VitalityBuff = SpellList[Seed].VitalityBuff;
+                ThirdSpellSlot.Cost = SpellList[Seed].Cost;
+                ThirdSpellSlot.Description = SpellList[Seed].Description; 
+                ThirdSpellSlot.Image = SpellList[Seed].Image;
             }
             else
             {
@@ -378,6 +504,20 @@ namespace Fight_For_Daedwin
                 default:
                     break;
             }
+        }
+
+        static public void FromShopToSpellBook(Spell CardFromShop)
+        {          
+            SpellBookClass.PlayerSpell.Name = CardFromShop.Name;
+            SpellBookClass.PlayerSpell.RaceCondition = CardFromShop.RaceCondition;
+            SpellBookClass.PlayerSpell.TypeCondition = CardFromShop.TypeCondition;
+            SpellBookClass.PlayerSpell.HealthBuff = CardFromShop.HealthBuff;
+            SpellBookClass.PlayerSpell.AttackBuff = CardFromShop.AttackBuff;
+            SpellBookClass.PlayerSpell.VitalityBuff = CardFromShop.VitalityBuff;
+            SpellBookClass.PlayerSpell.Cost = CardFromShop.Cost;
+            SpellBookClass.PlayerSpell.Description = CardFromShop.Description;
+            SpellBookClass.PlayerSpell.Image = CardFromShop.Image;
+            SpellBookClass.SpellBookSize++;
         }
     }
 }

@@ -7,101 +7,124 @@ using System.Xml;
 
 namespace Fight_For_Daedwin
 {
-    class Item : IEquatable<Item>
+    class Spell : IEquatable<Spell>
     {
 
         public string Name;
-        public string Type;
+        public string RaceCondition;
+        public string TypeCondition;
 
         public int HealthBuff;
         public int AttackBuff;
         public int VitalityBuff;
 
         public int Cost;
+        public string Description;
 
         public string Image;
 
-        public bool Equals(Item other)
+        public bool Equals(Spell other)
         {
             if (other is null)
                 return false;
 
             return this.Name == other.Name &&
-                   this.Type == other.Type &&
+                   this.RaceCondition == other.RaceCondition &&
+                   this.TypeCondition == other.TypeCondition &&
                    this.HealthBuff == other.HealthBuff &&
                    this.AttackBuff == other.AttackBuff &&
                    this.VitalityBuff == other.VitalityBuff &&
                    this.Cost == other.Cost &&
-                   this.Image == other.Image;
+                   this.Image == other.Image &&
+                   this.Description == other.Description;
         }
 
-        public override bool Equals(object obj) => Equals(obj as Card);
-        public override int GetHashCode() => (Name, Type, HealthBuff, AttackBuff, VitalityBuff, Cost, Image).GetHashCode();
+        public override bool Equals(object obj) => Equals(obj as Spell);
+        public override int GetHashCode() => (Name, RaceCondition, TypeCondition, HealthBuff, AttackBuff, VitalityBuff, Cost, Image, Description).GetHashCode();
 
-        public Item() { Image = "Default.png"; }
-        public Item(string name = "Монетка",
-            string type = "Обычный",
-            int health = 0,
-            int attack = 0,
-            int vitality = 1,
-            int cost = 1,
-            string image = "Coin.jpg")
+        public Spell()
+        {
+            Name = "Не выбрано";
+            RaceCondition = "Не выбрано";
+            TypeCondition = "Не выбрано";
+            Description = "Стандартное описание";
+            Image = "Default.png";
+        }
+        public Spell(string name = "За честь!",
+            string raceCondition = "Человек",
+            string typeCondition = "Ближний бой",
+            int healthBuff = 50,
+            int attackBuff = 2,
+            int vitalityBuff = 0,
+            int cost = 2,
+            string description = "Все бойцы ближнего боя люди получают бонус к здоровью 50 и бонус к атаке 2", 
+            string image = "For the Glory.jpg")
         {
             Name = name;
-            Type = type;
-            HealthBuff = health;
-            AttackBuff = attack;
-            VitalityBuff = vitality;
+            RaceCondition = raceCondition;
+            TypeCondition = typeCondition;
+            HealthBuff = healthBuff;
+            AttackBuff = attackBuff;
+            VitalityBuff = vitalityBuff;
             Cost = cost;
+            Description = description;
             Image = image;
         }
 
-        public void AddItemToXML(string path)
+        public void AddUnitToXML(string path)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(path);
             XmlElement xRoot = xDoc.DocumentElement;
 
             // создаем новый элемент person
-            XmlElement CardElem = xDoc.CreateElement("Item");
+            XmlElement CardElem = xDoc.CreateElement("Card");
 
             // создаем атрибут name
             XmlAttribute NameAttr = xDoc.CreateAttribute("Name");
 
             // создаем элементы company и age
-            XmlElement TypeElem = xDoc.CreateElement("Type");
+            XmlElement RaceConditionElem = xDoc.CreateElement("RaceCondition");
+            XmlElement TypeConditionElem = xDoc.CreateElement("TypeCondition");
             XmlElement HealthBuffElem = xDoc.CreateElement("HealthBuff");
             XmlElement AttackBuffElem = xDoc.CreateElement("AttackBuff");
             XmlElement VitalityBuffElem = xDoc.CreateElement("VitalityBuff");
             XmlElement CostElem = xDoc.CreateElement("Cost");
+            XmlElement DescriptionElem = xDoc.CreateElement("Description");
             XmlElement ImageElem = xDoc.CreateElement("Image");
 
             // создаем текстовые значения для элементов и атрибута
             XmlText NameText = xDoc.CreateTextNode(this.Name);
-            XmlText TypeText = xDoc.CreateTextNode(this.Type);
+            XmlText RaceConditionText = xDoc.CreateTextNode(this.RaceCondition);
+            XmlText TypeConditionText = xDoc.CreateTextNode(this.TypeCondition);
             XmlText HealthBuffText = xDoc.CreateTextNode(this.HealthBuff.ToString());
             XmlText AttackBuffText = xDoc.CreateTextNode(this.AttackBuff.ToString());
             XmlText VitalityBuffText = xDoc.CreateTextNode(this.VitalityBuff.ToString());
             XmlText CostText = xDoc.CreateTextNode(this.Cost.ToString());
+            XmlText DescriptionText = xDoc.CreateTextNode(this.Description);
             XmlText ImageText = xDoc.CreateTextNode(this.Image);
 
             //добавляем узлы
             NameAttr.AppendChild(NameText);
-            TypeElem.AppendChild(TypeText);
+            RaceConditionElem.AppendChild(RaceConditionText);
+            TypeConditionElem.AppendChild(TypeConditionText);
             HealthBuffElem.AppendChild(HealthBuffText);
             AttackBuffElem.AppendChild(AttackBuffText);
             VitalityBuffElem.AppendChild(VitalityBuffText);
             CostElem.AppendChild(CostText);
+            DescriptionElem.AppendChild(DescriptionText);
             ImageElem.AppendChild(ImageText);
 
             // добавляем атрибут name
             CardElem.Attributes.Append(NameAttr);
             // добавляем элементы company и age
-            CardElem.AppendChild(TypeElem);
+            CardElem.AppendChild(RaceConditionElem);
+            CardElem.AppendChild(TypeConditionElem);
             CardElem.AppendChild(HealthBuffElem);
             CardElem.AppendChild(AttackBuffElem);
             CardElem.AppendChild(VitalityBuffElem);
             CardElem.AppendChild(CostElem);
+            CardElem.AppendChild(DescriptionElem);
             CardElem.AppendChild(ImageElem);
             // добавляем в корневой элемент новый элемент person
             xRoot?.AppendChild(CardElem);
