@@ -23,14 +23,11 @@
                 <ListBox x:Name ="ThirdSlot"  HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="393" Grid.Column="2">
 
                 </ListBox>
-                <Button Name="BuyFirstSlot" Content="Купить" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="100" Height="41" Click="BuyFirstSlot_Click_1"/>
-                <Button Name="BuySecondSlot" Content="Купить" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="100" Height="41" Grid.Column="1" Click="BuySecondSlot_Click"/>
-                <Button Name="BuyThirdSlot" Content="Купить" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Width="100" Height="41" Grid.Column="2" Click="BuyThirdSlot_Click"/>
+                
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Height="310" Margin="289,370,0,0" Width="694">
             <Grid HorizontalAlignment="Left" Height="306" Margin="1,1,1,1" VerticalAlignment="Top" Width="687">
-                <Button x:Name="StartFightButton" Content="Начать бой" HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="95" Height="40" Click="Button_Click"/>
                 <Label x:Name="MoneyTitle" Content="Валюта: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="36" Width="53" />
                 <Label x:Name="MoneyCounter"  Content="0"  HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Height="36" Width="37"  />
                 <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="150" Margin="115,5,0,0" VerticalAlignment="Top" Width="572">
@@ -62,8 +59,6 @@
                         <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="113" Grid.Column="3" Margin="1,0,0,0"/>
                     </Grid>
                 </Border>
-                <Button x:Name="RestartButton" Content="Обновить (2)" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="95" Click="RestartButton_Click" Height="40" RenderTransformOrigin="0.47,3.95"/>
-                <Button x:Name="NextStageButton" Content="Далее" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="95" RenderTransformOrigin="0.493,0.55" Height="40" Click="NextStageButton_Click"/>
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,370,0,0" Height="310" >

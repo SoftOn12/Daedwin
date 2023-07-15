@@ -19,6 +19,8 @@ namespace Fight_For_Daedwin
 
         public int Cost;
 
+        public string Image;
+
         public bool Equals(Item other)
         {
             if (other is null)
@@ -29,11 +31,12 @@ namespace Fight_For_Daedwin
                    this.HealthBuff == other.HealthBuff &&
                    this.AttackBuff == other.AttackBuff &&
                    this.VitalityBuff == other.VitalityBuff &&
-                   this.Cost == other.Cost;
+                   this.Cost == other.Cost &&
+                   this.Image == other.Image;
         }
 
         public override bool Equals(object obj) => Equals(obj as Card);
-        public override int GetHashCode() => (Name, Type, HealthBuff, AttackBuff, VitalityBuff, Cost).GetHashCode();
+        public override int GetHashCode() => (Name, Type, HealthBuff, AttackBuff, VitalityBuff, Cost, Image).GetHashCode();
 
         public Item() { }
         public Item(string name = "Монетка",
@@ -41,7 +44,8 @@ namespace Fight_For_Daedwin
             int health = 0,
             int attack = 0,
             int vitality = 1,
-            int cost = 1)
+            int cost = 1,
+            string image = "Coin.jpg")
         {
             Name = name;
             Type = type;
@@ -49,6 +53,7 @@ namespace Fight_For_Daedwin
             AttackBuff = attack;
             VitalityBuff = vitality;
             Cost = cost;
+            Image = image;
         }
 
         public void AddItemToXML(string path)
@@ -69,6 +74,7 @@ namespace Fight_For_Daedwin
             XmlElement AttackBuffElem = xDoc.CreateElement("AttackBuff");
             XmlElement VitalityBuffElem = xDoc.CreateElement("VitalityBuff");
             XmlElement CostElem = xDoc.CreateElement("Cost");
+            XmlElement ImageElem = xDoc.CreateElement("Image");
 
             // создаем текстовые значения для элементов и атрибута
             XmlText NameText = xDoc.CreateTextNode(this.Name);
@@ -77,6 +83,7 @@ namespace Fight_For_Daedwin
             XmlText AttackBuffText = xDoc.CreateTextNode(this.AttackBuff.ToString());
             XmlText VitalityBuffText = xDoc.CreateTextNode(this.VitalityBuff.ToString());
             XmlText CostText = xDoc.CreateTextNode(this.Cost.ToString());
+            XmlText ImageText = xDoc.CreateTextNode(this.Image);
 
             //добавляем узлы
             NameAttr.AppendChild(NameText);
@@ -85,6 +92,7 @@ namespace Fight_For_Daedwin
             AttackBuffElem.AppendChild(AttackBuffText);
             VitalityBuffElem.AppendChild(VitalityBuffText);
             CostElem.AppendChild(CostText);
+            ImageElem.AppendChild(ImageText);
 
             // добавляем атрибут name
             CardElem.Attributes.Append(NameAttr);
@@ -94,6 +102,7 @@ namespace Fight_For_Daedwin
             CardElem.AppendChild(AttackBuffElem);
             CardElem.AppendChild(VitalityBuffElem);
             CardElem.AppendChild(CostElem);
+            CardElem.AppendChild(ImageElem);
             // добавляем в корневой элемент новый элемент person
             xRoot?.AppendChild(CardElem);
             // сохраняем изменения xml-документа в файл

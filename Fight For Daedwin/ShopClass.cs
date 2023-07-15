@@ -82,6 +82,10 @@ namespace Fight_For_Daedwin
                         {
                             AllertObj.Cost = Int32.Parse(childnode.InnerText);
                         }
+                        if (childnode.Name == "Image")
+                        {
+                            AllertObj.Image = childnode.InnerText;
+                        }
                     }
                     AllertList.Add(AllertObj);
                 }
@@ -143,6 +147,10 @@ namespace Fight_For_Daedwin
                         {
                             AllertObj.Cost = Int32.Parse(childnode.InnerText);
                         }
+                        if (childnode.Name == "Image")
+                        {
+                            AllertObj.Image = childnode.InnerText;
+                        }
                     }
                     AllertList.Add(AllertObj);
                 }
@@ -164,6 +172,7 @@ namespace Fight_For_Daedwin
                 FirstSlot.Attack = UnitList[Seed].Attack;
                 FirstSlot.Vitality = UnitList[Seed].Vitality;
                 FirstSlot.Cost = UnitList[Seed].Cost;
+                FirstSlot.Image = UnitList[Seed].Image;
 
                 Seed = Rnd.Next(UnitList.Count);
 
@@ -174,6 +183,7 @@ namespace Fight_For_Daedwin
                 SecondSlot.Attack = UnitList[Seed].Attack;
                 SecondSlot.Vitality = UnitList[Seed].Vitality;
                 SecondSlot.Cost = UnitList[Seed].Cost;
+                SecondSlot.Image = UnitList[Seed].Image;
 
                 Seed = Rnd.Next(UnitList.Count);
 
@@ -184,6 +194,7 @@ namespace Fight_For_Daedwin
                 ThirdSlot.Attack = UnitList[Seed].Attack;
                 ThirdSlot.Vitality = UnitList[Seed].Vitality;
                 ThirdSlot.Cost = UnitList[Seed].Cost;
+                ThirdSlot.Image = UnitList[Seed].Image;
             }
             else
             {
@@ -205,6 +216,7 @@ namespace Fight_For_Daedwin
                 FirstItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
                 FirstItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
                 FirstItemSlot.Cost = ItemList[Seed].Cost;
+                FirstItemSlot.Image = ItemList[Seed].Image;
 
                 Seed = Rnd.Next(ItemList.Count);
 
@@ -214,6 +226,7 @@ namespace Fight_For_Daedwin
                 SecondItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
                 SecondItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
                 SecondItemSlot.Cost = ItemList[Seed].Cost;
+                SecondItemSlot.Image = ItemList[Seed].Image;
 
                 Seed = Rnd.Next(ItemList.Count);
 
@@ -223,6 +236,7 @@ namespace Fight_For_Daedwin
                 ThirdItemSlot.AttackBuff = ItemList[Seed].AttackBuff;
                 ThirdItemSlot.VitalityBuff = ItemList[Seed].VitalityBuff;
                 ThirdItemSlot.Cost = ItemList[Seed].Cost;
+                ThirdItemSlot.Image = ItemList[Seed].Image;
             }
             else
             {
@@ -243,6 +257,7 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot1.Attack = CardFromShop.Attack;
                     CrewClass.Slot1.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot1.Cost = CardFromShop.Cost;
+                    CrewClass.Slot1.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 1:
@@ -253,6 +268,7 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot2.Attack = CardFromShop.Attack;
                     CrewClass.Slot2.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot2.Cost = CardFromShop.Cost;
+                    CrewClass.Slot2.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 2:
@@ -263,6 +279,7 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot3.Attack = CardFromShop.Attack;
                     CrewClass.Slot3.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot3.Cost = CardFromShop.Cost;
+                    CrewClass.Slot3.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 3:
@@ -273,6 +290,7 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot4.Attack = CardFromShop.Attack;
                     CrewClass.Slot4.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot4.Cost = CardFromShop.Cost;
+                    CrewClass.Slot4.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 4:
@@ -283,6 +301,7 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot5.Attack = CardFromShop.Attack;
                     CrewClass.Slot5.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot5.Cost = CardFromShop.Cost;
+                    CrewClass.Slot5.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
 
                     //GameState.CurentStage = GameState.Stage.ItemShopStage;
@@ -303,6 +322,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot1.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot1.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot1.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot1.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 case 1:
@@ -312,6 +332,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot2.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot2.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot2.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot2.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 case 2:
@@ -321,6 +342,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot3.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot3.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot3.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot3.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 case 3:
@@ -330,6 +352,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot4.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot4.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot4.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot4.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 case 4:
@@ -339,6 +362,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot5.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot5.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot5.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot5.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 case 5:
@@ -348,6 +372,7 @@ namespace Fight_For_Daedwin
                     InventoryClass.Slot6.AttackBuff = CardFromShop.AttackBuff;
                     InventoryClass.Slot6.VitalityBuff = CardFromShop.VitalityBuff;
                     InventoryClass.Slot6.Cost = CardFromShop.Cost;
+                    InventoryClass.Slot6.Image = CardFromShop.Image;
                     InventoryClass.InventorySize++;
                     break;
                 default:

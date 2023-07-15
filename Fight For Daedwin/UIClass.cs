@@ -6,12 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace Fight_For_Daedwin
 {
     static class UIClass
     {
-        public static void UIAddUnitToSlotInShop(ListBox Slot, Card card)
+        public static void UIAddUnitToSlotInShop(ListBox Slot, Image CardImage, Card card)
         {
             List<string> AttributeList = new List<string>
             {
@@ -25,9 +26,10 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
+            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Card Arts\" + card.Image));
         }
 
-        public static void UIAddItemToSlotInShop(ListBox Slot, Item item)
+        public static void UIAddItemToSlotInShop(ListBox Slot, Image ItemImage, Item item)
         {
             List<string> AttributeList = new List<string>
             {
@@ -40,6 +42,7 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
+            ItemImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Item Arts\" + item.Image));
         }
 
         public static void UIAddToSlotInCrew(ListBox Slot, Card Card)
