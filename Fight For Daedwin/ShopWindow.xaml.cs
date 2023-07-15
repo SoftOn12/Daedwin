@@ -124,7 +124,7 @@ namespace Fight_For_Daedwin
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Заклинание уже куплено!");
                     //BuyThirdSlot.IsEnabled = false;
                 }
                 else
@@ -207,7 +207,7 @@ namespace Fight_For_Daedwin
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Заклинание уже куплено!");
                     //BuyThirdSlot.IsEnabled = false;
                 }
                 else
@@ -289,7 +289,7 @@ namespace Fight_For_Daedwin
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Заклинание уже куплено!");
                     //BuyThirdSlot.IsEnabled = false;
                 }
                 else
@@ -420,6 +420,9 @@ namespace Fight_For_Daedwin
                 SpellCostFirstSlot.Visibility = Visibility.Visible;
                 SpellCostSecondSlot.Visibility = Visibility.Visible;
                 SpellCostThirdSlot.Visibility = Visibility.Visible;
+                LabelSpellCostFirstSlot.Visibility = Visibility.Visible;
+                LabelSpellCostSecondSlot.Visibility = Visibility.Visible;
+                LabelSpellCostThirdSlot.Visibility = Visibility.Visible;
 
                 UIClass.UIAddSpellToSlotInShop(SpellFirstSlot, SpellCostFirstSlot, ImageFirstSlot, ShopClass.FirstSpellSlot);
                 UIClass.UIAddSpellToSlotInShop(SpellSecondSlot, SpellCostSecondSlot, ImageSecondSlot, ShopClass.SecondSpellSlot);

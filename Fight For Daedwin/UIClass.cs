@@ -47,7 +47,7 @@ namespace Fight_For_Daedwin
 
         public static void UIAddSpellToSlotInShop(TextBlock Slot, TextBlock SpellCost, Image SpellImage, Spell spell)
         {
-            SpellCost.Text += spell.Cost;
+            SpellCost.Text = spell.Cost.ToString();
             Slot.Text = spell.Description;
             //Slot.ItemsSource = AttributeList;
             SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));

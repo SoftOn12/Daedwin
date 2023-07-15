@@ -93,7 +93,7 @@
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,526,0,0" Height="154" Width="276">
             <Grid>
-                <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="Выбранное заклинание" Margin="71,0,71,130" HorizontalAlignment="Center"/>
+                <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="" Margin="0,0,0,130" HorizontalAlignment="Center" Width="272"/>
                 <Image Name="SpellImage" HorizontalAlignment="Left" Height="130" Margin="0,20,0,0" VerticalAlignment="Top" Width="130"/>
                 <TextBlock Name="SpellText" HorizontalAlignment="Center" Margin="130,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="130" Width="142" />
             </Grid>
