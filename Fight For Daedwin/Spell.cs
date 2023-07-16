@@ -47,7 +47,7 @@ namespace Fight_For_Daedwin
             Name = "Не выбрано";
             RaceCondition = "Не выбрано";
             TypeCondition = "Не выбрано";
-            Description = "Стандартное описание";
+            Description = "Выберете заклинание на соответсвующей стадии игры";
             Image = "Default.png";
         }
         public Spell(string name = "За честь!",
@@ -146,6 +146,19 @@ namespace Fight_For_Daedwin
                 }
             }
             xDoc.Save(path);
+        }
+
+        public void SpellUse()
+        {
+            foreach (Card card in CrewClass.CrewList)
+            {
+                if(card.Race == this.RaceCondition || card.Type == this.TypeCondition)
+                {
+                    card.Health += this.HealthBuff;
+                    card.Attack += this.AttackBuff;
+                    card.Vitality += this.VitalityBuff;
+                }
+            }
         }
     }
 }

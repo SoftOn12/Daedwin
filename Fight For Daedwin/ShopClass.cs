@@ -340,7 +340,7 @@ namespace Fight_For_Daedwin
                 FirstSpellSlot.Description = SpellList[Seed].Description;
                 FirstSpellSlot.Image = SpellList[Seed].Image;
 
-                Seed = Rnd.Next(ItemList.Count);
+                Seed = Rnd.Next(SpellList.Count);
 
                 SecondSpellSlot.Name = SpellList[Seed].Name;
                 SecondSpellSlot.RaceCondition = SpellList[Seed].RaceCondition;
@@ -352,7 +352,7 @@ namespace Fight_For_Daedwin
                 SecondSpellSlot.Description = SpellList[Seed].Description;
                 SecondSpellSlot.Image = SpellList[Seed].Image;
 
-                Seed = Rnd.Next(ItemList.Count);
+                Seed = Rnd.Next(SpellList.Count);
 
                 ThirdSpellSlot.Name = SpellList[Seed].Name;
                 ThirdSpellSlot.RaceCondition = SpellList[Seed].RaceCondition;
@@ -518,6 +518,8 @@ namespace Fight_For_Daedwin
             SpellBookClass.PlayerSpell.Description = CardFromShop.Description;
             SpellBookClass.PlayerSpell.Image = CardFromShop.Image;
             SpellBookClass.SpellBookSize++;
+
+            CardFromShop.SpellUse();
         }
     }
 }

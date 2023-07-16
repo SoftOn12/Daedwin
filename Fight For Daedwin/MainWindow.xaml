@@ -7,22 +7,26 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
     <Grid ShowGridLines="True">
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="973" Height="315"  >
-            <Grid Name ="Shop" HorizontalAlignment="Left" Height="298" Margin="1,1,1,0" VerticalAlignment="Top" Width="1252" ShowGridLines="True" Visibility="Hidden">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="289,10,0,0" Width="694" Height="315"  >
+            <Grid Name ="BattleBoard" HorizontalAlignment="Left" Height="288" Margin="20,8,-2,0" VerticalAlignment="Top" Width="672" ShowGridLines="True" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="130"></ColumnDefinition>
+                    <ColumnDefinition Width="200*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListBox Name ="FirstSlot"  HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="392">
-
-                </ListBox>
-                <ListBox x:Name ="SecondSlot"  HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="392" Grid.Column="1">
-
-                </ListBox>
-                <ListBox x:Name ="ThirdSlot"  HorizontalAlignment="Left" Height="150" Margin="10,10,0,0" VerticalAlignment="Top" Width="393" Grid.Column="2">
-
-                </ListBox>
+                <ListBox Grid.Column="3" HorizontalAlignment="Left" Height="248" Margin="10,0,0,0" VerticalAlignment="Top" Width="262"/>
+                <ListBox Name="Monster1" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130"/>
+                <ListBox Name="Monster2" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+                <ListBox Name="Monster3" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
+                <Image Name="MonsterImage1" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130"/>
+                <Image Name="MonsterImage2" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+                <Image Name="MonsterImage3" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="62"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="63" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="63" Grid.Column="2"/>
+                <Button Name="FightButton" Content="Бой" Grid.Column="3" HorizontalAlignment="Left" Margin="141,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="FightButton_Click"/>
+                <Button Name="NextFightButton" Content="Далее" Grid.Column="3" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="NextFightButton_Click"/>
 
             </Grid>
         </Border>
@@ -53,10 +57,10 @@
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,370,0,0" Height="310" >
             <Grid HorizontalAlignment="Left" Height="305" Margin="1,1,1,1" VerticalAlignment="Top" Width="270">
-                <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="250" Height="40" Click="Button_Click"/>
-                <ScrollViewer x:Name="GameLogParent" HorizontalAlignment="Left" Height="240" Margin="10,55,0,0" VerticalAlignment="Top" Width="250" Visibility="Hidden">
+                <ScrollViewer x:Name="GameLogParent" HorizontalAlignment="Left" Height="285" VerticalAlignment="Top" Width="270" Margin="0,20,0,0" >
                     <TextBlock x:Name="GameLog" TextWrapping="Wrap" Text=""/>
                 </ScrollViewer>
+                <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Игровые события" VerticalAlignment="Top" Width="100" Height="20" Margin="85,0"/>
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,10,0,0" Height="511" Width="276">
@@ -96,6 +100,18 @@
                 <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="" Margin="0,0,0,130" HorizontalAlignment="Center" Width="272"/>
                 <Image Name="SpellImage" HorizontalAlignment="Left" Height="130" Margin="0,20,0,0" VerticalAlignment="Top" Width="130"/>
                 <TextBlock Name="SpellText" HorizontalAlignment="Center" Margin="130,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="130" Width="142" />
+            </Grid>
+        </Border>
+        <Grid HorizontalAlignment="Left" Height="35" Margin="289,330,0,0" VerticalAlignment="Top" Width="694">
+            <Button Name="GoToFightSlot1" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot1_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot2" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot2_Click" Visibility="Hidden" />
+            <Button Name="GoToFightSlot3" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot3_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot4" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot4_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot5" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="542,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot5_Click" Visibility="Hidden"/>
+        </Grid>
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="276" Height="315">
+            <Grid HorizontalAlignment="Left" Height="313" Margin="-2,0,-2,-2" VerticalAlignment="Top" Width="276">
+                <Button x:Name="StartButton" Content="Начать" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="256" Height="40" Click="Button_Click"/>
             </Grid>
         </Border>
     </Grid>

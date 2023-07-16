@@ -25,7 +25,7 @@ namespace Fight_For_Daedwin
 
             GameState.CurentStage = GameState.Stage.UnitShopStage;
 
-            UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Игра началась");
+            UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия вербовки персонажей началась");
 
             string FileName = "CardDeck.xml";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
@@ -47,9 +47,7 @@ namespace Fight_For_Daedwin
 
             BuyFirstSlot.IsEnabled = true;
             BuySecondSlot.IsEnabled = true;
-            BuyThirdSlot.IsEnabled = true;
-
-            Console.WriteLine(GameState.CurentStage);                
+            BuyThirdSlot.IsEnabled = true;             
         }
 
         private void BuyFirstSlot_Click_1(object sender, RoutedEventArgs e)
@@ -121,6 +119,12 @@ namespace Fight_For_Daedwin
                                                    ((MainWindow)Application.Current.MainWindow).SpellImage,
                                                    ((MainWindow)Application.Current.MainWindow).SpellTitle,
                                                    ShopClass.FirstSpellSlot);
+
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
@@ -204,6 +208,12 @@ namespace Fight_For_Daedwin
                                                    ((MainWindow)Application.Current.MainWindow).SpellImage,
                                                    ((MainWindow)Application.Current.MainWindow).SpellTitle,
                                                    ShopClass.SecondSpellSlot);
+
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
@@ -286,6 +296,12 @@ namespace Fight_For_Daedwin
                                                    ((MainWindow)Application.Current.MainWindow).SpellImage,
                                                    ((MainWindow)Application.Current.MainWindow).SpellTitle,
                                                    ShopClass.ThirdSpellSlot);
+
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
@@ -386,6 +402,8 @@ namespace Fight_For_Daedwin
             GameState.CurentStage++;
             if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки предметов началась");
+
                 string FileName = "ItemDeck.xml";
                 string Path = AppContext.BaseDirectory + @"\" + FileName;
                 ShopClass.ItemList = ShopClass.XMLItemParser(Path);
@@ -405,6 +423,8 @@ namespace Fight_For_Daedwin
             }
             else if(GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки заклинания началась");
+
                 string FileName = "SpellDeck.xml";
                 string Path = AppContext.BaseDirectory + @"\" + FileName;
                 ShopClass.SpellList = ShopClass.XMLSpellParser(Path);
@@ -439,6 +459,14 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.FightStage)
             {
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
+
+                ((MainWindow)Application.Current.MainWindow).GoToFightSlot1.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).GoToFightSlot2.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).GoToFightSlot3.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).GoToFightSlot4.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).GoToFightSlot5.Visibility = Visibility.Visible;
+                ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
                 Close();
             }
         }

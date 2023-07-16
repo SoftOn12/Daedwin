@@ -56,9 +56,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CrewClass.cs" />
+    <Compile Include="EnemyCrewClass.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="InventoryClass.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="Monster.cs" />
+    <Compile Include="MonsterFightClass.cs" />
     <Compile Include="ShopClass.cs" />
     <Compile Include="ShopWindow.xaml.cs">
       <DependentUpon>ShopWindow.xaml</DependentUpon>

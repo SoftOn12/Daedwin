@@ -16,7 +16,7 @@ namespace Fight_For_Daedwin
         {
             List<string> AttributeList = new List<string>
             {
-                "Юнит: " + card.Name,
+                card.Name,
                 "Раса: " +card.Race,
                 "Тип: " +card.Type,
                 "Здоровье: " +card.Health.ToString(),
@@ -33,7 +33,7 @@ namespace Fight_For_Daedwin
         {
             List<string> AttributeList = new List<string>
             {
-                "Предмет: " + item.Name,
+                item.Name,
                 "Тип: " + item.Type,
                 "Бонус к Здоровью: " + item.HealthBuff.ToString(),
                 "Бонус к Атаке: " + item.AttackBuff.ToString(),
@@ -53,16 +53,30 @@ namespace Fight_For_Daedwin
             SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));
         }
 
+        public static void UIAddMonsterToSlotInFight(ListBox Slot, Image CardImage, Monster card)
+        {
+            List<string> AttributeList = new List<string>
+            {
+                card.Name,
+                "Раса: " +card.Race,
+                "Здоровье: " +card.Health.ToString(),
+                "Атака: " +card.Attack.ToString()
+            };
+
+            Slot.ItemsSource = AttributeList;
+            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Monster Arts\" + card.Image));
+        }
+
         public static void UIAddToSlotInCrew(ListBox Slot, Image CardImage, Card Card)
         {
             List<string> AttributeList = new List<string>
             {
                 Card.Name,
-                Card.Race,
-                Card.Type,
-                Card.Health.ToString(),
-                Card.Attack.ToString(),
-                Card.Vitality.ToString(),
+                "Раса: " + Card.Race,
+                "Тип: " + Card.Type,
+                "Здоровье: " + Card.Health.ToString(),
+                "Атака: " + Card.Attack.ToString(),
+                "Выносливость: " + Card.Vitality.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
@@ -92,10 +106,10 @@ namespace Fight_For_Daedwin
             List<string> AttributeList = new List<string>
             {
                 item.Name,
-                item.Type,
-                item.HealthBuff.ToString(),
-                item.AttackBuff.ToString(),
-                item.VitalityBuff.ToString(),
+                "Тип: " + item.Type,
+                "HP+: " + item.HealthBuff.ToString(),
+                "AP+: " + item.AttackBuff.ToString(),
+                "VP+: " +item.VitalityBuff.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
@@ -132,7 +146,7 @@ namespace Fight_For_Daedwin
 
         }
 
-        public static async void AddTextToLog(TextBlock GameLogBox, string InputText)
+        public static void AddTextToLog(TextBlock GameLogBox, string InputText)
         {
             DateTime now = DateTime.Now;
 
@@ -165,7 +179,7 @@ namespace Fight_For_Daedwin
                 byte[] buffer = Encoding.UTF8.GetBytes(Text);
                 // запись массива байтов в файл
                 fstream.Seek(0, SeekOrigin.End);
-                await fstream.WriteAsync(buffer, 0, buffer.Length);
+                fstream.Write(buffer, 0, buffer.Length);
 
             }
             //Чтение файла (После перезаписи в локальный файл)
