@@ -42,7 +42,7 @@ namespace Fight_For_Daedwin
                 xmlWriter.WriteEndElement();                     // </Data>
                 xmlWriter.Close();
 
-                Card newCard = new Card("Биба");
+                Card newCard = new Card();
                 newCard.AddUnitToXML(PathToXML);
             }
 

@@ -137,5 +137,16 @@ namespace Fight_For_Daedwin
             }
             xDoc.Save(path);
         }
+
+        public void isDead()
+        {
+            Type = "";
+            Race = "";
+            Health = 0;
+            Attack = 0;
+            Vitality = 0;
+            Name = "Убит";
+            Image = "Dead.png";
+        }
     }
 }

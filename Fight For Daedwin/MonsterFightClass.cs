@@ -112,34 +112,78 @@ namespace Fight_For_Daedwin
 
         public static void FightAction()
         {
-            while (EnemyCrewClass.Slot1.Health > 0)
+            for (int i = 0; i < EnemyCrewClass.CrewList.Count; i++)
             {
-                int SumAttackCrew = 0;
-                Random Rnd = new Random();
-                int RandomCardNumber = Rnd.Next(CrewClass.CardInActionList.Count);
-
-                foreach (Card card in CrewClass.CardInActionList)
-                    SumAttackCrew += card.Attack;
-                EnemyCrewClass.Slot1.Health -= SumAttackCrew;
-                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваши бойцы нанесли {SumAttackCrew} урона по {EnemyCrewClass.Slot1.Name}");
-
-                UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
-
-                if (EnemyCrewClass.Slot1.Health <= 0)
-                    break;
-
-                CrewClass.CardInActionList[RandomCardNumber].Health -= EnemyCrewClass.Slot1.Attack;
-                if (CrewClass.CardInActionList[RandomCardNumber].Health <= 0)
+                while (EnemyCrewClass.CrewList[i].Health > 0)
                 {
-                    CrewClass.CardInActionList.RemoveAt(RandomCardNumber);
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваш {CrewClass.CardInActionList[RandomCardNumber].Name} погиб");
+                    int SumAttackCrew = 0;
+                    Random Rnd = new Random();
+                    int RandomCardNumber = Rnd.Next(CrewClass.CardInActionList.Count);
+
+                    //Атака по монстру
+
+                    foreach (Card card in CrewClass.CardInActionList)
+                        SumAttackCrew += card.Attack;
+
+                    if (SumAttackCrew == 0)
+                    {
+                        UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                            $"В вашей армии некому атаковать. Поражение!");
+                        break;
+                    }
+
+                    EnemyCrewClass.CrewList[i].Health -= SumAttackCrew;
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                        $"Ваши бойцы нанесли {SumAttackCrew} урона по {EnemyCrewClass.Slot1.Name}");
+
+                    if (EnemyCrewClass.CrewList[i].Health <= 0)
+                    {
+                        UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                            $"{EnemyCrewClass.CrewList[i].Name} убит! ");
+                        EnemyCrewClass.CrewList[i].isDead();
+                        EnemyCrewClass.EnemyCrewSize--;
+                        UIClass.UIRefreshMonsterCrew(
+                            ((MainWindow)Application.Current.MainWindow).Monster1, ((MainWindow)Application.Current.MainWindow).MonsterImage1,
+                            ((MainWindow)Application.Current.MainWindow).Monster2, ((MainWindow)Application.Current.MainWindow).MonsterImage2,
+                            ((MainWindow)Application.Current.MainWindow).Monster3, ((MainWindow)Application.Current.MainWindow).MonsterImage3);
+                        //EnemyCrewClass.CrewList.Remove(EnemyCrewClass.CrewList[i]);
+                        break;
+                    }
+
+                    UIClass.UIRefreshMonsterCrew(
+                        ((MainWindow)Application.Current.MainWindow).Monster1, ((MainWindow)Application.Current.MainWindow).MonsterImage1,
+                        ((MainWindow)Application.Current.MainWindow).Monster2, ((MainWindow)Application.Current.MainWindow).MonsterImage2,
+                        ((MainWindow)Application.Current.MainWindow).Monster3, ((MainWindow)Application.Current.MainWindow).MonsterImage3);
+
+                    //Атака монстра
+
+                    CrewClass.CardInActionList[RandomCardNumber].Health -= EnemyCrewClass.CrewList[i].Attack;
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                            $"Вражеский {EnemyCrewClass.CrewList[i].Name} нанес {EnemyCrewClass.CrewList[i].Attack} урона по {CrewClass.CardInActionList[RandomCardNumber].Name}");
+
+                    if (CrewClass.CardInActionList[RandomCardNumber].Health <= 0)
+                    {
+                        UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                            $"Ваш {CrewClass.CardInActionList[RandomCardNumber].Name} погиб");
+                        CrewClass.CardInActionList[RandomCardNumber].isDead();
+                        CrewClass.CardInActionList.RemoveAt(RandomCardNumber);
+                        UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                    }
+
+                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+
                 }
-                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Вражеский {EnemyCrewClass.Slot1.Name} нанес {EnemyCrewClass.Slot1.Attack} урона по {CrewClass.CardInActionList[RandomCardNumber].Name}");
             }
+
+            Stage++;
         }
     }
 }

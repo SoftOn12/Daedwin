@@ -460,12 +460,6 @@ namespace Fight_For_Daedwin
             else if (GameState.CurentStage == GameState.Stage.FightStage)
             {
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
-
-                ((MainWindow)Application.Current.MainWindow).GoToFightSlot1.Visibility = Visibility.Visible;
-                ((MainWindow)Application.Current.MainWindow).GoToFightSlot2.Visibility = Visibility.Visible;
-                ((MainWindow)Application.Current.MainWindow).GoToFightSlot3.Visibility = Visibility.Visible;
-                ((MainWindow)Application.Current.MainWindow).GoToFightSlot4.Visibility = Visibility.Visible;
-                ((MainWindow)Application.Current.MainWindow).GoToFightSlot5.Visibility = Visibility.Visible;
                 ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
                 Close();
             }

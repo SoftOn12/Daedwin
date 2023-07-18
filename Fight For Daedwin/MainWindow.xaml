@@ -15,7 +15,7 @@
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="200*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListBox Grid.Column="3" HorizontalAlignment="Left" Height="248" Margin="10,0,0,0" VerticalAlignment="Top" Width="262"/>
+                <ListBox Name="BattleInfo" Grid.Column="3" HorizontalAlignment="Left" Height="248" Margin="10,0,0,0" VerticalAlignment="Top" Width="262"/>
                 <ListBox Name="Monster1" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130"/>
                 <ListBox Name="Monster2" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
                 <ListBox Name="Monster3" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
@@ -102,12 +102,13 @@
                 <TextBlock Name="SpellText" HorizontalAlignment="Center" Margin="130,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="130" Width="142" />
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Height="35" Margin="289,330,0,0" VerticalAlignment="Top" Width="694">
-            <Button Name="GoToFightSlot1" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="22,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot1_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot2" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="152,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot2_Click" Visibility="Hidden" />
-            <Button Name="GoToFightSlot3" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="282,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot3_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot4" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="412,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot4_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot5" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="542,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot5_Click" Visibility="Hidden"/>
+        <Grid HorizontalAlignment="Left" Height="35" Margin="10,330,0,0" VerticalAlignment="Top" Width="973">
+            <Button Name="GoToFightSlot1" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="301,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot1_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot2" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="431,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot2_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot3" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot3_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot4" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="691,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot4_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightSlot5" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="821,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot5_Click" Visibility="Hidden"/>
+            <Button Name="GoToFightAllSlot" Content="Отправить в бой все отряды!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="276" Height="35" Click="GoToFightAllSlot_Click" Visibility="Hidden"/>
         </Grid>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="276" Height="315">
             <Grid HorizontalAlignment="Left" Height="313" Margin="-2,0,-2,-2" VerticalAlignment="Top" Width="276">

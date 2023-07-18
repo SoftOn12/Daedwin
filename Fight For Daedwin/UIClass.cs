@@ -146,13 +146,24 @@ namespace Fight_For_Daedwin
 
         }
 
+        public static void UIRefreshMonsterCrew(ListBox Slot1, Image CardImage1,
+                                 ListBox Slot2, Image CardImage2,
+                                 ListBox Slot3, Image CardImage3)
+        {
+            UIAddMonsterToSlotInFight(Slot1, CardImage1, EnemyCrewClass.Slot1);
+            UIAddMonsterToSlotInFight(Slot2, CardImage2, EnemyCrewClass.Slot2);
+            UIAddMonsterToSlotInFight(Slot3, CardImage3, EnemyCrewClass.Slot3);
+
+        }
+
         public static void AddTextToLog(TextBlock GameLogBox, string InputText)
         {
             DateTime now = DateTime.Now;
 
             string FileName = "GameLog.txt";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
-            string Text = now.ToString("dd.MM - hh:mm:ss") + ": " + InputText + "\r\n"; // строка для записи
+            //string Text = now.ToString("dd.MM - hh:mm:ss") + ": " + InputText + "\r\n"; // строка для записи
+            string Text = InputText + "\r\n"; // строка для записи
 
             if (!File.Exists(Path))
             {

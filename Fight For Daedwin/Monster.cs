@@ -37,18 +37,6 @@ namespace Fight_For_Daedwin
             Name = "Не выбрано";
             Image = "Default.png";
         }
-        public Monster(string name = "Гоблин-налетчик",
-            string race = "Гоблин",
-            int health = 4,
-            int attack = 1,
-            string image = "Default.png")
-        {
-            Name = name;
-            Race = race;
-            Health = health;
-            Attack = attack;
-            Image = image;
-        }
 
         public void AddUnitToXML(string path)
         {
@@ -109,6 +97,15 @@ namespace Fight_For_Daedwin
                 }
             }
             xDoc.Save(path);
+        }
+
+        public void isDead()
+        {
+            Race = "";
+            Health = 0;
+            Attack = 0;
+            Name = "Убит";
+            Image = "Dead.png";
         }
     }
 }

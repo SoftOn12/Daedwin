@@ -45,18 +45,39 @@ namespace Fight_For_Daedwin
 
         private void NextFightButton_Click(object sender, RoutedEventArgs e)
         {
-            if(MonsterFightClass.Stage == 1)
+            int curentStage = MonsterFightClass.Stage;
+
+            NextFightButton.IsEnabled = false;
+
+            GoToFightSlot1.Visibility = Visibility.Visible;
+            GoToFightSlot2.Visibility = Visibility.Visible;
+            GoToFightSlot3.Visibility = Visibility.Visible;
+            GoToFightSlot4.Visibility = Visibility.Visible;
+            GoToFightSlot5.Visibility = Visibility.Visible;
+            GoToFightAllSlot.Visibility = Visibility.Visible;
+            GoToFightSlot1.IsEnabled = true;
+            GoToFightSlot2.IsEnabled = true;
+            GoToFightSlot3.IsEnabled = true;
+            GoToFightSlot4.IsEnabled = true;
+            GoToFightSlot5.IsEnabled = true;
+            GoToFightAllSlot.IsEnabled = true;
+
+            if (MonsterFightClass.Stage == 1)
             {
                 string FileName = "MonsterDeck.xml";
                 string Path = AppContext.BaseDirectory + @"\" + FileName;
-
                 MonsterFightClass.MonsterList = MonsterFightClass.XMLParser(Path);
-                MonsterFightClass.RandomMonsterToFight();
 
-                UIClass.UIAddMonsterToSlotInFight(Monster1, MonsterImage1, EnemyCrewClass.Slot1);
-                UIClass.UIAddMonsterToSlotInFight(Monster2, MonsterImage2, EnemyCrewClass.Slot2);
-                UIClass.UIAddMonsterToSlotInFight(Monster3, MonsterImage3, EnemyCrewClass.Slot3);
+                List<string> BattleInfoList = new List<string>
+            {
+                $"Уровень: {MonsterFightClass.Stage}",
+            };
+                BattleInfo.ItemsSource = BattleInfoList;
             }
+
+                MonsterFightClass.RandomMonsterToFight();
+                UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1,
+                    Monster2, MonsterImage2, Monster3, MonsterImage3);
         }
 
         private void GoToFightSlot1_Click(object sender, RoutedEventArgs e)
@@ -94,9 +115,51 @@ namespace Fight_For_Daedwin
             GoToFightSlot5.IsEnabled = false;
         }
 
+        private void GoToFightAllSlot_Click(object sender, RoutedEventArgs e)
+        {
+            CrewClass.CardInActionList.Add(CrewClass.Slot1);
+            CrewClass.CardInActionList.Add(CrewClass.Slot2);
+            CrewClass.CardInActionList.Add(CrewClass.Slot3);
+            CrewClass.CardInActionList.Add(CrewClass.Slot4);
+            CrewClass.CardInActionList.Add(CrewClass.Slot5);
+            UIClass.AddTextToLog(GameLog, $"Все отряды готовы к бою");
+            GoToFightSlot1.IsEnabled = false;
+            GoToFightSlot2.IsEnabled = false;
+            GoToFightSlot3.IsEnabled = false;
+            GoToFightSlot4.IsEnabled = false;
+            GoToFightSlot5.IsEnabled = false;
+            GoToFightAllSlot.IsEnabled = false;
+        }
+
         private void FightButton_Click(object sender, RoutedEventArgs e)
         {
-            MonsterFightClass.FightAction();
+            if (CrewClass.CardInActionList.Count == 0)
+            {
+                UIClass.AddTextToLog(GameLog, $"Выберете бойцов для боя!");
+            }
+            else
+            {
+                int crew1Health = CrewClass.Slot1.Health;
+                int crew2Health = CrewClass.Slot2.Health;
+                int crew3Health = CrewClass.Slot3.Health;
+                int crew4Health = CrewClass.Slot4.Health;
+                int crew5Health = CrewClass.Slot5.Health;
+
+                MonsterFightClass.FightAction();
+
+                List<string> BattleInfoList = new List<string>
+            {
+                $"Уровень: {MonsterFightClass.Stage}",
+                $"Первый отряд потерял {crew1Health - CrewClass.Slot1.Health} HP",
+                $"Второй отряд потерял {crew2Health - CrewClass.Slot2.Health} HP",
+                $"Третий отряд потерял {crew3Health - CrewClass.Slot3.Health} HP",
+                $"Четвертый отряд потерял {crew4Health - CrewClass.Slot4.Health} HP",
+                $"Пятый отряд потерял {crew5Health - CrewClass.Slot5.Health} HP",
+            };
+                BattleInfo.ItemsSource = BattleInfoList;
+                NextFightButton.IsEnabled = true;
+                CrewClass.CardInActionList.Clear();
+            }
         }
     }
 }
