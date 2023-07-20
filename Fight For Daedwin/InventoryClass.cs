@@ -16,5 +16,7 @@ namespace Fight_For_Daedwin
         static public Item Slot6 = new Item();
 
         static public int InventorySize = 0;
+
+        static public Item ChosenItem;
     }
 }

@@ -106,7 +106,7 @@ namespace Fight_For_Daedwin
             List<string> AttributeList = new List<string>
             {
                 item.Name,
-                "Тип: " + item.Type,
+                item.Type,
                 "HP+: " + item.HealthBuff.ToString(),
                 "AP+: " + item.AttackBuff.ToString(),
                 "VP+: " +item.VitalityBuff.ToString(),

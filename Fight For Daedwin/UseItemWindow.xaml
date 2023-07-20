@@ -1,0 +1,38 @@
+﻿<Window x:Class="Fight_For_Daedwin.UseItemWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fight_For_Daedwin"
+        mc:Ignorable="d"
+        Title="UseItemWindow" Height="400" Width="677">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="320" Margin="10,39,0,0" VerticalAlignment="Top" Width="647">
+            <Grid HorizontalAlignment="Left" Height="320" Margin="0,0,0,-1" VerticalAlignment="Top" Width="647" ShowGridLines="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListBox Name="PlayerCrew1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Margin="0,127,0,0"/>
+                <ListBox x:Name="PlayerCrew3" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Grid.Column="2" Margin="0,127,0,0"/>
+                <ListBox x:Name="PlayerCrew2" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="130" Grid.Column="1" Margin="0,127,0,0"/>
+                <ListBox x:Name="PlayerCrew5" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Grid.Column="4" Margin="0,127,0,0"/>
+                <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="130" Grid.Column="3" Margin="0,127,0,0"/>
+                <Image x:Name="ImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129"/>
+                <Image x:Name="ImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="1" Margin="1,0,0,0"/>
+                <Image x:Name="ImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="2"/>
+                <Image x:Name="ImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="3" Margin="1,0,0,0"/>
+                <Image x:Name="ImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="4"/>
+                <Button x:Name="UseItemOnCrew1" Content="Применить" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="129" Height="54" Click="UseItemOnCrew1_Click"/>
+                <Button x:Name="UseItemOnCrew2" Content="Применить" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="130" Height="54" Grid.Column="1" Click="UseItemOnCrew2_Click"/>
+                <Button x:Name="UseItemOnCrew3" Content="Применить" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="129" Height="54" Grid.Column="2" Click="UseItemOnCrew3_Click"/>
+                <Button x:Name="UseItemOnCrew4" Content="Применить" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="130" Height="54" Grid.Column="3" Click="UseItemOnCrew4_Click"/>
+                <Button x:Name="UseItemOnCrew5" Content="Применить" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="129" Height="54" Grid.Column="4" Click="UseItemOnCrew5_Click"/>
+            </Grid>
+        </Border>
+        <Label Content="Выберете отряд, к которому хотите применить предмет" HorizontalAlignment="Left" Margin="173,8,0,0" VerticalAlignment="Top" Width="322"/>
+    </Grid>
+</Window>

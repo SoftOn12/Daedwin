@@ -166,13 +166,14 @@ namespace Fight_For_Daedwin
             {
                 CrewClass.CardInActionList[i].Vitality--;
             }
+
             Stage++;
 
             if (Stage % 5 == 0)
             {
                 for (int i = 0; i < CrewClass.CrewList.Count; i++)
                 {
-                    if (CrewClass.CrewList[i].Name != "Не выбрано" || CrewClass.CrewList[i].Name != "Убит")
+                    if (CrewClass.CrewList[i].Name != "Не выбрано" && CrewClass.CrewList[i].Name != "Убит")
                         CrewClass.CrewList[i].Vitality += GameState.VitalityBuffOnStage;
                 }
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваши бойцы отдохнули и получили +{GameState.VitalityBuffOnStage} к выносливости");

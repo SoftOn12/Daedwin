@@ -29,7 +29,7 @@ namespace Fight_For_Daedwin
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ShopWindow shopWindow = new ShopWindow();
-            shopWindow.Show();
+            shopWindow.ShowDialog();
 
             StartButton.IsEnabled = false;
             GameLogParent.Visibility = Visibility.Visible;
@@ -208,6 +208,90 @@ namespace Fight_For_Daedwin
                 NextFightButton.IsEnabled = true;
                 CrewClass.CardInActionList.Clear();
             }
+        }
+
+        private void UseItem1_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot1;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem1.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
+        }
+
+        private void UseItem2_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot2;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem2.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
+        }
+
+        private void UseItem3_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot3;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem3.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
+        }
+
+        private void UseItem4_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot4;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem4.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
+        }
+
+        private void UseItem5_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot5;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem5.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
+        }
+
+        private void UseItem6_Click(object sender, RoutedEventArgs e)
+        {
+            InventoryClass.ChosenItem = InventoryClass.Slot6;
+            if (InventoryClass.ChosenItem.Type == "Одна цель")
+            {
+                UseItemWindow useItemWindow = new UseItemWindow();
+                useItemWindow.ShowDialog();
+            }
+            UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+            UseItem6.IsEnabled = false;
+            InventoryClass.ChosenItem = null;
         }
     }
 }

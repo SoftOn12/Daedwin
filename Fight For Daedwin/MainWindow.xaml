@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fight_For_Daedwin"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="720" Width="1310">
     <Grid ShowGridLines="True">
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="289,10,0,0" Width="694" Height="315"  >
             <Grid Name ="BattleBoard" HorizontalAlignment="Left" Height="288" Margin="20,8,-2,0" VerticalAlignment="Top" Width="672" ShowGridLines="True" Visibility="Hidden">
@@ -63,31 +63,31 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Игровые события" VerticalAlignment="Top" Width="100" Height="20" Margin="85,0"/>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,10,0,0" Height="511" Width="276">
-            <Grid HorizontalAlignment="Left" Height="498" Margin="1,1,-1,0" VerticalAlignment="Top" Width="270" ShowGridLines="True">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,10,0,0" Height="497" Width="304">
+            <Grid HorizontalAlignment="Left" Height="495" Margin="0,0,0,-2" VerticalAlignment="Top" Width="300" ShowGridLines="True">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListBox Name="Item1" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Margin="0,107,0,0"></ListBox>
-                <ListBox Name="Item2" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Column="1" Margin="0,107,0,0"></ListBox>
-                <ListBox Name="Item3" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Column="2" Margin="0,107,0,0"></ListBox>
-                <ListBox Name="Item4" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1" Margin="0,107,0,0"></ListBox>
-                <ListBox Name="Item5" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="1" Margin="0,107,0,0"></ListBox>
-                <ListBox Name="Item6" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="2" Margin="0,107,0,0"></ListBox>
+                <ListBox Name="Item1" HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="100" Margin="0,100,0,0"></ListBox>
+                <ListBox Name="Item2" HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="100" Grid.Column="1" Margin="0,100,0,0"></ListBox>
+                <ListBox Name="Item3" HorizontalAlignment="Left" Height="113" VerticalAlignment="Top" Width="100" Grid.Column="2" Margin="0,100,0,0"></ListBox>
+                <ListBox Name="Item4" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="100" Grid.Row="1" Margin="0,102,0,0"></ListBox>
+                <ListBox Name="Item5" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="100" Grid.Row="1" Grid.Column="1" Margin="0,102,0,0"></ListBox>
+                <ListBox Name="Item6" HorizontalAlignment="Left" Height="110" VerticalAlignment="Top" Width="100" Grid.Row="1" Grid.Column="2" Margin="0,102,0,0"></ListBox>
 
-                <Button Name="UseItem1" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Height="35"/>
-                <Button Name="UseItem2" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Grid.Column="1" Height="35"/>
-                <Button Name="UseItem3" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Grid.Column="2" Height="35"/>
-                <Button Name="UseItem4" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Grid.Row="1" Height="35"/>
-                <Button Name="UseItem5" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Grid.Column="1" Grid.Row="1" Height="35"/>
-                <Button Name="UseItem6" Content="Применить" HorizontalAlignment="Left" Margin="0,214,0,0" VerticalAlignment="Top" Width="90" Grid.Column="2" Grid.Row="1" Height="35"/>
-                <Image Name="ImageItem1" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90"/>
-                <Image Name="ImageItem2" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Column="1"/>
-                <Image Name="ImageItem3" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Column="2"/>
-                <Image Name="ImageItem4" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1"/>
-                <Image Name="ImageItem5" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="1"/>
-                <Image Name="ImageItem6" HorizontalAlignment="Left" Height="107" VerticalAlignment="Top" Width="90" Grid.Row="1" Grid.Column="2"/>
+                <Button Name="UseItem1" Content="Применить" HorizontalAlignment="Left" Margin="0,213,0,0" VerticalAlignment="Top" Width="100" Height="35" Click="UseItem1_Click"/>
+                <Button Name="UseItem2" Content="Применить" HorizontalAlignment="Left" Margin="0,213,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Height="35" Click="UseItem2_Click"/>
+                <Button Name="UseItem3" Content="Применить" HorizontalAlignment="Left" Margin="0,213,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Height="35" Click="UseItem3_Click"/>
+                <Button Name="UseItem4" Content="Применить" HorizontalAlignment="Left" Margin="0,212,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1" Height="35" Click="UseItem4_Click"/>
+                <Button Name="UseItem5" Content="Применить" HorizontalAlignment="Left" Margin="0,212,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="1" Height="35" Click="UseItem5_Click"/>
+                <Button Name="UseItem6" Content="Применить" HorizontalAlignment="Left" Margin="0,212,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Grid.Row="1" Height="35" Click="UseItem6_Click"/>
+                <Image Name="ImageItem1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+                <Image Name="ImageItem2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="1"/>
+                <Image Name="ImageItem3" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+                <Image Name="ImageItem4" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Grid.Row="1" Margin="0,2,0,0"/>
+                <Image Name="ImageItem5" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Grid.Row="1" Grid.Column="1" Margin="0,2,0,0"/>
+                <Image Name="ImageItem6" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100" Grid.Row="1" Grid.Column="2" Margin="0,2,0,0"/>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -95,11 +95,11 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,526,0,0" Height="154" Width="276">
-            <Grid>
-                <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="" Margin="0,0,0,130" HorizontalAlignment="Center" Width="272"/>
-                <Image Name="SpellImage" HorizontalAlignment="Left" Height="130" Margin="0,20,0,0" VerticalAlignment="Top" Width="130"/>
-                <TextBlock Name="SpellText" HorizontalAlignment="Center" Margin="135,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="130" Width="137" />
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,512,0,0" Height="168" Width="304">
+            <Grid Margin="0,0,0,0">
+                <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="" Margin="83,0,83,145" HorizontalAlignment="Center" Width="134"/>
+                <Image Name="SpellImage" HorizontalAlignment="Left" Height="140" Margin="0,24,0,0"  Width="140"/>
+                <TextBlock Name="SpellText" HorizontalAlignment="Right" TextWrapping="Wrap" Text=""  Height="140" Width="155" Margin="0,24,0,0" />
             </Grid>
         </Border>
         <Grid HorizontalAlignment="Left" Height="35" Margin="10,330,0,0" VerticalAlignment="Top" Width="973">
