@@ -134,7 +134,7 @@ namespace Fight_For_Daedwin
 
                     EnemyCrewClass.CrewList[i].Health -= SumAttackCrew;
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
-                        $"Ваши бойцы нанесли {SumAttackCrew} урона по {EnemyCrewClass.Slot1.Name}");
+                        $"Ваши бойцы нанесли {SumAttackCrew} урона по {EnemyCrewClass.CrewList[i].Name}");
 
                     if (EnemyCrewClass.CrewList[i].Health <= 0)
                     {
@@ -142,18 +142,9 @@ namespace Fight_For_Daedwin
                             $"{EnemyCrewClass.CrewList[i].Name} убит! ");
                         EnemyCrewClass.CrewList[i].isDead();
                         EnemyCrewClass.EnemyCrewSize--;
-                        UIClass.UIRefreshMonsterCrew(
-                            ((MainWindow)Application.Current.MainWindow).Monster1, ((MainWindow)Application.Current.MainWindow).MonsterImage1,
-                            ((MainWindow)Application.Current.MainWindow).Monster2, ((MainWindow)Application.Current.MainWindow).MonsterImage2,
-                            ((MainWindow)Application.Current.MainWindow).Monster3, ((MainWindow)Application.Current.MainWindow).MonsterImage3);
                         //EnemyCrewClass.CrewList.Remove(EnemyCrewClass.CrewList[i]);
                         break;
                     }
-
-                    UIClass.UIRefreshMonsterCrew(
-                        ((MainWindow)Application.Current.MainWindow).Monster1, ((MainWindow)Application.Current.MainWindow).MonsterImage1,
-                        ((MainWindow)Application.Current.MainWindow).Monster2, ((MainWindow)Application.Current.MainWindow).MonsterImage2,
-                        ((MainWindow)Application.Current.MainWindow).Monster3, ((MainWindow)Application.Current.MainWindow).MonsterImage3);
 
                     //Атака монстра
 
@@ -167,23 +158,25 @@ namespace Fight_For_Daedwin
                             $"Ваш {CrewClass.CardInActionList[RandomCardNumber].Name} погиб");
                         CrewClass.CardInActionList[RandomCardNumber].isDead();
                         CrewClass.CardInActionList.RemoveAt(RandomCardNumber);
-                        UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
                     }
-
-                    UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
-
                 }
             }
 
+            for (int i = 0; i < CrewClass.CardInActionList.Count; i++)
+            {
+                CrewClass.CardInActionList[i].Vitality--;
+            }
             Stage++;
+
+            if (Stage % 5 == 0)
+            {
+                for (int i = 0; i < CrewClass.CrewList.Count; i++)
+                {
+                    if (CrewClass.CrewList[i].Name != "Не выбрано" || CrewClass.CrewList[i].Name != "Убит")
+                        CrewClass.CrewList[i].Vitality += GameState.VitalityBuffOnStage;
+                }
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваши бойцы отдохнули и получили +{GameState.VitalityBuffOnStage} к выносливости");
+            }
         }
     }
 }

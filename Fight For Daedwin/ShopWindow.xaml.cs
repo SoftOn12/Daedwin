@@ -459,6 +459,9 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.FightStage)
             {
+
+                ((MainWindow)Application.Current.MainWindow).GoToFightAllSlot.IsEnabled = true;
+
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
                 ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
                 Close();

@@ -21,5 +21,7 @@ namespace Fight_For_Daedwin
 
         public static Stage CurentStage;
 
+        public const int VitalityBuffOnStage = 2;
+
     }
 }
