@@ -19,5 +19,15 @@ namespace Fight_For_Daedwin
         static public List<Card> CardInActionList = new List<Card>(); //Список карт, учавствующие в файте
 
         static public int CrewSize = 0;
+
+        static public void RefreshCrew()
+        {
+            Slot1 = new Card();
+            Slot2 = new Card();
+            Slot3 = new Card();
+            Slot4 = new Card();
+            Slot5 = new Card();
+            CrewSize = 0;
+        }
     }
 }

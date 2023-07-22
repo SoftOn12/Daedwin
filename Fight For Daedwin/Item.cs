@@ -124,5 +124,18 @@ namespace Fight_For_Daedwin
             }
             xDoc.Save(path);
         }
+
+        public void UseItemOnAllCrew()
+        {
+            foreach (Card card in CrewClass.CrewList)
+            {
+                if (card.Name != "Убит" && card.Name != "Не выбрано")
+                {
+                    card.Health += InventoryClass.ChosenItem.HealthBuff;
+                    card.Attack += InventoryClass.ChosenItem.AttackBuff;
+                    card.Vitality += InventoryClass.ChosenItem.VitalityBuff;
+                }
+            }
+        }
     }
 }

@@ -27,8 +27,6 @@ namespace Fight_For_Daedwin
         static public List<Item> ItemList;
         static public List<Spell> SpellList;
 
-        static public int Money = 30;
-
         public static List<Card> XMLParser(string PathToXML)
         {
             List<Card> AllertList = new List<Card>();

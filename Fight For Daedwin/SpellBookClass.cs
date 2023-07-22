@@ -12,5 +12,11 @@ namespace Fight_For_Daedwin
         static public Spell PlayerSpell = new Spell();
 
         static public int SpellBookSize = 0;
+
+        static public void RefreshSpellBook()
+        {
+            PlayerSpell = new Spell();
+            SpellBookSize = 0;
+        }
     }
 }

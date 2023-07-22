@@ -36,7 +36,7 @@ namespace Fight_For_Daedwin
             MoneyTitle.Visibility = Visibility.Visible;
 
             MoneyCounter.Visibility = Visibility.Visible;
-            MoneyCounter.Content = ShopClass.Money.ToString();
+            MoneyCounter.Content = GameState.Money.ToString();
 
             ShopClass.UnitList = ShopClass.XMLParser(Path);
             ShopClass.RandomUnitToShop();
@@ -54,10 +54,10 @@ namespace Fight_For_Daedwin
         {
             if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                if (ShopClass.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
+                if (GameState.Money >= ShopClass.FirstSlot.Cost && CrewClass.CrewSize <= 4)
                 {
-                    ShopClass.Money -= ShopClass.FirstSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.FirstSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyFirstSlot.IsEnabled = false;
                     BuyFirstSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.FirstSlot);
@@ -80,10 +80,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-                if (ShopClass.Money >= ShopClass.FirstItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                if (GameState.Money >= ShopClass.FirstItemSlot.Cost && InventoryClass.InventorySize <= 5)
                 {
-                    ShopClass.Money -= ShopClass.FirstItemSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.FirstItemSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyFirstSlot.IsEnabled = false;
                     BuyFirstSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.FirstItemSlot);
@@ -107,10 +107,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
-                if (ShopClass.Money >= ShopClass.FirstSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                if (GameState.Money >= ShopClass.FirstSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
                 {
-                    ShopClass.Money -= ShopClass.FirstSpellSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.FirstSpellSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyFirstSlot.IsEnabled = false;
                     BuyFirstSlot.Content = "Куплено!";
                     ShopClass.FromShopToSpellBook(ShopClass.FirstSpellSlot);
@@ -143,10 +143,10 @@ namespace Fight_For_Daedwin
         {
             if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                if (ShopClass.Money >= ShopClass.SecondSlot.Cost && CrewClass.CrewSize <= 4)
+                if (GameState.Money >= ShopClass.SecondSlot.Cost && CrewClass.CrewSize <= 4)
                 {
-                    ShopClass.Money -= ShopClass.SecondSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.SecondSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuySecondSlot.IsEnabled = false;
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.SecondSlot);
@@ -169,10 +169,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-                if (ShopClass.Money >= ShopClass.SecondItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                if (GameState.Money >= ShopClass.SecondItemSlot.Cost && InventoryClass.InventorySize <= 5)
                 {
-                    ShopClass.Money -= ShopClass.SecondItemSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.SecondItemSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuySecondSlot.IsEnabled = false;
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.SecondItemSlot);
@@ -196,10 +196,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
-                if (ShopClass.Money >= ShopClass.SecondSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                if (GameState.Money >= ShopClass.SecondSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
                 {
-                    ShopClass.Money -= ShopClass.SecondSpellSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.SecondSpellSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuySecondSlot.IsEnabled = false;
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToSpellBook(ShopClass.SecondSpellSlot);
@@ -231,10 +231,10 @@ namespace Fight_For_Daedwin
         {
             if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                if (ShopClass.Money >= ShopClass.ThirdSlot.Cost && CrewClass.CrewSize <= 4)
+                if (GameState.Money >= ShopClass.ThirdSlot.Cost && CrewClass.CrewSize <= 4)
                 {
-                    ShopClass.Money -= ShopClass.ThirdSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.ThirdSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyThirdSlot.IsEnabled = false;
                     BuyThirdSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
@@ -257,10 +257,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-                if (ShopClass.Money >= ShopClass.ThirdItemSlot.Cost && InventoryClass.InventorySize <= 5)
+                if (GameState.Money >= ShopClass.ThirdItemSlot.Cost && InventoryClass.InventorySize <= 5)
                 {
-                    ShopClass.Money -= ShopClass.ThirdItemSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.ThirdItemSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyThirdSlot.IsEnabled = false;
                     BuyThirdSlot.Content = "Куплено!";
                     ShopClass.FromShopToInventory(ShopClass.ThirdItemSlot);
@@ -284,10 +284,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
-                if (ShopClass.Money >= ShopClass.ThirdSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
+                if (GameState.Money >= ShopClass.ThirdSpellSlot.Cost && SpellBookClass.SpellBookSize == 0)
                 {
-                    ShopClass.Money -= ShopClass.ThirdSpellSlot.Cost;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= ShopClass.ThirdSpellSlot.Cost;
+                    MoneyCounter.Content = GameState.Money.ToString();
                     BuyThirdSlot.IsEnabled = false;
                     BuyThirdSlot.Content = "Куплено!";
                     ShopClass.FromShopToSpellBook(ShopClass.ThirdSpellSlot);
@@ -319,10 +319,10 @@ namespace Fight_For_Daedwin
         {
             if (GameState.CurentStage == GameState.Stage.UnitShopStage)
             {
-                if (ShopClass.Money >= 2)
+                if (GameState.Money >= 2)
                 {
-                    ShopClass.Money -= 2;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= 2;
+                    MoneyCounter.Content = GameState.Money.ToString();
 
                     ShopClass.RandomUnitToShop();
 
@@ -345,10 +345,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
-                if (ShopClass.Money >= 2)
+                if (GameState.Money >= 2)
                 {
-                    ShopClass.Money -= 2;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= 2;
+                    MoneyCounter.Content = GameState.Money.ToString();
 
                     ShopClass.RandomItemToShop();
 
@@ -371,10 +371,10 @@ namespace Fight_For_Daedwin
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
-                if (ShopClass.Money >= 2)
+                if (GameState.Money >= 2)
                 {
-                    ShopClass.Money -= 2;
-                    MoneyCounter.Content = ShopClass.Money.ToString();
+                    GameState.Money -= 2;
+                    MoneyCounter.Content = GameState.Money.ToString();
 
                     ShopClass.RandomSpellToShop();
 

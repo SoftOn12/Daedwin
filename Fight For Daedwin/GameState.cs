@@ -15,13 +15,16 @@ namespace Fight_For_Daedwin
             ItemShopStage,
             SpellChoiseStage,
             FightStage,
-            RewardStage,
             EndStage
         }
 
         public static Stage CurentStage;
 
         public const int VitalityBuffOnStage = 2;
+
+        static public int Money = 50;
+
+        public const int MoneyReward = 10;
 
     }
 }

@@ -1,14 +1,14 @@
-﻿<Window x:Class="Fight_For_Daedwin.ShopWindow"
+﻿<Window x:Class="Fight_For_Daedwin.RewardWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fight_For_Daedwin"
         mc:Ignorable="d"
-        Height="725" Width="697"
+        Height="698" Width="698"
         ResizeMode="NoResize">
     <Grid>
-        <Border  HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="669" Height="441"  >
+        <Border  HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,30,0,0" Width="669" Height="441"  >
             <Grid Name ="Shop" HorizontalAlignment="Left" Height="428" Margin="1,1,0,0" VerticalAlignment="Top" Width="665" ShowGridLines="True" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -41,9 +41,9 @@
                 <TextBlock Name="LabelSpellCostThirdSlot" HorizontalAlignment="Left" Margin="11,362,0,0" TextWrapping="Wrap" Text="Стоимость:" VerticalAlignment="Top" Height="20" Width="65" Grid.Column="2" Visibility="Hidden"/>
             </Grid>
         </Border>
-        <Label x:Name="MoneyTitle" Content="Валюта: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,456,0,0" Height="36" Width="53" />
-        <Label x:Name="MoneyCounter"  Content="0"  HorizontalAlignment="Left" Margin="76,456,0,0" VerticalAlignment="Top" Height="36" Width="37"  />
-        <Button x:Name="RestartButton" Content="Обновить (2)" HorizontalAlignment="Left" Margin="23,634,0,0" VerticalAlignment="Top" Width="200" Click="RestartButton_Click" Height="40" RenderTransformOrigin="0.47,3.95"/>
-        <Button x:Name="NextStageButton" Content="Далее" HorizontalAlignment="Left" Margin="467,634,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.493,0.55" Height="40" Click="NextStageButton_Click"/>
+        <Label x:Name="MoneyTitle" Content="Валюта: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="13,476,0,0" Height="36" Width="53" />
+        <Label x:Name="MoneyCounter"  Content=""  HorizontalAlignment="Left" Margin="66,476,0,0" VerticalAlignment="Top" Height="36" Width="37"  />
+        <Button x:Name="NextStageButton" Content="Далее" HorizontalAlignment="Left" Margin="466,619,0,0" VerticalAlignment="Top" Width="200" RenderTransformOrigin="0.493,0.55" Height="40" Click="NextStageButton_Click"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="Выберете награду для покупки" VerticalAlignment="Top" Height="30"/>
     </Grid>
 </Window>

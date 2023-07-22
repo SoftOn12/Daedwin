@@ -12,7 +12,7 @@ namespace Fight_For_Daedwin
 {
     static class MonsterFightClass
     {
-        static public int Stage = 1;
+        static public int Stage = 0;
         static public bool DeadMonsterCrew = false;
 
         static public List<Monster> MonsterList; //Список ВСЕХ монстров (Для рандома)
@@ -114,6 +114,9 @@ namespace Fight_For_Daedwin
         {
             for (int i = 0; i < EnemyCrewClass.CrewList.Count; i++)
             {
+                if (GameState.CurentStage == GameState.Stage.EndStage)
+                    break;
+
                 while (EnemyCrewClass.CrewList[i].Health > 0)
                 {
                     int SumAttackCrew = 0;
@@ -127,6 +130,7 @@ namespace Fight_For_Daedwin
 
                     if (SumAttackCrew == 0)
                     {
+                        GameState.CurentStage = GameState.Stage.EndStage;
                         UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
                             $"В вашей армии некому атаковать. Поражение!");
                         break;
@@ -166,18 +170,20 @@ namespace Fight_For_Daedwin
             {
                 CrewClass.CardInActionList[i].Vitality--;
             }
-
-            Stage++;
-
-            if (Stage % 5 == 0)
-            {
-                for (int i = 0; i < CrewClass.CrewList.Count; i++)
-                {
-                    if (CrewClass.CrewList[i].Name != "Не выбрано" && CrewClass.CrewList[i].Name != "Убит")
-                        CrewClass.CrewList[i].Vitality += GameState.VitalityBuffOnStage;
-                }
-                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваши бойцы отдохнули и получили +{GameState.VitalityBuffOnStage} к выносливости");
-            }
         }
+
+        public static void RewardAction()
+        {
+            GameState.Money += GameState.MoneyReward;
+            UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"На этой стадии вы получили +{GameState.MoneyReward} валюты");
+
+            for (int i = 0; i < CrewClass.CrewList.Count; i++)
+            {
+                if (CrewClass.CrewList[i].Name != "Не выбрано" && CrewClass.CrewList[i].Name != "Убит")
+                    CrewClass.CrewList[i].Vitality += GameState.VitalityBuffOnStage;
+            }
+            UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Ваши бойцы отдохнули и получили +{GameState.VitalityBuffOnStage} к выносливости");
+        }
+
     }
 }
