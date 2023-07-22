@@ -116,8 +116,8 @@
             <Grid HorizontalAlignment="Left" Height="313" Margin="-2,0,-2,-2" VerticalAlignment="Top" Width="276">
                 <Button x:Name="StartButton" Content="Новая игра" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="256" Height="40" Click="Button_Click"/>
                 <Button x:Name="ExitButton" Content="Выход" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Width="256" Height="40" Click="ExitButton_Click"/>
-                <Button x:Name="SettingsButton" Content="Настройки" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="256" Height="40"/>
-                <Button x:Name="RecordsButton" Content="Рекорды" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="256" Height="40"/>
+                <Button x:Name="SettingsButton" Content="Настройки" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="256" Height="40" Click="SettingsButton_Click"/>
+                <Button x:Name="RecordsButton" Content="Рекорды" HorizontalAlignment="Left" Margin="10,173,0,0" VerticalAlignment="Top" Width="256" Height="40" Click="RecordsButton_Click"/>
             </Grid>
         </Border>
     </Grid>

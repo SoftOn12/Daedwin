@@ -24,7 +24,7 @@ namespace Fight_For_Daedwin
 
         static public int Money = 50;
 
-        public const int MoneyReward = 10;
+        public const int MoneyReward = 5;
 
     }
 }

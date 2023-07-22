@@ -200,5 +200,50 @@ namespace Fight_For_Daedwin
             
             GameLogBox.Text = GameLogBoxString;
         }
+
+        public static void ReadRecordList(ListBox NameBox, ListBox StageBox)
+        {
+            string FileName = "RecordTable.txt";
+            string Path = AppContext.BaseDirectory + @"\" + FileName;
+
+            if (!File.Exists(Path))
+            {
+                // Create a file to write to.
+                string[] createText = { "Soft_On:0" };
+                File.WriteAllLines(Path, createText);
+            }
+
+            //Чтение файла
+            string[] RecordTable = File.ReadAllLines(Path);
+            List<string> RecordTableName = new List<string>();
+            List<string> RecordTableStage = new List<string>();
+
+            foreach (string str in RecordTable)
+            {
+                string[] tmpArray = str.Split(new char[] { ':' });
+                RecordTableName.Add(tmpArray[0]);
+                RecordTableStage.Add(tmpArray[1]);
+            }
+
+            NameBox.ItemsSource = RecordTableName;
+            StageBox.ItemsSource = RecordTableStage;
+        }
+
+        public static void WriteRecordList()
+        {
+            DateTime now = DateTime.Now;
+            string FileName = "RecordTable.txt";
+            string Path = AppContext.BaseDirectory + @"\" + FileName;
+
+            using (FileStream fstream = new FileStream(Path, FileMode.OpenOrCreate))
+            {
+                // преобразуем строку в байты
+                byte[] buffer = Encoding.UTF8.GetBytes(now.ToString("dd.MM ") + $"Soft_On:{MonsterFightClass.Stage}\r\n");
+                // запись массива байтов в файл
+                fstream.Seek(0, SeekOrigin.End);
+                fstream.Write(buffer, 0, buffer.Length);
+
+            }
+        }
     }
 }

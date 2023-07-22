@@ -49,6 +49,8 @@ namespace Fight_For_Daedwin
         {
             if(GameState.CurentStage == GameState.Stage.EndStage)
             {
+                UIClass.WriteRecordList();
+
                 GoToFightSlot1.Visibility = Visibility.Hidden;
                 GoToFightSlot2.Visibility = Visibility.Hidden;
                 GoToFightSlot3.Visibility = Visibility.Hidden;
@@ -74,6 +76,7 @@ namespace Fight_For_Daedwin
                                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
 
                 UIClass.UIAddToSlotInSpellBook(SpellText, SpellImage, SpellTitle, SpellBookClass.PlayerSpell);
+
                 return;
             }
 
@@ -381,6 +384,17 @@ namespace Fight_For_Daedwin
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close(); // ))
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RecordsButton_Click(object sender, RoutedEventArgs e)
+        {
+            RecordWindow recordWindow = new RecordWindow();
+            recordWindow.ShowDialog();
         }
     }
 }

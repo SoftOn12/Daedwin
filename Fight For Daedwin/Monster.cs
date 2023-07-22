@@ -107,5 +107,11 @@ namespace Fight_For_Daedwin
             Name = "Убит";
             Image = "Dead.png";
         }
+
+        public void StageProgression()
+        {
+            this.Health += (int)Math.Round((Math.Pow((MonsterFightClass.Stage), 2) / 20));
+            this.Attack += (int)Math.Round(Math.Pow((MonsterFightClass.Stage), 2) / 100);
+        }
     }
 }

@@ -86,6 +86,7 @@ namespace Fight_For_Daedwin
                 EnemyCrewClass.Slot1.Health = MonsterList[Seed].Health;
                 EnemyCrewClass.Slot1.Attack = MonsterList[Seed].Attack;
                 EnemyCrewClass.Slot1.Image = MonsterList[Seed].Image;
+                EnemyCrewClass.Slot1.StageProgression();
 
                 Seed = Rnd.Next(MonsterList.Count);
 
@@ -94,6 +95,7 @@ namespace Fight_For_Daedwin
                 EnemyCrewClass.Slot2.Health = MonsterList[Seed].Health;
                 EnemyCrewClass.Slot2.Attack = MonsterList[Seed].Attack;
                 EnemyCrewClass.Slot2.Image = MonsterList[Seed].Image;
+                EnemyCrewClass.Slot2.StageProgression();
 
                 Seed = Rnd.Next(MonsterList.Count);
 
@@ -102,6 +104,7 @@ namespace Fight_For_Daedwin
                 EnemyCrewClass.Slot3.Health = MonsterList[Seed].Health;
                 EnemyCrewClass.Slot3.Attack = MonsterList[Seed].Attack;
                 EnemyCrewClass.Slot3.Image = MonsterList[Seed].Image;
+                EnemyCrewClass.Slot3.StageProgression();
             }
             else
             {
