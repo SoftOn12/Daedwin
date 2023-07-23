@@ -388,7 +388,8 @@ namespace Fight_For_Daedwin
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
         }
 
         private void RecordsButton_Click(object sender, RoutedEventArgs e)

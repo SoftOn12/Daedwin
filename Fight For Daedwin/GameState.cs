@@ -26,5 +26,7 @@ namespace Fight_For_Daedwin
 
         public const int MoneyReward = 5;
 
+        public static string PlayerName;
+
     }
 }

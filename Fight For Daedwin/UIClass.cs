@@ -201,32 +201,24 @@ namespace Fight_For_Daedwin
             GameLogBox.Text = GameLogBoxString;
         }
 
-        public static void ReadRecordList(ListBox NameBox, ListBox StageBox)
+        public static void ReadRecordList(ListBox NameBox)
         {
+            DateTime now = DateTime.Now;
             string FileName = "RecordTable.txt";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
 
             if (!File.Exists(Path))
             {
                 // Create a file to write to.
-                string[] createText = { "Soft_On:0" };
+                string[] createText = { now.ToString("dd.MM: ") + $"{GameState.PlayerName} - {MonsterFightClass.Stage} Уровень" };
                 File.WriteAllLines(Path, createText);
             }
 
             //Чтение файла
             string[] RecordTable = File.ReadAllLines(Path);
-            List<string> RecordTableName = new List<string>();
-            List<string> RecordTableStage = new List<string>();
 
-            foreach (string str in RecordTable)
-            {
-                string[] tmpArray = str.Split(new char[] { ':' });
-                RecordTableName.Add(tmpArray[0]);
-                RecordTableStage.Add(tmpArray[1]);
-            }
-
-            NameBox.ItemsSource = RecordTableName;
-            StageBox.ItemsSource = RecordTableStage;
+            NameBox.ItemsSource = RecordTable;
+            //StageBox.ItemsSource = RecordTableStage;
         }
 
         public static void WriteRecordList()
@@ -238,7 +230,42 @@ namespace Fight_For_Daedwin
             using (FileStream fstream = new FileStream(Path, FileMode.OpenOrCreate))
             {
                 // преобразуем строку в байты
-                byte[] buffer = Encoding.UTF8.GetBytes(now.ToString("dd.MM ") + $"Soft_On:{MonsterFightClass.Stage}\r\n");
+                byte[] buffer = Encoding.UTF8.GetBytes(now.ToString("dd.MM: ") + $"{GameState.PlayerName} - {MonsterFightClass.Stage} Уровень\r\n");
+                // запись массива байтов в файл
+                fstream.Seek(0, SeekOrigin.End);
+                fstream.Write(buffer, 0, buffer.Length);
+
+            }
+        }
+
+        public static void ReadSettings()
+        {
+            string FileName = "Settings.conf";
+            string Path = AppContext.BaseDirectory + @"\" + FileName;
+
+            if (!File.Exists(Path))
+            {
+                // Create a file to write to.
+                string[] settingsText = { $"PlayerName:Soft_On" };
+                File.WriteAllLines(Path, settingsText);
+            }
+
+            //Чтение файла
+            string[] defaultSettings = File.ReadAllLines(Path);
+
+            GameState.PlayerName = defaultSettings[0].Split(':')[1];
+            //StageBox.ItemsSource = RecordTableStage;
+        }
+
+        public static void WriteSettings()
+        {
+            string FileName = "Settings.conf";
+            string Path = AppContext.BaseDirectory + @"\" + FileName;
+
+            using (FileStream fstream = new FileStream(Path, FileMode.Create))
+            {
+                // преобразуем строку в байты
+                byte[] buffer = Encoding.UTF8.GetBytes($"PlayerName:{GameState.PlayerName}\r\n");
                 // запись массива байтов в файл
                 fstream.Seek(0, SeekOrigin.End);
                 fstream.Write(buffer, 0, buffer.Length);

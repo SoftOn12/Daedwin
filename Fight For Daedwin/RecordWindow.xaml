@@ -5,20 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fight_For_Daedwin"
         mc:Ignorable="d"
-        ResizeMode="NoResize" Height="457.667" Width="411">
+        ResizeMode="NoResize" Height="457.667" Width="417">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="196"></ColumnDefinition>
-            <ColumnDefinition Width="196"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer Margin="0,26,0,19">
-            <ListBox Name="NameList" HorizontalAlignment="Left" Height="383" VerticalAlignment="Top" Width="197"/>
+        <ScrollViewer Margin="0,26,10,19">
+            <ListBox Name="NameList" HorizontalAlignment="Left" Height="383" VerticalAlignment="Top" Width="384"/>
         </ScrollViewer>
-        <ScrollViewer Margin="0,26,0,19" Grid.Column="1">
-            <ListBox Name="StageList" Grid.Column="1" HorizontalAlignment="Left" Height="383" VerticalAlignment="Top" Width="197"/>
-        </ScrollViewer>
-        <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap" Text="Имя игрока" VerticalAlignment="Top"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap" Text="Максимальный уровень" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" TextWrapping="Wrap" Text="Дата: Имя игрока - максимальный уровень" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>

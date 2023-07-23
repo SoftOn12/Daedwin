@@ -22,7 +22,7 @@ namespace Fight_For_Daedwin
         public RecordWindow()
         {
             InitializeComponent();
-            UIClass.ReadRecordList(NameList, StageList);
+            UIClass.ReadRecordList(NameList);
         }
     }
 }
