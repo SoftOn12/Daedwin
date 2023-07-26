@@ -173,6 +173,12 @@ namespace Fight_For_Daedwin
             {
                 CrewClass.CardInActionList[i].Vitality--;
             }
+
+            if(CrewClass.Slot1.Vitality + CrewClass.Slot2.Vitality + CrewClass.Slot3.Vitality + CrewClass.Slot4.Vitality + CrewClass.Slot5.Vitality == 0)
+            {
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"У вашего отряда закончилась выносливость. Поражение!");
+                GameState.CurentStage = GameState.Stage.EndStage;
+            }
         }
 
         public static void RewardAction()

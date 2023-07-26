@@ -24,11 +24,13 @@ namespace Fight_For_Daedwin
             UIClass.ReadSettings();
             InitializeComponent();
             PlayerNameBox.Text = GameState.PlayerName;
+            ResourceBox.Text = $@"{GameState.ResourcePath}";
         }
 
         private void ApplySettings_Click(object sender, RoutedEventArgs e)
         {
             GameState.PlayerName = PlayerNameBox.Text;
+            GameState.ResourcePath = ResourceBox.Text;
             ApplySettings.IsEnabled = false;
             ApplySettings.Content = "Применено!";
             UIClass.WriteSettings();

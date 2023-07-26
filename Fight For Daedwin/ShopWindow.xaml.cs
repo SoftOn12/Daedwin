@@ -28,7 +28,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия вербовки персонажей началась");
 
             string FileName = "CardDeck.xml";
-            string Path = AppContext.BaseDirectory + @"\" + FileName;
+            string Path = GameState.ResourcePath + FileName;
 
             //Card Test = new Card("Боба");
 
@@ -405,7 +405,7 @@ namespace Fight_For_Daedwin
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки предметов началась");
 
                 string FileName = "ItemDeck.xml";
-                string Path = AppContext.BaseDirectory + @"\" + FileName;
+                string Path = GameState.ResourcePath + FileName;
                 ShopClass.ItemList = ShopClass.XMLItemParser(Path);
                 ShopClass.RandomItemToShop();
 
@@ -426,7 +426,7 @@ namespace Fight_For_Daedwin
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки заклинания началась");
 
                 string FileName = "SpellDeck.xml";
-                string Path = AppContext.BaseDirectory + @"\" + FileName;
+                string Path = GameState.ResourcePath + FileName;
                 ShopClass.SpellList = ShopClass.XMLSpellParser(Path);
                 ShopClass.RandomSpellToShop();
 

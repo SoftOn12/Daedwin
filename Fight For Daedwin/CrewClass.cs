@@ -27,6 +27,7 @@ namespace Fight_For_Daedwin
             Slot3 = new Card();
             Slot4 = new Card();
             Slot5 = new Card();
+            CrewList = new List<Card>() { Slot1, Slot2, Slot3, Slot4, Slot5 };
             CrewSize = 0;
         }
     }

@@ -26,7 +26,7 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
-            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Card Arts\" + card.Image));
+            CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Card Arts\" + card.Image));
         }
 
         public static void UIAddItemToSlotInShop(ListBox Slot, Image ItemImage, Item item)
@@ -42,15 +42,15 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
-            ItemImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Item Arts\" + item.Image));
+            ItemImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Item Arts\" + item.Image));
         }
 
         public static void UIAddSpellToSlotInShop(TextBlock Slot, TextBlock SpellCost, Image SpellImage, Spell spell)
         {
             SpellCost.Text = spell.Cost.ToString();
-            Slot.Text = spell.Description;
+            Slot.Text = $"{spell.Name}\r\n" + spell.Description;
             //Slot.ItemsSource = AttributeList;
-            SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));
+            SpellImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Spell Arts\" + spell.Image));
         }
 
         public static void UIAddMonsterToSlotInFight(ListBox Slot, Image CardImage, Monster card)
@@ -64,7 +64,7 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
-            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Monster Arts\" + card.Image));
+            CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Monster Arts\" + card.Image));
         }
 
         public static void UIAddToSlotInCrew(ListBox Slot, Image CardImage, Card Card)
@@ -80,7 +80,7 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
-            CardImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Card Arts\" + Card.Image));
+            CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Card Arts\" + Card.Image));
         }
 
         public static void UIRefreshCrew(ListBox Slot1, Image CardImage1, 
@@ -113,7 +113,7 @@ namespace Fight_For_Daedwin
             };
 
             Slot.ItemsSource = AttributeList;
-            ItemImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Item Arts\" + item.Image));
+            ItemImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Item Arts\" + item.Image));
         }
 
         public static void UIRefreshInventory(ListBox Slot1, Image ItemImage1,
@@ -142,7 +142,7 @@ namespace Fight_For_Daedwin
             spellName.Text = spell.Name;
             Slot.Text = spell.Description;
             //Slot.ItemsSource = AttributeList;
-            SpellImage.Source = new BitmapImage(new Uri(AppContext.BaseDirectory + @"\Spell Arts\" + spell.Image));
+            SpellImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Spell Arts\" + spell.Image));
 
         }
 
@@ -158,7 +158,7 @@ namespace Fight_For_Daedwin
 
         public static void AddTextToLog(TextBlock GameLogBox, string InputText)
         {
-            DateTime now = DateTime.Now;
+            //DateTime now = DateTime.Now;
 
             string FileName = "GameLog.txt";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
@@ -168,7 +168,7 @@ namespace Fight_For_Daedwin
             if (!File.Exists(Path))
             {
                 // Create a file to write to.
-                string[] createText = { now.ToString("dd.MM.yyyy - hh:mm:ss") + ": " + "Добро пожаловать в игру!" };
+                string[] createText = { "Добро пожаловать в игру!" };
                 File.WriteAllLines(Path, createText);
             }
 
@@ -245,15 +245,18 @@ namespace Fight_For_Daedwin
 
             if (!File.Exists(Path))
             {
-                // Create a file to write to.
-                string[] settingsText = { $"PlayerName:Soft_On" };
-                File.WriteAllLines(Path, settingsText);
+                using (StreamWriter writer = new StreamWriter(Path, true))
+                {
+                    writer.WriteLine($"PlayerName:{GameState.PlayerName}");
+                    writer.WriteLine($"ResourcePath:{GameState.ResourcePath}");
+                }
             }
 
             //Чтение файла
             string[] defaultSettings = File.ReadAllLines(Path);
 
             GameState.PlayerName = defaultSettings[0].Split(':')[1];
+            GameState.ResourcePath = defaultSettings[1].Split(':')[1] + ":" + defaultSettings[1].Split(':')[2];
             //StageBox.ItemsSource = RecordTableStage;
         }
 
@@ -267,6 +270,10 @@ namespace Fight_For_Daedwin
                 // преобразуем строку в байты
                 byte[] buffer = Encoding.UTF8.GetBytes($"PlayerName:{GameState.PlayerName}\r\n");
                 // запись массива байтов в файл
+                fstream.Seek(0, SeekOrigin.End);
+                fstream.Write(buffer, 0, buffer.Length);
+
+                buffer = Encoding.UTF8.GetBytes($"ResourcePath:{GameState.ResourcePath}\r\n");
                 fstream.Seek(0, SeekOrigin.End);
                 fstream.Write(buffer, 0, buffer.Length);
 

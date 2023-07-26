@@ -23,6 +23,7 @@ namespace Fight_For_Daedwin
     {
         public MainWindow()
         {
+            UIClass.ReadSettings();
             InitializeComponent();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
@@ -41,6 +42,12 @@ namespace Fight_For_Daedwin
             ShopWindow shopWindow = new ShopWindow();
             shopWindow.ShowDialog();
 
+            UseItem1.Visibility = Visibility.Visible;
+            UseItem2.Visibility = Visibility.Visible;
+            UseItem3.Visibility = Visibility.Visible;
+            UseItem4.Visibility = Visibility.Visible;
+            UseItem5.Visibility = Visibility.Visible;
+            UseItem6.Visibility = Visibility.Visible;
             StartButton.IsEnabled = false;
             GameLogParent.Visibility = Visibility.Visible;
         }
@@ -115,7 +122,7 @@ namespace Fight_For_Daedwin
 
 
                 string FileName = "MonsterDeck.xml";
-                string Path = AppContext.BaseDirectory + @"\" + FileName;
+                string Path = GameState.ResourcePath + FileName;
                 MonsterFightClass.MonsterList = MonsterFightClass.XMLParser(Path);
             }
             if (CrewClass.Slot1.Vitality <= 0)
@@ -207,7 +214,7 @@ namespace Fight_For_Daedwin
             {
                 UIClass.AddTextToLog(GameLog, $"Выберете бойцов для боя!");
             }
-            else
+            else 
             {
                 int crew1Health = CrewClass.Slot1.Health;
                 int crew2Health = CrewClass.Slot2.Health;

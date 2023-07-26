@@ -47,7 +47,7 @@ namespace Fight_For_Daedwin
             Name = "Не выбрано";
             RaceCondition = "Не выбрано";
             TypeCondition = "Не выбрано";
-            Description = "Выберете заклинание на соответсвующей стадии игры";
+            Description = "Нет активного заклинания";
             Image = "Default.png";
         }
         public Spell(string name = "За честь!",
@@ -58,7 +58,7 @@ namespace Fight_For_Daedwin
             int vitalityBuff = 0,
             int cost = 2,
             string description = "Все бойцы ближнего боя люди получают бонус к здоровью 50 и бонус к атаке 2", 
-            string image = "For the Glory.jpg")
+            string image = "Default.png")
         {
             Name = name;
             RaceCondition = raceCondition;
