@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="200*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListBox Name="BattleInfo" Grid.Column="3" HorizontalAlignment="Left" Height="220" Margin="10,28,0,0" VerticalAlignment="Top" Width="262"/>
+                <ListBox Name="BattleInfo" Grid.Column="3" HorizontalAlignment="Left" Height="211" Margin="10,37,0,0" VerticalAlignment="Top" Width="262"/>
                 <ListBox Name="Monster1" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130"/>
                 <ListBox Name="Monster2" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
                 <ListBox Name="Monster3" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
@@ -29,7 +29,9 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="63" Grid.Column="2"/>
                 <Button Name="FightButton" Content="Бой" Grid.Column="3" HorizontalAlignment="Left" Margin="141,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="FightButton_Click"/>
                 <Button Name="NextFightButton" Content="Далее" Grid.Column="3" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="NextFightButton_Click"/>
-                <TextBlock Name="CutentStage" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90"/>
+                <TextBlock Name="CutentStage" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="Уровень:" VerticalAlignment="Top"/>
+                <TextBlock x:Name="CrewDamage" Text="0" Grid.Column="3" HorizontalAlignment="Center" Margin="172,16,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="20" />
+                <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="98,16,0,0" TextWrapping="Wrap" Text="Урон отряда:" VerticalAlignment="Top"/>
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Height="310" Margin="289,370,0,0" Width="694">

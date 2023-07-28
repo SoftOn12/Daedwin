@@ -157,6 +157,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота готов к бою");
             GoToFightSlot1.IsEnabled = false;
             GoToFightAllSlot.IsEnabled = false;
+            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot1.Attack).ToString();
         }
 
         private void GoToFightSlot2_Click(object sender, RoutedEventArgs e)
@@ -165,6 +166,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота готов к бою");
             GoToFightSlot2.IsEnabled = false;
             GoToFightAllSlot.IsEnabled = false;
+            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot2.Attack).ToString();
         }
 
         private void GoToFightSlot3_Click(object sender, RoutedEventArgs e)
@@ -173,6 +175,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота готов к бою");
             GoToFightSlot3.IsEnabled = false;
             GoToFightAllSlot.IsEnabled = false;
+            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot3.Attack).ToString();
         }
 
         private void GoToFightSlot4_Click(object sender, RoutedEventArgs e)
@@ -181,6 +184,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота готов к бою");
             GoToFightSlot4.IsEnabled = false;
             GoToFightAllSlot.IsEnabled = false;
+            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot4.Attack).ToString();
         }
 
         private void GoToFightSlot5_Click(object sender, RoutedEventArgs e)
@@ -189,6 +193,7 @@ namespace Fight_For_Daedwin
             UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота готов к бою");
             GoToFightSlot5.IsEnabled = false;
             GoToFightAllSlot.IsEnabled = false;
+            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot5.Attack).ToString();
         }
 
         private void GoToFightAllSlot_Click(object sender, RoutedEventArgs e)
@@ -254,6 +259,8 @@ namespace Fight_For_Daedwin
                 NextFightButton.IsEnabled = true;
                 CrewClass.CardInActionList.Clear();
             }
+
+            CrewDamage.Text = "0";
         }
 
         private void UseItem1_Click(object sender, RoutedEventArgs e)
