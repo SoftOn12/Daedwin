@@ -23,15 +23,35 @@
                 <ListBox x:Name="PlayerCrew5" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Grid.Column="4" Margin="0,127,0,0"/>
                 <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="130" Grid.Column="3" Margin="0,127,0,0"/>
                 <Image x:Name="ImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129"/>
+                <Image x:Name="BorderImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Source="Images/Border.png"/>
                 <Image x:Name="ImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="1" Margin="1,0,0,0"/>
+                <Image x:Name="BorderImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="1" Source="Images/Border.png" Margin="1,0,0,0"/>
                 <Image x:Name="ImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="2"/>
+                <Image x:Name="BorderImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="2" Source="Images/Border.png"/>
                 <Image x:Name="ImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="3" Margin="1,0,0,0"/>
+                <Image x:Name="BorderImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="3" Source="Images/Border.png" Margin="1,0,0,0"/>
                 <Image x:Name="ImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="4"/>
+                <Image x:Name="BorderImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="4" Source="Images/Border.png"/>
                 <Button x:Name="UseItemOnCrew1" Content="Применить" HorizontalAlignment="Left" Margin="0,265,0,0" VerticalAlignment="Top" Width="129" Height="54" Click="UseItemOnCrew1_Click"/>
                 <Button x:Name="UseItemOnCrew2" Content="Применить" HorizontalAlignment="Left" Margin="0,265,0,0" VerticalAlignment="Top" Width="130" Height="54" Grid.Column="1" Click="UseItemOnCrew2_Click"/>
                 <Button x:Name="UseItemOnCrew3" Content="Применить" HorizontalAlignment="Left" Margin="0,265,0,0" VerticalAlignment="Top" Width="129" Height="54" Grid.Column="2" Click="UseItemOnCrew3_Click"/>
                 <Button x:Name="UseItemOnCrew4" Content="Применить" HorizontalAlignment="Left" Margin="0,265,0,0" VerticalAlignment="Top" Width="130" Height="54" Grid.Column="3" Click="UseItemOnCrew4_Click"/>
                 <Button x:Name="UseItemOnCrew5" Content="Применить" HorizontalAlignment="Left" Margin="0,265,0,0" VerticalAlignment="Top" Width="129" Height="54" Grid.Column="4" Click="UseItemOnCrew5_Click"/>
+                <Label Name="CrewHealth1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="-2,100,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                <Label Name="CrewVitality1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,100,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                <Label Name="CrewAttack1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,100,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                <Label Name="CrewHealth2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="128,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.ColumnSpan="2"/>
+                <Label Name="CrewVitality2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="48,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                <Label Name="CrewAttack2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="97,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                <Label x:Name="CrewHealth3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="128,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label x:Name="CrewVitality3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                <Label x:Name="CrewAttack3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                <Label x:Name="CrewHealth4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="128,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2" Grid.ColumnSpan="2"/>
+                <Label x:Name="CrewVitality4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="48,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3"/>
+                <Label x:Name="CrewAttack4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="97,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3"/>
+                <Label x:Name="CrewHealth5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="128,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3" Grid.ColumnSpan="2"/>
+                <Label x:Name="CrewVitality5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="4"/>
+                <Label x:Name="CrewAttack5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,100,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="4"/>
             </Grid>
         </Border>
         <Label Content="Выберете отряд, к которому хотите применить предмет" HorizontalAlignment="Left" Margin="173,8,0,0" VerticalAlignment="Top" Width="322"/>

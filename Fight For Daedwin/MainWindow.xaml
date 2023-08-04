@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fight_For_Daedwin"
         mc:Ignorable="d"
-        Title="Битва за Даэдвин" Height="727" Width="1316"
+        Title="Битва за Даэдвин" Height="727" Width="1300"
         ResizeMode="NoResize"
         >
     <Grid ShowGridLines="True">
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="289,10,0,0" Width="694" Height="315"  >
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="289,10,0,0" Width="677" Height="315"  >
             <Grid Name ="BattleBoard" HorizontalAlignment="Left" Height="288" Margin="20,8,-2,0" VerticalAlignment="Top" Width="672" ShowGridLines="True" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"></ColumnDefinition>
@@ -32,29 +32,63 @@
                 <TextBlock Name="CutentStage" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="Уровень:" VerticalAlignment="Top"/>
                 <TextBlock x:Name="CrewDamage" Text="0" Grid.Column="3" HorizontalAlignment="Center" Margin="172,16,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="20" />
                 <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="98,16,0,0" TextWrapping="Wrap" Text="Урон отряда:" VerticalAlignment="Top"/>
+                <Image x:Name="BorderMonsterImage1" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130"/>
+                <Image x:Name="BorderMonsterImage2" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+                <Image x:Name="BorderMonsterImage3" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
+                <Label x:Name="EnemyHealth1" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="-2,131,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                <Label x:Name="EnemyAttack1" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="98,131,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                <Label x:Name="EnemyHealth2" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="128,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.ColumnSpan="2"/>
+                <Label x:Name="EnemyAttack2" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="98,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                <Label x:Name="EnemyHealth3" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="128,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label x:Name="EnemyAttack3" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="98,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Height="310" Margin="289,370,0,0" Width="694">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Height="310" Margin="289,370,0,0" Width="677">
             <Grid HorizontalAlignment="Left" Height="306" Margin="1,1,1,1" VerticalAlignment="Top" Width="687">
-                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="286" Margin="10,10,0,0" VerticalAlignment="Top" Width="667">
-                    <Grid HorizontalAlignment="Left" Height="266" Margin="9,9,0,0" VerticalAlignment="Top" Width="647" ShowGridLines="True">
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="286" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
+                    <Grid HorizontalAlignment="Left" Height="266" Margin="9,9,0,0" VerticalAlignment="Top" Width="630" ShowGridLines="True">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="126*"></ColumnDefinition>
+                            <ColumnDefinition Width="126*"></ColumnDefinition>
+                            <ColumnDefinition Width="126*"></ColumnDefinition>
+                            <ColumnDefinition Width="126*"></ColumnDefinition>
+                            <ColumnDefinition Width="126*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <ListBox Name="PlayerCrew1" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Margin="0,127,0,0"/>
-                        <ListBox x:Name="PlayerCrew3" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Grid.Column="2" Margin="0,127,0,0"/>
-                        <ListBox x:Name="PlayerCrew2" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="130" Grid.Column="1" Margin="0,127,0,0"/>
-                        <ListBox x:Name="PlayerCrew5" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="129" Grid.Column="4" Margin="0,127,0,0"/>
-                        <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="130" Grid.Column="3" Margin="0,127,0,0"/>
-                        <Image x:Name="ImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129"/>
-                        <Image x:Name="ImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="1" Margin="1,0,0,0"/>
-                        <Image x:Name="ImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="2"/>
-                        <Image x:Name="ImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="3" Margin="1,0,0,0"/>
-                        <Image x:Name="ImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="129" Grid.Column="4"/>
+                        <ListBox Name="PlayerCrew1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="126" Margin="0,166,0,0"/>
+                        <ListBox x:Name="PlayerCrew3" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="126" Grid.Column="2" Margin="0,166,0,0"/>
+                        <ListBox x:Name="PlayerCrew2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="126" Grid.Column="1" Margin="0,166,0,0"/>
+                        <ListBox x:Name="PlayerCrew5" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="126" Grid.Column="4" Margin="0,166,0,0"/>
+                        <ListBox x:Name="PlayerCrew4" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="127" Grid.Column="3" Margin="0,166,0,0" Grid.ColumnSpan="2"/>
+                        <Image x:Name="ImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Margin="0,39,0,0"/>
+                        <Image x:Name="BorderImageCrew1" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Source="Images/Border.png" Margin="0,39,0,0"/>
+                        <Image x:Name="ImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="1" Margin="1,39,0,0" Grid.ColumnSpan="2"/>
+                        <Image x:Name="BorderImageCrew2" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="1" Source="Images/Border.png" Margin="0,39,0,0"/>
+                        <Image x:Name="ImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="127" Grid.Column="2" Margin="0,39,0,0" Grid.ColumnSpan="2"/>
+                        <Image x:Name="BorderImageCrew3" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="127" Grid.Column="2" Source="Images/Border.png" Margin="0,39,0,0" Grid.ColumnSpan="2"/>
+                        <Image x:Name="ImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="3" Margin="1,39,0,0" Grid.ColumnSpan="2"/>
+                        <Image x:Name="BorderImageCrew4" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="3" Source="Images/Border.png" Margin="0,39,0,0"/>
+                        <Image x:Name="ImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="4" Margin="0,39,0,0"/>
+                        <Image x:Name="BorderImageCrew5" HorizontalAlignment="Left" Height="127" VerticalAlignment="Top" Width="126" Grid.Column="4" Source="Images/Border.png" Margin="0,39,0,0"/>
+                        <Label Name="CrewHealth1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="-2,140,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                        <Label Name="CrewVitality1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,140,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                        <Label Name="CrewAttack1" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,140,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
+                        <Label Name="CrewHealth2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                        <Label Name="CrewVitality2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="48,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                        <Label Name="CrewAttack2" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
+                        <Label x:Name="CrewHealth3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                        <Label x:Name="CrewVitality3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                        <Label x:Name="CrewAttack3" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                        <Label x:Name="CrewHealth4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3"/>
+                        <Label x:Name="CrewVitality4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="48,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3"/>
+                        <Label x:Name="CrewAttack4" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="96,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="3"/>
+                        <Label x:Name="CrewHealth5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="4"/>
+                        <Label x:Name="CrewVitality5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="47,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="4"/>
+                        <Label x:Name="CrewAttack5" HorizontalContentAlignment="Center" Content="" HorizontalAlignment="Left" Margin="95,140,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="4"/>
+                        <Button x:Name="GoToFightSlot1" Content="Отправить в бой!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="39" Click="GoToFightSlot1_Click" Visibility="Hidden"/>
+                        <Button x:Name="GoToFightSlot2" Content="Отправить в бой!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="39" Click="GoToFightSlot2_Click" Visibility="Hidden" Grid.Column="1"/>
+                        <Button x:Name="GoToFightSlot3" Content="Отправить в бой!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="39" Click="GoToFightSlot3_Click" Visibility="Hidden" Grid.Column="2"/>
+                        <Button x:Name="GoToFightSlot4" Content="Отправить в бой!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="39" Click="GoToFightSlot4_Click" Visibility="Hidden" Grid.Column="3"/>
+                        <Button x:Name="GoToFightSlot5" Content="Отправить в бой!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="39" Click="GoToFightSlot5_Click" Visibility="Hidden" Grid.Column="4"/>
                     </Grid>
                 </Border>
             </Grid>
@@ -67,7 +101,7 @@
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Игровые события" VerticalAlignment="Top" Width="100" Height="20" Margin="85,0"/>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,10,0,0" Height="497" Width="304">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="971,10,0,0" Height="497" Width="304">
             <Grid HorizontalAlignment="Left" Height="495" Margin="0,0,0,-2" VerticalAlignment="Top" Width="300" ShowGridLines="True">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -99,19 +133,14 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </Border>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="988,512,0,0" Height="168" Width="304">
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="971,512,0,0" Height="168" Width="304">
             <Grid Margin="0,0,0,0">
                 <TextBlock Name="SpellTitle" TextWrapping="Wrap" Text="" Margin="83,0,83,145" HorizontalAlignment="Center" Width="134"/>
                 <Image Name="SpellImage" HorizontalAlignment="Left" Height="140" Margin="2,22,0,2"  Width="140"/>
                 <TextBlock Name="SpellText" HorizontalAlignment="Right" TextWrapping="Wrap" Text=""  Height="140" Width="150" Margin="0,22,3,2" />
             </Grid>
         </Border>
-        <Grid HorizontalAlignment="Left" Height="35" Margin="10,330,0,0" VerticalAlignment="Top" Width="973">
-            <Button Name="GoToFightSlot1" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="301,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot1_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot2" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="431,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot2_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot3" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="561,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot3_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot4" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="691,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot4_Click" Visibility="Hidden"/>
-            <Button Name="GoToFightSlot5" Content="Отправить в бой!" HorizontalAlignment="Left" Margin="821,0,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="GoToFightSlot5_Click" Visibility="Hidden"/>
+        <Grid HorizontalAlignment="Left" Height="35" Margin="10,330,0,0" VerticalAlignment="Top" Width="276">
             <Button Name="GoToFightAllSlot" Content="Отправить в бой все отряды!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="276" Height="35" Click="GoToFightAllSlot_Click" Visibility="Hidden"/>
         </Grid>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="10,10,0,0" Width="276" Height="315">

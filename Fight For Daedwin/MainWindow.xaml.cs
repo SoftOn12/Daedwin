@@ -27,7 +27,12 @@ namespace Fight_For_Daedwin
             InitializeComponent();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
 
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                             Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
@@ -77,7 +82,12 @@ namespace Fight_For_Daedwin
                 SpellBookClass.RefreshSpellBook();
 
                 UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                    CrewHealth1, CrewVitality1, CrewAttack1,
+                                    CrewHealth2, CrewVitality2, CrewAttack2,
+                                    CrewHealth3, CrewVitality3, CrewAttack3,
+                                    CrewHealth4, CrewVitality4, CrewAttack4,
+                                    CrewHealth5, CrewVitality5, CrewAttack5);
 
                 UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
@@ -103,7 +113,12 @@ namespace Fight_For_Daedwin
                 RewardWindow rewardWindow = new RewardWindow();
                 rewardWindow.ShowDialog();
                 UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                    CrewHealth1, CrewVitality1, CrewAttack1,
+                                    CrewHealth2, CrewVitality2, CrewAttack2,
+                                    CrewHealth3, CrewVitality3, CrewAttack3,
+                                    CrewHealth4, CrewVitality4, CrewAttack4,
+                                    CrewHealth5, CrewVitality5, CrewAttack5);
             }
 
             if (MonsterFightClass.Stage == 1)
@@ -147,8 +162,9 @@ namespace Fight_For_Daedwin
                 GoToFightSlot5.Visibility = Visibility.Visible;
 
             MonsterFightClass.RandomMonsterToFight();
-                UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1,
-                    Monster2, MonsterImage2, Monster3, MonsterImage3);
+            UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1,
+                    Monster2, MonsterImage2, Monster3, MonsterImage3, 
+                    EnemyHealth1, EnemyAttack1, EnemyHealth2, EnemyAttack2, EnemyHealth3, EnemyAttack3);
         }
 
         private void GoToFightSlot1_Click(object sender, RoutedEventArgs e)
@@ -230,10 +246,16 @@ namespace Fight_For_Daedwin
                 MonsterFightClass.FightAction();
 
                 UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                                      PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                    CrewHealth1, CrewVitality1, CrewAttack1,
+                                    CrewHealth2, CrewVitality2, CrewAttack2,
+                                    CrewHealth3, CrewVitality3, CrewAttack3,
+                                    CrewHealth4, CrewVitality4, CrewAttack4,
+                                    CrewHealth5, CrewVitality5, CrewAttack5);
 
-                UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1, Monster2, MonsterImage2,
-                                             Monster3, MonsterImage3);
+                UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1,
+                        Monster2, MonsterImage2, Monster3, MonsterImage3,
+                        EnemyHealth1, EnemyAttack1, EnemyHealth2, EnemyAttack2, EnemyHealth3, EnemyAttack3);
 
                 if (CrewClass.Slot1.Name == "Убит" || CrewClass.Slot1.Name == "Не выбрано")
                     GoToFightSlot1.Visibility = Visibility.Hidden;
@@ -280,7 +302,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-          PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }
@@ -302,7 +329,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-          PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }
@@ -324,7 +356,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }
@@ -346,7 +383,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-          PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }
@@ -368,7 +410,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-          PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }
@@ -390,7 +437,12 @@ namespace Fight_For_Daedwin
             InventoryClass.SortSlots();
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-          PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
                                 Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
         }

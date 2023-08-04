@@ -63,10 +63,15 @@ namespace Fight_For_Daedwin
                     ShopClass.FromShopToCrew(ShopClass.FirstSlot);
 
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -121,10 +126,21 @@ namespace Fight_For_Daedwin
                                                    ShopClass.FirstSpellSlot);
 
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
+
+                    ((MainWindow)Application.Current.MainWindow).GoToFightAllSlot.IsEnabled = true;
+
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
+                    ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
+                    Close();
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
@@ -150,12 +166,16 @@ namespace Fight_For_Daedwin
                     BuySecondSlot.IsEnabled = false;
                     BuySecondSlot.Content = "Куплено!";
                     ShopClass.FromShopToCrew(ShopClass.SecondSlot);
-
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -210,10 +230,21 @@ namespace Fight_For_Daedwin
                                                    ShopClass.SecondSpellSlot);
 
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
+
+                    ((MainWindow)Application.Current.MainWindow).GoToFightAllSlot.IsEnabled = true;
+
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
+                    ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
+                    Close();
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {
@@ -240,10 +271,15 @@ namespace Fight_For_Daedwin
                     ShopClass.FromShopToCrew(ShopClass.ThirdSlot);
 
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                                          ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
                 else if (CrewClass.CrewSize > 4)
                 {
@@ -298,10 +334,21 @@ namespace Fight_For_Daedwin
                                                    ShopClass.ThirdSpellSlot);
 
                     UIClass.UIRefreshCrew(((MainWindow)Application.Current.MainWindow).PlayerCrew1, ((MainWindow)Application.Current.MainWindow).ImageCrew1,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
-                      ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5);
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew2, ((MainWindow)Application.Current.MainWindow).ImageCrew2,
+                        ((MainWindow)Application.Current.MainWindow).PlayerCrew3, ((MainWindow)Application.Current.MainWindow).ImageCrew3,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew4, ((MainWindow)Application.Current.MainWindow).ImageCrew4,
+                    ((MainWindow)Application.Current.MainWindow).PlayerCrew5, ((MainWindow)Application.Current.MainWindow).ImageCrew5,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth1, ((MainWindow)Application.Current.MainWindow).CrewVitality1, ((MainWindow)Application.Current.MainWindow).CrewAttack1,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth2, ((MainWindow)Application.Current.MainWindow).CrewVitality2, ((MainWindow)Application.Current.MainWindow).CrewAttack2,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth3, ((MainWindow)Application.Current.MainWindow).CrewVitality3, ((MainWindow)Application.Current.MainWindow).CrewAttack3,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
+                    ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
+
+                    ((MainWindow)Application.Current.MainWindow).GoToFightAllSlot.IsEnabled = true;
+
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия сражений началась");
+                    ((MainWindow)Application.Current.MainWindow).BattleBoard.Visibility = Visibility.Visible;
+                    Close();
                 }
                 else if (SpellBookClass.SpellBookSize > 0)
                 {

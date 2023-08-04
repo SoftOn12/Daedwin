@@ -148,5 +148,11 @@
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Border.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BorderEnemy.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,12 @@ namespace Fight_For_Daedwin
         {
             InitializeComponent();
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
-                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5);
+                                PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                                CrewHealth1, CrewVitality1, CrewAttack1,
+                                CrewHealth2, CrewVitality2, CrewAttack2,
+                                CrewHealth3, CrewVitality3, CrewAttack3,
+                                CrewHealth4, CrewVitality4, CrewAttack4,
+                                CrewHealth5, CrewVitality5, CrewAttack5);
         }
 
         private void UseItemOnCrew1_Click(object sender, RoutedEventArgs e)

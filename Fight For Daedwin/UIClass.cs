@@ -53,52 +53,58 @@ namespace Fight_For_Daedwin
             SpellImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Spell Arts\" + spell.Image));
         }
 
-        public static void UIAddMonsterToSlotInFight(ListBox Slot, Image CardImage, Monster card)
+        public static void UIAddMonsterToSlotInFight(ListBox Slot, Image CardImage, Monster card, Label HealthLabel, Label AttackLabel)
         {
             List<string> AttributeList = new List<string>
             {
                 card.Name,
-                "Раса: " +card.Race,
-                "Здоровье: " +card.Health.ToString(),
-                "Атака: " +card.Attack.ToString()
+                "Раса: " +card.Race
             };
 
             Slot.ItemsSource = AttributeList;
             CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Monster Arts\" + card.Image));
+            HealthLabel.Content = card.Health;
+            AttackLabel.Content = card.Attack;
         }
 
-        public static void UIAddToSlotInCrew(ListBox Slot, Image CardImage, Card Card)
+        public static void UIAddToSlotInCrew(ListBox Slot, Image CardImage, Card Card,
+                                             Label HealthLabel, Label VitalityLabel, Label AttackLabel)
         {
             List<string> AttributeList = new List<string>
             {
                 Card.Name,
                 "Раса: " + Card.Race,
-                "Тип: " + Card.Type,
-                "Здоровье: " + Card.Health.ToString(),
-                "Атака: " + Card.Attack.ToString(),
-                "Выносливость: " + Card.Vitality.ToString(),
+                "Тип: " + Card.Type
             };
 
             Slot.ItemsSource = AttributeList;
             CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Card Arts\" + Card.Image));
+            HealthLabel.Content = Card.Health;
+            VitalityLabel.Content = Card.Vitality;
+            AttackLabel.Content = Card.Attack;
         }
 
         public static void UIRefreshCrew(ListBox Slot1, Image CardImage1, 
                                          ListBox Slot2, Image CardImage2, 
                                          ListBox Slot3, Image CardImage3,
                                          ListBox Slot4, Image CardImage4,
-                                         ListBox Slot5, Image CardImage5)
+                                         ListBox Slot5, Image CardImage5,
+                                         Label HealthLabel1, Label VitalityLabel1, Label AttackLabel1,
+                                         Label HealthLabel2, Label VitalityLabel2, Label AttackLabel2,
+                                         Label HealthLabel3, Label VitalityLabel3, Label AttackLabel3,
+                                         Label HealthLabel4, Label VitalityLabel4, Label AttackLabel4,
+                                         Label HealthLabel5, Label VitalityLabel5, Label AttackLabel5)
         {
 
-            UIAddToSlotInCrew(Slot1, CardImage1, CrewClass.Slot1);
+            UIAddToSlotInCrew(Slot1, CardImage1, CrewClass.Slot1, HealthLabel1, VitalityLabel1, AttackLabel1);
 
-            UIAddToSlotInCrew(Slot2, CardImage2, CrewClass.Slot2);
+            UIAddToSlotInCrew(Slot2, CardImage2, CrewClass.Slot2, HealthLabel2, VitalityLabel2, AttackLabel2);
 
-            UIAddToSlotInCrew(Slot3, CardImage3, CrewClass.Slot3);
+            UIAddToSlotInCrew(Slot3, CardImage3, CrewClass.Slot3, HealthLabel3, VitalityLabel3, AttackLabel3);
 
-            UIAddToSlotInCrew(Slot4, CardImage4, CrewClass.Slot4);
+            UIAddToSlotInCrew(Slot4, CardImage4, CrewClass.Slot4, HealthLabel4, VitalityLabel4, AttackLabel4);
 
-            UIAddToSlotInCrew(Slot5, CardImage5, CrewClass.Slot5);
+            UIAddToSlotInCrew(Slot5, CardImage5, CrewClass.Slot5, HealthLabel5, VitalityLabel5, AttackLabel5);
         }
 
         public static void UIAddToSlotInInventory(ListBox Slot, Image ItemImage, Item item)
@@ -148,11 +154,14 @@ namespace Fight_For_Daedwin
 
         public static void UIRefreshMonsterCrew(ListBox Slot1, Image CardImage1,
                                  ListBox Slot2, Image CardImage2,
-                                 ListBox Slot3, Image CardImage3)
+                                 ListBox Slot3, Image CardImage3,
+                                 Label HealthLabel1, Label AttackLabel1,
+                                 Label HealthLabel2, Label AttackLabel2,
+                                 Label HealthLabel3, Label AttackLabel3)
         {
-            UIAddMonsterToSlotInFight(Slot1, CardImage1, EnemyCrewClass.Slot1);
-            UIAddMonsterToSlotInFight(Slot2, CardImage2, EnemyCrewClass.Slot2);
-            UIAddMonsterToSlotInFight(Slot3, CardImage3, EnemyCrewClass.Slot3);
+            UIAddMonsterToSlotInFight(Slot1, CardImage1, EnemyCrewClass.Slot1, HealthLabel1, AttackLabel1);
+            UIAddMonsterToSlotInFight(Slot2, CardImage2, EnemyCrewClass.Slot2, HealthLabel2, AttackLabel2);
+            UIAddMonsterToSlotInFight(Slot3, CardImage3, EnemyCrewClass.Slot3, HealthLabel3, AttackLabel3);
 
         }
 
