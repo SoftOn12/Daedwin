@@ -18,6 +18,10 @@ namespace Fight_For_Daedwin
             EndStage
         }
 
+        public static int MonsterProgressionIncValue = 1;
+        public const int MonsterProgressionScaleHPValue = 5;
+        public const int MonsterProgressionScaleAttackValue = 2;
+
         public static Stage CurentStage;
 
         public const int VitalityBuffOnStage = 2;

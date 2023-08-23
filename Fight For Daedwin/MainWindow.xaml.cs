@@ -43,6 +43,7 @@ namespace Fight_For_Daedwin
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             GameState.CurentStage = GameState.Stage.GameStart;
+            //GameState.MonsterProgressionIncValue = 1;
 
             ShopWindow shopWindow = new ShopWindow();
             shopWindow.ShowDialog();

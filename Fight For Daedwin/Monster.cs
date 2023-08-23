@@ -110,8 +110,10 @@ namespace Fight_For_Daedwin
 
         public void StageProgression()
         {
-            this.Health += (int)Math.Round((Math.Pow((MonsterFightClass.Stage), 2) / 20));
-            this.Attack += (int)Math.Round(Math.Pow((MonsterFightClass.Stage), 2) / 100);
+            GameState.MonsterProgressionIncValue = MonsterFightClass.Stage / 5;
+
+            this.Health += GameState.MonsterProgressionIncValue * GameState.MonsterProgressionScaleHPValue;
+            this.Attack += GameState.MonsterProgressionIncValue * GameState.MonsterProgressionScaleAttackValue;
         }
     }
 }
