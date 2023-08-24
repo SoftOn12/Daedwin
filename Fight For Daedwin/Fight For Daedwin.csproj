@@ -58,8 +58,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BattleEnviroment.cs" />
     <Compile Include="CrewClass.cs" />
     <Compile Include="EnemyCrewClass.cs" />
+    <Compile Include="Enviroment.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="InventoryClass.cs" />
     <Compile Include="Item.cs" />

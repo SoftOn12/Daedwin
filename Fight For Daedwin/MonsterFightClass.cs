@@ -16,6 +16,7 @@ namespace Fight_For_Daedwin
         static public bool DeadMonsterCrew = false;
 
         static public List<Monster> MonsterList; //Список ВСЕХ монстров (Для рандома)
+        static public List<Enviroment> EnviromentList; //Список ВСЕХ монстров (Для рандома)
 
         public static List<Monster> XMLParser(string PathToXML)
         {
@@ -73,6 +74,87 @@ namespace Fight_For_Daedwin
             }
             return AllertList;
         }
+        public static List<Enviroment> XMLEnviromentParser(string PathToXML)
+        {
+            List<Enviroment> AllertList = new List<Enviroment>();
+            XmlDocument xDoc = new XmlDocument();
+
+            if (!File.Exists(PathToXML))
+            {
+                var xmlWriter = new XmlTextWriter(PathToXML, null);
+                xmlWriter.WriteStartDocument();                  // <?xml version="1.0"?>
+                xmlWriter.WriteStartElement("Data");             // <Data> 
+                xmlWriter.WriteEndElement();                     // </Data>
+                xmlWriter.Close();
+
+                Monster newCard = new Monster();
+                newCard.AddUnitToXML(PathToXML);
+            }
+
+            xDoc.Load(PathToXML);
+            // получим корневой элемент
+            XmlElement xRoot = xDoc.DocumentElement;
+            if (xRoot != null)
+            {
+                // обход всех узлов в корневом элементе
+                foreach (XmlElement xNode in xRoot)
+                {
+                    // получаем атрибут name
+                    Enviroment AllertObj = new Enviroment();
+                    XmlNode attr = xNode.Attributes.GetNamedItem("Name");
+                    AllertObj.Name = attr.Value;
+
+                    // обходим все дочерние узлы элемента user
+                    foreach (XmlNode childnode in xNode.ChildNodes)
+                    {
+                        // если узел - company
+                        if (childnode.Name == "RaceAllyCondition")
+                        {
+                            AllertObj.RaceAllyCondition = childnode.InnerText;
+                        }
+                        if (childnode.Name == "TypeAllyCondition")
+                        {
+                            AllertObj.TypeAllyCondition = childnode.InnerText;
+                        }
+                        if (childnode.Name == "RaceEnemyCondition")
+                        {
+                            AllertObj.RaceEnemyCondition = childnode.InnerText;
+                        }
+                        if (childnode.Name == "HealthAllyBuff")
+                        {
+                            AllertObj.HealthAllyBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "AttackAllyBuff")
+                        {
+                            AllertObj.AttackAllyBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "VitalityAllyBuff")
+                        {
+                            AllertObj.VitalityAllyBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "HealthEnemyBuff")
+                        {
+                            AllertObj.HealthEnemyBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "AttackEnemyBuff")
+                        {
+                            AllertObj.AttackEnemyBuff = Int32.Parse(childnode.InnerText);
+                        }
+                        if (childnode.Name == "Description")
+                        {
+                            AllertObj.Description = childnode.InnerText;
+                        }
+                        if (childnode.Name == "Image")
+                        {
+                            AllertObj.Image = childnode.InnerText;
+                        }
+                    }
+                    AllertList.Add(AllertObj);
+                }
+            }
+            return AllertList;
+        }
+
 
         public static void RandomMonsterToFight()
         {//Можно сделать логику появления монстров интереснее, пока идей нет
@@ -105,6 +187,30 @@ namespace Fight_For_Daedwin
                 EnemyCrewClass.Slot3.Attack = MonsterList[Seed].Attack;
                 EnemyCrewClass.Slot3.Image = MonsterList[Seed].Image;
                 EnemyCrewClass.Slot3.StageProgression();
+            }
+            else
+            {
+                Console.WriteLine("Список монстров пуст!");
+                return;
+            }
+
+            BattleEnviroment.CurrentEnviroment.EnviromentUseEnemy();
+
+        }
+
+        public static void ChangeEnviroment()
+        {
+            if (EnviromentList.Count != 0)
+            {
+                BattleEnviroment.CurrentEnviroment.EnviromentUnuseAlly();
+
+                Random Rnd = new Random();
+                int Seed = Rnd.Next(EnviromentList.Count);
+
+                BattleEnviroment.CurrentEnviroment = EnviromentList[Seed];
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog,
+                                        $"Место сражения: {BattleEnviroment.CurrentEnviroment.Name}");
+                BattleEnviroment.CurrentEnviroment.EnviromentUseAlly();
             }
             else
             {

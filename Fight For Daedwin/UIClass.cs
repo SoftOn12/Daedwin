@@ -165,6 +165,24 @@ namespace Fight_For_Daedwin
 
         }
 
+        public static void UIAddEnviromentToBattelEnviroment(TextBlock Enviroment, Image EnviromentImage, Enviroment enviroment)
+        {
+            //spellName.Text = spell.Name;
+            Enviroment.Text = enviroment.Name + "\r\n" + enviroment.Description;
+            //Slot.ItemsSource = AttributeList;
+            EnviromentImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Enviroment Arts\" + enviroment.Image));
+        }
+
+        public static void UIUpdateSumCrewAttack(TextBlock SumAttackText)
+        {
+            int SumAttack = 0;
+            foreach (Card card in CrewClass.CardInActionList)
+            {
+                SumAttack += card.Attack;
+            }
+            SumAttackText.Text = SumAttack.ToString();
+        }
+
         public static void AddTextToLog(TextBlock GameLogBox, string InputText)
         {
             //DateTime now = DateTime.Now;

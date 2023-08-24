@@ -81,6 +81,7 @@ namespace Fight_For_Daedwin
                 CrewClass.RefreshCrew();
                 InventoryClass.RefreshInventory();
                 SpellBookClass.RefreshSpellBook();
+                BattleEnviroment.RefreshBattleEnviroment();
 
                 UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                     PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
@@ -111,8 +112,11 @@ namespace Fight_For_Daedwin
 
             if (MonsterFightClass.Stage % 5 == 0)
             {
+                MonsterFightClass.ChangeEnviroment();
+
                 RewardWindow rewardWindow = new RewardWindow();
                 rewardWindow.ShowDialog();
+
                 UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                     PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
                                     CrewHealth1, CrewVitality1, CrewAttack1,
@@ -140,87 +144,188 @@ namespace Fight_For_Daedwin
                 string FileName = "MonsterDeck.xml";
                 string Path = GameState.ResourcePath + FileName;
                 MonsterFightClass.MonsterList = MonsterFightClass.XMLParser(Path);
+
+                FileName = "EnviromentDeck.xml";
+                Path = GameState.ResourcePath + FileName;
+                MonsterFightClass.EnviromentList = MonsterFightClass.XMLEnviromentParser(Path);
+                MonsterFightClass.ChangeEnviroment();
+
+                UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
+                    PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
+                    CrewHealth1, CrewVitality1, CrewAttack1,
+                    CrewHealth2, CrewVitality2, CrewAttack2,
+                    CrewHealth3, CrewVitality3, CrewAttack3,
+                    CrewHealth4, CrewVitality4, CrewAttack4,
+                    CrewHealth5, CrewVitality5, CrewAttack5);
             }
+
+
             if (CrewClass.Slot1.Vitality <= 0)
                 GoToFightSlot1.Visibility = Visibility.Hidden;
             else
+            {
+                GameState.GoToFightSlot1Clicked = false;
+                GoToFightSlot1.Content = "Отправить в бой!";
                 GoToFightSlot1.Visibility = Visibility.Visible;
+            }
             if (CrewClass.Slot2.Vitality <= 0)
                 GoToFightSlot2.Visibility = Visibility.Hidden;
             else
+            {
+                GameState.GoToFightSlot2Clicked = false;
+                GoToFightSlot2.Content = "Отправить в бой!";
                 GoToFightSlot2.Visibility = Visibility.Visible;
+            }
             if (CrewClass.Slot3.Vitality <= 0)
                 GoToFightSlot3.Visibility = Visibility.Hidden;
             else
+            {
+                GameState.GoToFightSlot3Clicked = false;
+                GoToFightSlot3.Content = "Отправить в бой!";
                 GoToFightSlot3.Visibility = Visibility.Visible;
+            }
             if (CrewClass.Slot4.Vitality <= 0)
                 GoToFightSlot4.Visibility = Visibility.Hidden;
             else
+            {
+                GameState.GoToFightSlot4Clicked = false;
+                GoToFightSlot4.Content = "Отправить в бой!";
                 GoToFightSlot4.Visibility = Visibility.Visible;
+            }
             if (CrewClass.Slot5.Vitality <= 0)
                 GoToFightSlot5.Visibility = Visibility.Hidden;
             else
+            {
+                GameState.GoToFightSlot5Clicked = false;
+                GoToFightSlot5.Content = "Отправить в бой!";
                 GoToFightSlot5.Visibility = Visibility.Visible;
+            }
 
             MonsterFightClass.RandomMonsterToFight();
             UIClass.UIRefreshMonsterCrew(Monster1, MonsterImage1,
                     Monster2, MonsterImage2, Monster3, MonsterImage3, 
                     EnemyHealth1, EnemyAttack1, EnemyHealth2, EnemyAttack2, EnemyHealth3, EnemyAttack3);
+
+            UIClass.UIAddEnviromentToBattelEnviroment(EnviromentText, EnviromentImage, BattleEnviroment.CurrentEnviroment);
         }
 
         private void GoToFightSlot1_Click(object sender, RoutedEventArgs e)
         {
-            CrewClass.CardInActionList.Add(CrewClass.Slot1);
-            UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота готов к бою");
-            GoToFightSlot1.IsEnabled = false;
-            GoToFightAllSlot.IsEnabled = false;
-            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot1.Attack).ToString();
+            if (!GameState.GoToFightSlot1Clicked)
+            {
+                CrewClass.CardInActionList.Add(CrewClass.Slot1);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота готов к бою");
+                GoToFightSlot1.Content = "Вернуть отряд!";
+                GoToFightAllSlot.IsEnabled = false;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot1Clicked = true;
+            }
+            else
+            {
+                CrewClass.CardInActionList.Remove(CrewClass.Slot1);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота возврашен в лагерь");
+                GoToFightSlot1.Content = "Отправить в бой!";
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot1Clicked = false;
+            }
         }
 
         private void GoToFightSlot2_Click(object sender, RoutedEventArgs e)
         {
-            CrewClass.CardInActionList.Add(CrewClass.Slot2);
-            UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота готов к бою");
-            GoToFightSlot2.IsEnabled = false;
-            GoToFightAllSlot.IsEnabled = false;
-            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot2.Attack).ToString();
+            if (!GameState.GoToFightSlot2Clicked)
+            {
+                CrewClass.CardInActionList.Add(CrewClass.Slot2);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота готов к бою");
+                GoToFightSlot2.Content = "Вернуть отряд!";
+                GoToFightAllSlot.IsEnabled = false;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot2Clicked = true;
+            }
+            else
+            {
+                CrewClass.CardInActionList.Remove(CrewClass.Slot2);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота возврашен");
+                GoToFightSlot2.Content = "Отправить в бой!";
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot2Clicked = false;
+            }
         }
 
         private void GoToFightSlot3_Click(object sender, RoutedEventArgs e)
         {
-            CrewClass.CardInActionList.Add(CrewClass.Slot3);
-            UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота готов к бою");
-            GoToFightSlot3.IsEnabled = false;
-            GoToFightAllSlot.IsEnabled = false;
-            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot3.Attack).ToString();
+            if (!GameState.GoToFightSlot3Clicked)
+            {
+                CrewClass.CardInActionList.Add(CrewClass.Slot3);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота готов к бою");
+                GoToFightSlot3.Content = "Вернуть отряд!";
+                GoToFightAllSlot.IsEnabled = false;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot3Clicked = true;
+            }
+            else
+            {
+                CrewClass.CardInActionList.Remove(CrewClass.Slot3);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота возврашен");
+                GoToFightSlot3.Content = "Отправить в бой!";
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot3Clicked = false;
+            }
         }
 
         private void GoToFightSlot4_Click(object sender, RoutedEventArgs e)
         {
-            CrewClass.CardInActionList.Add(CrewClass.Slot4);
-            UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота готов к бою");
-            GoToFightSlot4.IsEnabled = false;
-            GoToFightAllSlot.IsEnabled = false;
-            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot4.Attack).ToString();
+            if (!GameState.GoToFightSlot4Clicked)
+            {
+                CrewClass.CardInActionList.Add(CrewClass.Slot4);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота готов к бою");
+                GoToFightSlot4.Content = "Вернуть отряд!";
+                GoToFightAllSlot.IsEnabled = false;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot4Clicked = true;
+            }
+            else
+            {
+                CrewClass.CardInActionList.Remove(CrewClass.Slot4);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота возврашен");
+                GoToFightSlot4.Content = "Отправить в бой!";
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot4Clicked = false;
+            }
         }
 
         private void GoToFightSlot5_Click(object sender, RoutedEventArgs e)
         {
-            CrewClass.CardInActionList.Add(CrewClass.Slot5);
-            UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота готов к бою");
-            GoToFightSlot5.IsEnabled = false;
-            GoToFightAllSlot.IsEnabled = false;
-            CrewDamage.Text = (Int32.Parse(CrewDamage.Text) + CrewClass.Slot5.Attack).ToString();
+            if (!GameState.GoToFightSlot5Clicked)
+            {
+                CrewClass.CardInActionList.Add(CrewClass.Slot5);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота готов к бою");
+                GoToFightSlot5.Content = "Вернуть отряд!";
+                GoToFightAllSlot.IsEnabled = false;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot5Clicked = true;
+            }
+            else
+            {
+                CrewClass.CardInActionList.Remove(CrewClass.Slot5);
+                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота возврашен");
+                GoToFightSlot5.Content = "Отправить в бой!";
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+                GameState.GoToFightSlot5Clicked = false;
+            }
         }
 
         private void GoToFightAllSlot_Click(object sender, RoutedEventArgs e)
         {
+            int SumAttack = 0;
             foreach (Card card in CrewClass.CrewList)
             {
-                if(card.Name != "Убит" && card.Name != "Не выбрано" && card.Vitality > 0)
+                if (card.Name != "Убит" && card.Name != "Не выбрано" && card.Vitality > 0)
+                {
                     CrewClass.CardInActionList.Add(card);
-
+                    SumAttack += card.Attack;
+                }
             }
+            CrewDamage.Text = SumAttack.ToString();
             UIClass.AddTextToLog(GameLog, $"Все отряды готовы к бою");
             GoToFightSlot1.IsEnabled = false;
             GoToFightSlot2.IsEnabled = false;
@@ -302,6 +407,42 @@ namespace Fight_For_Daedwin
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
 
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
                                 CrewHealth1, CrewVitality1, CrewAttack1,
@@ -328,6 +469,42 @@ namespace Fight_For_Daedwin
             InventoryClass.Slot2 = new Item();
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
+
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
@@ -356,6 +533,42 @@ namespace Fight_For_Daedwin
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
 
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
                                 CrewHealth1, CrewVitality1, CrewAttack1,
@@ -382,6 +595,42 @@ namespace Fight_For_Daedwin
             InventoryClass.Slot4 = new Item();
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
+
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
@@ -410,6 +659,42 @@ namespace Fight_For_Daedwin
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
 
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,
                                 CrewHealth1, CrewVitality1, CrewAttack1,
@@ -436,6 +721,42 @@ namespace Fight_For_Daedwin
             InventoryClass.Slot6 = new Item();
             InventoryClass.ChosenItem = null;
             InventoryClass.SortSlots();
+
+            if (CrewClass.Slot1.Vitality <= 0)
+                GoToFightSlot1.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot1.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot2.Vitality <= 0)
+                GoToFightSlot2.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot2.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot3.Vitality <= 0)
+                GoToFightSlot3.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot3.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot4.Vitality <= 0)
+                GoToFightSlot4.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot4.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
+            if (CrewClass.Slot5.Vitality <= 0)
+                GoToFightSlot5.Visibility = Visibility.Hidden;
+            else
+            {
+                GoToFightSlot5.Visibility = Visibility.Visible;
+                UIClass.UIUpdateSumCrewAttack(CrewDamage);
+            }
 
             UIClass.UIRefreshCrew(PlayerCrew1, ImageCrew1, PlayerCrew2, ImageCrew2, PlayerCrew3, ImageCrew3,
                                 PlayerCrew4, ImageCrew4, PlayerCrew5, ImageCrew5,

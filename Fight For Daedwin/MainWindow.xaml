@@ -10,28 +10,28 @@
         >
     <Grid ShowGridLines="True">
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Margin="289,10,0,0" Width="677" Height="315"  >
-            <Grid Name ="BattleBoard" HorizontalAlignment="Left" Height="288" Margin="20,8,-2,0" VerticalAlignment="Top" Width="672" ShowGridLines="True" Visibility="Hidden">
+            <Grid Name ="BattleBoard" HorizontalAlignment="Left" Height="300" Margin="8,8,-7,0" VerticalAlignment="Top" Width="672" ShowGridLines="True" Visibility="Hidden">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="130"></ColumnDefinition>
                     <ColumnDefinition Width="200*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <ListBox Name="BattleInfo" Grid.Column="3" HorizontalAlignment="Left" Height="211" Margin="10,37,0,0" VerticalAlignment="Top" Width="262"/>
-                <ListBox Name="Monster1" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130"/>
-                <ListBox Name="Monster2" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
-                <ListBox Name="Monster3" HorizontalAlignment="Left" Height="130" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
+                <ListBox Name="BattleInfo" Grid.Column="3" HorizontalAlignment="Left" Height="107" Margin="5,158,0,0" VerticalAlignment="Top" Width="266"/>
+                <ListBox Name="Monster1" HorizontalAlignment="Left" Height="142" Margin="0,158,0,0" VerticalAlignment="Top" Width="130"/>
+                <ListBox Name="Monster2" HorizontalAlignment="Left" Height="142" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+                <ListBox Name="Monster3" HorizontalAlignment="Left" Height="142" Margin="0,158,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
                 <Image Name="MonsterImage1" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130"/>
                 <Image Name="MonsterImage2" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
                 <Image Name="MonsterImage3" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="62"/>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="63" Grid.Column="1"/>
                 <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Противник" VerticalAlignment="Top" Height="28" Width="63" Grid.Column="2"/>
-                <Button Name="FightButton" Content="Бой" Grid.Column="3" HorizontalAlignment="Left" Margin="141,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="FightButton_Click"/>
-                <Button Name="NextFightButton" Content="Далее" Grid.Column="3" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" Width="131" Height="40" Click="NextFightButton_Click"/>
-                <TextBlock Name="CutentStage" Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,0" TextWrapping="Wrap" Text="Уровень:" VerticalAlignment="Top"/>
-                <TextBlock x:Name="CrewDamage" Text="0" Grid.Column="3" HorizontalAlignment="Center" Margin="172,16,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="20" />
-                <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="98,16,0,0" TextWrapping="Wrap" Text="Урон отряда:" VerticalAlignment="Top"/>
+                <Button Name="FightButton" Content="Бой" Grid.Column="3" HorizontalAlignment="Left" Margin="138,265,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="FightButton_Click"/>
+                <Button Name="NextFightButton" Content="Далее" Grid.Column="3" HorizontalAlignment="Left" Margin="5,265,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="NextFightButton_Click"/>
+                <TextBlock Name="CutentStage" Grid.Column="3" HorizontalAlignment="Center" Margin="11,3,171,0" TextWrapping="Wrap" Text="Уровень:" VerticalAlignment="Top" Width="100"/>
+                <TextBlock x:Name="CrewDamage" Text="0" Grid.Column="3" HorizontalAlignment="Center" Margin="234,3,11,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37" />
+                <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="158,3,0,0" TextWrapping="Wrap" Text="Урон отряда:" VerticalAlignment="Top"/>
                 <Image x:Name="BorderMonsterImage1" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130"/>
                 <Image x:Name="BorderMonsterImage2" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
                 <Image x:Name="BorderMonsterImage3" Source="Images/BorderEnemy.png" HorizontalAlignment="Left" Height="130" Margin="0,28,0,0" VerticalAlignment="Top" Width="130" Grid.Column="2"/>
@@ -41,6 +41,8 @@
                 <Label x:Name="EnemyAttack2" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="98,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1"/>
                 <Label x:Name="EnemyHealth3" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="128,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="1" Grid.ColumnSpan="2"/>
                 <Label x:Name="EnemyAttack3" HorizontalContentAlignment="Center" Content="0" HorizontalAlignment="Left" Margin="98,131,0,0" VerticalAlignment="Top" Width="30" Height="24" Grid.Column="2"/>
+                <Image x:Name="EnviromentImage" HorizontalAlignment="Left" Margin="5,28,0,142"  Width="130" Grid.Column="3"/>
+                <TextBlock x:Name="EnviromentText" HorizontalAlignment="Right" TextWrapping="Wrap" Text="" Width="130" Margin="0,28,11,142" Grid.Column="3" />
             </Grid>
         </Border>
         <Border HorizontalAlignment="Left" VerticalAlignment="Top"  BorderBrush="Black" BorderThickness="2" Height="310" Margin="289,370,0,0" Width="677">

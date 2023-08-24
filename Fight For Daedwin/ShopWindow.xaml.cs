@@ -73,14 +73,18 @@ namespace Fight_For_Daedwin
                     ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
                     ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
-                else if (CrewClass.CrewSize > 4)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
-                    //BuyFirstSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
@@ -100,14 +104,18 @@ namespace Fight_For_Daedwin
                                           ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
                                           ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
-                else if (InventoryClass.InventorySize > 5)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
-                    //BuyThirdSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
@@ -177,14 +185,18 @@ namespace Fight_For_Daedwin
                     ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
                     ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
-                else if (CrewClass.CrewSize > 4)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
-                    //BuySecondSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
@@ -204,14 +216,18 @@ namespace Fight_For_Daedwin
                                           ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
                                           ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
-                else if (InventoryClass.InventorySize > 5)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
-                    //BuyThirdSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
@@ -281,14 +297,18 @@ namespace Fight_For_Daedwin
                     ((MainWindow)Application.Current.MainWindow).CrewHealth4, ((MainWindow)Application.Current.MainWindow).CrewVitality4, ((MainWindow)Application.Current.MainWindow).CrewAttack4,
                     ((MainWindow)Application.Current.MainWindow).CrewHealth5, ((MainWindow)Application.Current.MainWindow).CrewVitality5, ((MainWindow)Application.Current.MainWindow).CrewAttack5);
                 }
-                else if (CrewClass.CrewSize > 4)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
-                    //BuyThirdSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (CrewClass.CrewSize > 4)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Отряд укомплектован");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.ItemShopStage)
@@ -308,14 +328,18 @@ namespace Fight_For_Daedwin
                                           ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
                                           ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
                 }
-                else if (InventoryClass.InventorySize > 5)
-                {
-                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
-                    //BuyThirdSlot.IsEnabled = false;
-                }
                 else
                 {
                     UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Нехватает валюты!");
+                }
+
+                if (InventoryClass.InventorySize > 5)
+                {
+                    UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Места в инвентаре нет");
+
+                    BuyFirstSlot.IsEnabled = false;
+                    BuySecondSlot.IsEnabled = false;
+                    BuyThirdSlot.IsEnabled = false;
                 }
             }
             else if (GameState.CurentStage == GameState.Stage.SpellChoiseStage)
