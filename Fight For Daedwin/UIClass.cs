@@ -190,7 +190,7 @@ namespace Fight_For_Daedwin
             string FileName = "GameLog.txt";
             string Path = AppContext.BaseDirectory + @"\" + FileName;
             //string Text = now.ToString("dd.MM - hh:mm:ss") + ": " + InputText + "\r\n"; // строка для записи
-            string Text = InputText + "\r\n"; // строка для записи
+            string Text = InputText + "\r\n" ; // строка для записи
 
             if (!File.Exists(Path))
             {
@@ -202,24 +202,18 @@ namespace Fight_For_Daedwin
             //Чтение файла
             string[] CurentGameLog = File.ReadAllLines(Path);
             List<string> CurentGameLogList = new List<string>(CurentGameLog);
+            //CurentGameLogList.Reverse();
+            CurentGameLogList.Insert(0, InputText);
 
             if (CurentGameLogList.Count() > 50)
             {
                 //Удаляем первую строку и возвращаем в файл
-                CurentGameLogList.RemoveAt(0);
-                File.WriteAllLines(Path, CurentGameLogList.ToArray());
+                CurentGameLogList.RemoveAt(CurentGameLogList.Count()-1);
             }
 
-            // Запись в файл
-            using (FileStream fstream = new FileStream(Path, FileMode.OpenOrCreate))
-            {
-                // преобразуем строку в байты
-                byte[] buffer = Encoding.UTF8.GetBytes(Text);
-                // запись массива байтов в файл
-                fstream.Seek(0, SeekOrigin.End);
-                fstream.Write(buffer, 0, buffer.Length);
+            //Запись в файл
+            File.WriteAllLines(Path, CurentGameLogList.ToArray());
 
-            }
             //Чтение файла (После перезаписи в локальный файл)
             CurentGameLog = File.ReadAllLines(Path);
             string GameLogBoxString = string.Join("\r\n", CurentGameLog);

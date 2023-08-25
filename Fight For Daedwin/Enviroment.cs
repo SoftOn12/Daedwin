@@ -174,6 +174,13 @@ namespace Fight_For_Daedwin
                     card.Health -= this.HealthAllyBuff;
                     card.Attack -= this.AttackAllyBuff;
                     card.Vitality -= this.VitalityAllyBuff;
+
+                    if (card.Health <= 0)
+                        card.Health = 1;
+                    if (card.Attack <= 0)
+                        card.Attack = 1;
+                    if (card.Vitality <= 0)
+                        card.Vitality = 1;
                 }
             }
         }
@@ -185,6 +192,11 @@ namespace Fight_For_Daedwin
                 {
                     card.Health -= this.HealthEnemyBuff;
                     card.Attack -= this.AttackEnemyBuff;
+
+                    if (card.Health <= 0)
+                        card.Health = 1;
+                    if (card.Attack <= 0)
+                        card.Attack = 1;
                 }
             }
         }
