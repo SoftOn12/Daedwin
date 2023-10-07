@@ -32,6 +32,8 @@ namespace Fight_For_Daedwin
 
         public const int VitalityBuffOnStage = 2;
 
+        public const int ExpBuffOnStage = 10;
+
         static public int Money = 50;
 
         public const int MoneyReward = 5;

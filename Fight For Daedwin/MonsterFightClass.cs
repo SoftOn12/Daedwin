@@ -278,6 +278,8 @@ namespace Fight_For_Daedwin
             for (int i = 0; i < CrewClass.CardInActionList.Count; i++)
             {
                 CrewClass.CardInActionList[i].Vitality--;
+                CrewClass.CardInActionList[i].Exp+= GameState.ExpBuffOnStage;
+                CrewClass.CardInActionList[i].lvlUp();
             }
 
             if(CrewClass.Slot1.Vitality + CrewClass.Slot2.Vitality + CrewClass.Slot3.Vitality + CrewClass.Slot4.Vitality + CrewClass.Slot5.Vitality == 0)

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
 using System.Windows.Controls;
+using System.Windows;
 
 namespace Fight_For_Daedwin
 {
     class Card : IEquatable<Card>
     {
+        public int ID;
+
         public string Name;
         public string Race;
         public string Type;
@@ -20,8 +23,8 @@ namespace Fight_For_Daedwin
 
         public string Image;
 
-        public int Exp;
-        public int Level;
+        public int Exp = 0;
+        public int Level = 1;
 
         public bool Equals(Card other)
         {
@@ -78,6 +81,7 @@ namespace Fight_For_Daedwin
             XmlAttribute NameAttr = xDoc.CreateAttribute("Name");
 
             // создаем элементы company и age
+            XmlElement IDElem = xDoc.CreateElement("ID");
             XmlElement RaceElem = xDoc.CreateElement("Race");
             XmlElement TypeElem = xDoc.CreateElement("Type");
             XmlElement HealthElem = xDoc.CreateElement("Health");
@@ -87,6 +91,7 @@ namespace Fight_For_Daedwin
             XmlElement ImageElem = xDoc.CreateElement("Image");
 
             // создаем текстовые значения для элементов и атрибута
+            XmlText IDText = xDoc.CreateTextNode(this.ID.ToString());
             XmlText NameText = xDoc.CreateTextNode(this.Name);
             XmlText RaceText = xDoc.CreateTextNode(this.Race);
             XmlText TypeText = xDoc.CreateTextNode(this.Type);
@@ -98,6 +103,7 @@ namespace Fight_For_Daedwin
 
             //добавляем узлы
             NameAttr.AppendChild(NameText);
+            IDElem.AppendChild(IDText);
             RaceElem.AppendChild(RaceText);
             TypeElem.AppendChild(TypeText);
             HealthElem.AppendChild(HealthText);
@@ -109,6 +115,7 @@ namespace Fight_For_Daedwin
             // добавляем атрибут name
             CardElem.Attributes.Append(NameAttr);
             // добавляем элементы company и age
+            CardElem.AppendChild(IDElem);
             CardElem.AppendChild(RaceElem);
             CardElem.AppendChild(TypeElem);
             CardElem.AppendChild(HealthElem);
@@ -147,6 +154,56 @@ namespace Fight_For_Daedwin
             Vitality = 0;
             Name = "Убит";
             Image = "Dead.png";
+        }
+
+        public void lvlUp()
+        {
+            if (this.Exp >= 250 && this.Level <=2)
+            {
+                this.Exp = 0;
+                if (this.Level == 1)
+                {
+                    this.Level++;
+                    Card NewCard = ShopClass.UnitListLevel2.Find(x => x.ID == this.ID + 1);
+                    if (NewCard != null)
+                    {
+                        UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Отряд {this.Name} получил повышение уровня и бонус к характеристикам (+{NewCard.Attack} AP, +{NewCard.Vitality} VP, +{NewCard.Health} HP)! Теперь в вашем отряде {NewCard.Name}");
+
+                        this.ID = NewCard.ID;
+                        this.Type = NewCard.Type;
+                        this.Race = NewCard.Race;
+                        this.Health += NewCard.Health;
+                        this.Attack += NewCard.Attack;
+                        this.Vitality += NewCard.Vitality;
+                        this.Name = NewCard.Name;
+                        this.Image = NewCard.Image;
+                    }
+                    else
+                        return;
+                }
+                else if (this.Level == 2)
+                {
+                    this.Level++;
+                    Card NewCard = ShopClass.UnitListLevel3.Find(x => x.ID == this.ID + 1);
+                    if (NewCard != null)
+                    {
+                        UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, $"Отряд {this.Name} получил повышение уровня и бонус к характеристикам (+{NewCard.Attack} AP, +{NewCard.Vitality} VP, +{NewCard.Health} HP)! Теперь в вашем отряде {NewCard.Name}");
+
+                        this.ID = NewCard.ID;
+                        this.Type = NewCard.Type;
+                        this.Race = NewCard.Race;
+                        this.Health += NewCard.Health;
+                        this.Attack += NewCard.Attack;
+                        this.Vitality += NewCard.Vitality;
+                        this.Name = NewCard.Name;
+                        this.Image = NewCard.Image;
+                    }
+                    else
+                        return;
+                }
+            }
+            else
+                return;
         }
     }
 }

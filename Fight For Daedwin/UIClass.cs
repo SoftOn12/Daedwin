@@ -78,7 +78,9 @@ namespace Fight_For_Daedwin
             {
                 Card.Name,
                 "Раса: " + Card.Race,
-                "Тип: " + Card.Type
+                "Тип: " + Card.Type,
+                "Уровень: " + Card.Level.ToString(),
+                "Опыт: " + Card.Exp.ToString()
             };
 
             Slot.ItemsSource = AttributeList;

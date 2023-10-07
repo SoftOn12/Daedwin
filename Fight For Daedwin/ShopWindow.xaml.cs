@@ -27,8 +27,14 @@ namespace Fight_For_Daedwin
 
             UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия вербовки персонажей началась");
 
-            string FileName = "CardDeck.xml";
-            string Path = GameState.ResourcePath + FileName;
+            string FileName1 = "CardDeck.xml";
+            string PathLevel1 = GameState.ResourcePath + FileName1;
+
+            string FileName2 = "CardDeckLevel2.xml";
+            string PathLevel2 = GameState.ResourcePath + FileName2;
+
+            string FileName3 = "CardDeckLevel3.xml";
+            string PathLevel3 = GameState.ResourcePath + FileName3;
 
             //Card Test = new Card("Боба");
 
@@ -38,7 +44,9 @@ namespace Fight_For_Daedwin
             MoneyCounter.Visibility = Visibility.Visible;
             MoneyCounter.Content = GameState.Money.ToString();
 
-            ShopClass.UnitList = ShopClass.XMLParser(Path);
+            ShopClass.UnitList = ShopClass.XMLParser(PathLevel1);
+            ShopClass.UnitListLevel2 = ShopClass.XMLParser(PathLevel2);
+            ShopClass.UnitListLevel3 = ShopClass.XMLParser(PathLevel3);
             ShopClass.RandomUnitToShop();
 
             UIClass.UIAddUnitToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstSlot,

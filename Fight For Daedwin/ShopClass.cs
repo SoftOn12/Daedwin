@@ -24,6 +24,8 @@ namespace Fight_For_Daedwin
         static public Spell ThirdSpellSlot = new Spell();
 
         static public List<Card> UnitList;
+        static public List<Card> UnitListLevel2;
+        static public List<Card> UnitListLevel3;
         static public List<Item> ItemList;
         static public List<Spell> SpellList;
 
@@ -61,6 +63,10 @@ namespace Fight_For_Daedwin
                     foreach (XmlNode childnode in xNode.ChildNodes)
                     {
                         // если узел - company
+                        if (childnode.Name == "ID")
+                        {
+                            AllertObj.ID = Int32.Parse(childnode.InnerText);
+                        }
                         if (childnode.Name == "Race")
                         {
                             AllertObj.Race = childnode.InnerText;
@@ -241,6 +247,7 @@ namespace Fight_For_Daedwin
                 Random Rnd = new Random();
                 int Seed = Rnd.Next(UnitList.Count);
 
+                FirstSlot.ID = UnitList[Seed].ID;
                 FirstSlot.Name = UnitList[Seed].Name;
                 FirstSlot.Race = UnitList[Seed].Race;
                 FirstSlot.Type = UnitList[Seed].Type;
@@ -248,10 +255,13 @@ namespace Fight_For_Daedwin
                 FirstSlot.Attack = UnitList[Seed].Attack;
                 FirstSlot.Vitality = UnitList[Seed].Vitality;
                 FirstSlot.Cost = UnitList[Seed].Cost;
+                FirstSlot.Exp = UnitList[Seed].Exp;
+                FirstSlot.Level = UnitList[Seed].Level;
                 FirstSlot.Image = UnitList[Seed].Image;
 
                 Seed = Rnd.Next(UnitList.Count);
 
+                SecondSlot.ID = UnitList[Seed].ID;
                 SecondSlot.Name = UnitList[Seed].Name;
                 SecondSlot.Race = UnitList[Seed].Race;
                 SecondSlot.Type = UnitList[Seed].Type;
@@ -259,10 +269,13 @@ namespace Fight_For_Daedwin
                 SecondSlot.Attack = UnitList[Seed].Attack;
                 SecondSlot.Vitality = UnitList[Seed].Vitality;
                 SecondSlot.Cost = UnitList[Seed].Cost;
+                SecondSlot.Exp = UnitList[Seed].Exp;
+                SecondSlot.Level = UnitList[Seed].Level;
                 SecondSlot.Image = UnitList[Seed].Image;
 
                 Seed = Rnd.Next(UnitList.Count);
 
+                ThirdSlot.ID = UnitList[Seed].ID;
                 ThirdSlot.Name = UnitList[Seed].Name;
                 ThirdSlot.Race = UnitList[Seed].Race;
                 ThirdSlot.Type = UnitList[Seed].Type;
@@ -270,6 +283,8 @@ namespace Fight_For_Daedwin
                 ThirdSlot.Attack = UnitList[Seed].Attack;
                 ThirdSlot.Vitality = UnitList[Seed].Vitality;
                 ThirdSlot.Cost = UnitList[Seed].Cost;
+                ThirdSlot.Exp = UnitList[Seed].Exp;
+                ThirdSlot.Level = UnitList[Seed].Level;
                 ThirdSlot.Image = UnitList[Seed].Image;
             }
             else
@@ -374,6 +389,7 @@ namespace Fight_For_Daedwin
             switch (CrewClass.CrewSize)
             {
                 case 0:
+                    CrewClass.Slot1.ID = CardFromShop.ID;
                     CrewClass.Slot1.Name = CardFromShop.Name;
                     CrewClass.Slot1.Race = CardFromShop.Race;
                     CrewClass.Slot1.Type = CardFromShop.Type;
@@ -381,10 +397,13 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot1.Attack = CardFromShop.Attack;
                     CrewClass.Slot1.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot1.Cost = CardFromShop.Cost;
+                    CrewClass.Slot1.Exp = CardFromShop.Exp;
+                    CrewClass.Slot1.Level = CardFromShop.Level;
                     CrewClass.Slot1.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 1:
+                    CrewClass.Slot2.ID = CardFromShop.ID;
                     CrewClass.Slot2.Name = CardFromShop.Name;
                     CrewClass.Slot2.Race = CardFromShop.Race;
                     CrewClass.Slot2.Type = CardFromShop.Type;
@@ -392,10 +411,13 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot2.Attack = CardFromShop.Attack;
                     CrewClass.Slot2.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot2.Cost = CardFromShop.Cost;
+                    CrewClass.Slot2.Exp = CardFromShop.Exp;
+                    CrewClass.Slot2.Level = CardFromShop.Level;
                     CrewClass.Slot2.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 2:
+                    CrewClass.Slot3.ID = CardFromShop.ID;
                     CrewClass.Slot3.Name = CardFromShop.Name;
                     CrewClass.Slot3.Race = CardFromShop.Race;
                     CrewClass.Slot3.Type = CardFromShop.Type;
@@ -403,10 +425,13 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot3.Attack = CardFromShop.Attack;
                     CrewClass.Slot3.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot3.Cost = CardFromShop.Cost;
+                    CrewClass.Slot3.Exp = CardFromShop.Exp;
+                    CrewClass.Slot3.Level = CardFromShop.Level;
                     CrewClass.Slot3.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 3:
+                    CrewClass.Slot4.ID = CardFromShop.ID;
                     CrewClass.Slot4.Name = CardFromShop.Name;
                     CrewClass.Slot4.Race = CardFromShop.Race;
                     CrewClass.Slot4.Type = CardFromShop.Type;
@@ -414,10 +439,13 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot4.Attack = CardFromShop.Attack;
                     CrewClass.Slot4.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot4.Cost = CardFromShop.Cost;
+                    CrewClass.Slot4.Exp = CardFromShop.Exp;
+                    CrewClass.Slot4.Level = CardFromShop.Level;
                     CrewClass.Slot4.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
                     break;
                 case 4:
+                    CrewClass.Slot5.ID = CardFromShop.ID;
                     CrewClass.Slot5.Name = CardFromShop.Name;
                     CrewClass.Slot5.Race = CardFromShop.Race;
                     CrewClass.Slot5.Type = CardFromShop.Type;
@@ -425,6 +453,8 @@ namespace Fight_For_Daedwin
                     CrewClass.Slot5.Attack = CardFromShop.Attack;
                     CrewClass.Slot5.Vitality = CardFromShop.Vitality;
                     CrewClass.Slot5.Cost = CardFromShop.Cost;
+                    CrewClass.Slot5.Exp = CardFromShop.Exp;
+                    CrewClass.Slot5.Level = CardFromShop.Level;
                     CrewClass.Slot5.Image = CardFromShop.Image;
                     CrewClass.CrewSize++;
 
