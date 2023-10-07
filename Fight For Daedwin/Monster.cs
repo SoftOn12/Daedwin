@@ -110,6 +110,7 @@ namespace Fight_For_Daedwin
 
         public void StageProgression()
         {
+            //Каждый раунд + 5  HP и +2 АР
             GameState.MonsterProgressionIncValue = MonsterFightClass.Stage / 5;
 
             this.Health += GameState.MonsterProgressionIncValue * GameState.MonsterProgressionScaleHPValue;

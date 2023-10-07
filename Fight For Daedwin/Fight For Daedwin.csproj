@@ -156,5 +156,11 @@
   <ItemGroup>
     <Resource Include="Images\BorderEnemy.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BorderClear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Default.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

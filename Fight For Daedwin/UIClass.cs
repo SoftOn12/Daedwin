@@ -12,37 +12,41 @@ namespace Fight_For_Daedwin
 {
     static class UIClass
     {
-        public static void UIAddUnitToSlotInShop(ListBox Slot, Image CardImage, Card card)
+        public static void UIAddUnitToSlotInShop(ListBox Slot, Image CardImage, Card card,
+                                                    Label HealthLabel, Label VitalityLabel, Label AttackLabel)
         {
             List<string> AttributeList = new List<string>
             {
                 card.Name,
                 "Раса: " +card.Race,
                 "Тип: " +card.Type,
-                "Здоровье: " +card.Health.ToString(),
-                "Атака: " +card.Attack.ToString(),
-                "Выносливость: " +card.Vitality.ToString(),
                 "Стоимость: " +card.Cost.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
             CardImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Card Arts\" + card.Image));
+
+            HealthLabel.Content = card.Health;
+            VitalityLabel.Content = card.Vitality;
+            AttackLabel.Content = card.Attack;
         }
 
-        public static void UIAddItemToSlotInShop(ListBox Slot, Image ItemImage, Item item)
+        public static void UIAddItemToSlotInShop(ListBox Slot, Image ItemImage, Item item,
+                                                    Label HealthLabel, Label VitalityLabel, Label AttackLabel)
         {
             List<string> AttributeList = new List<string>
             {
                 item.Name,
                 "Тип: " + item.Type,
-                "Бонус к Здоровью: " + item.HealthBuff.ToString(),
-                "Бонус к Атаке: " + item.AttackBuff.ToString(),
-                "Бонус к Выносливости: " + item.VitalityBuff.ToString(),
                 "Стоимость: " + item.Cost.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
             ItemImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Item Arts\" + item.Image));
+
+            HealthLabel.Content = item.HealthBuff;
+            VitalityLabel.Content = item.VitalityBuff;
+            AttackLabel.Content = item.AttackBuff;
         }
 
         public static void UIAddSpellToSlotInShop(TextBlock Slot, TextBlock SpellCost, Image SpellImage, Spell spell)
@@ -107,19 +111,21 @@ namespace Fight_For_Daedwin
             UIAddToSlotInCrew(Slot5, CardImage5, CrewClass.Slot5, HealthLabel5, VitalityLabel5, AttackLabel5);
         }
 
-        public static void UIAddToSlotInInventory(ListBox Slot, Image ItemImage, Item item)
+        public static void UIAddToSlotInInventory(ListBox Slot, Image ItemImage, Item item,
+                                                    Label HealthLabel, Label VitalityLabel, Label AttackLabel)
         {
             List<string> AttributeList = new List<string>
             {
                 item.Name,
                 item.Type,
-                "HP+: " + item.HealthBuff.ToString(),
-                "AP+: " + item.AttackBuff.ToString(),
-                "VP+: " +item.VitalityBuff.ToString(),
             };
 
             Slot.ItemsSource = AttributeList;
             ItemImage.Source = new BitmapImage(new Uri(GameState.ResourcePath + @"Item Arts\" + item.Image));
+
+            HealthLabel.Content = item.HealthBuff;
+            VitalityLabel.Content = item.VitalityBuff;
+            AttackLabel.Content = item.AttackBuff;
         }
 
         public static void UIRefreshInventory(ListBox Slot1, Image ItemImage1,
@@ -127,20 +133,26 @@ namespace Fight_For_Daedwin
                                          ListBox Slot3, Image ItemImage3,
                                          ListBox Slot4, Image ItemImage4,
                                          ListBox Slot5, Image ItemImage5,
-                                         ListBox Slot6, Image ItemImage6)
+                                         ListBox Slot6, Image ItemImage6,
+                                         Label HealthLabel1, Label VitalityLabel1, Label AttackLabel1,
+                                         Label HealthLabel2, Label VitalityLabel2, Label AttackLabel2,
+                                         Label HealthLabel3, Label VitalityLabel3, Label AttackLabel3,
+                                         Label HealthLabel4, Label VitalityLabel4, Label AttackLabel4,
+                                         Label HealthLabel5, Label VitalityLabel5, Label AttackLabel5,
+                                         Label HealthLabel6, Label VitalityLabel6, Label AttackLabel6)
         {
 
-            UIAddToSlotInInventory(Slot1, ItemImage1, InventoryClass.Slot1);
+            UIAddToSlotInInventory(Slot1, ItemImage1, InventoryClass.Slot1, HealthLabel1, VitalityLabel1, AttackLabel1);
 
-            UIAddToSlotInInventory(Slot2, ItemImage2, InventoryClass.Slot2);
+            UIAddToSlotInInventory(Slot2, ItemImage2, InventoryClass.Slot2, HealthLabel2, VitalityLabel2, AttackLabel2);
 
-            UIAddToSlotInInventory(Slot3, ItemImage3, InventoryClass.Slot3);
+            UIAddToSlotInInventory(Slot3, ItemImage3, InventoryClass.Slot3, HealthLabel3, VitalityLabel3, AttackLabel3);
 
-            UIAddToSlotInInventory(Slot4, ItemImage4, InventoryClass.Slot4);
+            UIAddToSlotInInventory(Slot4, ItemImage4, InventoryClass.Slot4, HealthLabel4, VitalityLabel4, AttackLabel4);
 
-            UIAddToSlotInInventory(Slot5, ItemImage5, InventoryClass.Slot5);
+            UIAddToSlotInInventory(Slot5, ItemImage5, InventoryClass.Slot5, HealthLabel5, VitalityLabel5, AttackLabel5);
 
-            UIAddToSlotInInventory(Slot6, ItemImage6, InventoryClass.Slot6);
+            UIAddToSlotInInventory(Slot6, ItemImage6, InventoryClass.Slot6, HealthLabel6, VitalityLabel6, AttackLabel6);
         }
 
         public static void UIAddToSlotInSpellBook(TextBlock Slot, Image SpellImage, TextBlock spellName, Spell spell)

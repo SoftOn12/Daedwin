@@ -35,13 +35,21 @@ namespace Fight_For_Daedwin
                                 CrewHealth5, CrewVitality5, CrewAttack5);
 
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
 
             UIClass.UIAddToSlotInSpellBook(SpellText, SpellImage, SpellTitle, SpellBookClass.PlayerSpell);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            UIClass.AddTextToLog(GameLog, $"----------------------------------------------------");
+            UIClass.AddTextToLog(GameLog, $"Начало новой игры");
             GameState.CurentStage = GameState.Stage.GameStart;
             //GameState.MonsterProgressionIncValue = 1;
 
@@ -92,7 +100,13 @@ namespace Fight_For_Daedwin
                                     CrewHealth5, CrewVitality5, CrewAttack5);
 
                 UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                                ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                                ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                                ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                                ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                                ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                                ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
 
                 UIClass.UIAddToSlotInSpellBook(SpellText, SpellImage, SpellTitle, SpellBookClass.PlayerSpell);
 
@@ -109,6 +123,8 @@ namespace Fight_For_Daedwin
 
             MonsterFightClass.Stage++;
             CutentStage.Text = $"Уровень: {MonsterFightClass.Stage}";
+            UIClass.AddTextToLog(GameLog, $"----------------------------------------------------");
+            UIClass.AddTextToLog(GameLog, $"Уровень: {MonsterFightClass.Stage}");
 
             if (MonsterFightClass.Stage % 5 == 0)
             {
@@ -214,7 +230,6 @@ namespace Fight_For_Daedwin
             if (!GameState.GoToFightSlot1Clicked)
             {
                 CrewClass.CardInActionList.Add(CrewClass.Slot1);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота готов к бою");
                 GoToFightSlot1.Content = "Вернуть отряд!";
                 GoToFightAllSlot.IsEnabled = false;
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
@@ -223,7 +238,6 @@ namespace Fight_For_Daedwin
             else
             {
                 CrewClass.CardInActionList.Remove(CrewClass.Slot1);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot1.Name} из 1 слота возврашен в лагерь");
                 GoToFightSlot1.Content = "Отправить в бой!";
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
                 GameState.GoToFightSlot1Clicked = false;
@@ -235,7 +249,6 @@ namespace Fight_For_Daedwin
             if (!GameState.GoToFightSlot2Clicked)
             {
                 CrewClass.CardInActionList.Add(CrewClass.Slot2);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота готов к бою");
                 GoToFightSlot2.Content = "Вернуть отряд!";
                 GoToFightAllSlot.IsEnabled = false;
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
@@ -244,7 +257,6 @@ namespace Fight_For_Daedwin
             else
             {
                 CrewClass.CardInActionList.Remove(CrewClass.Slot2);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot2.Name} из 2 слота возврашен");
                 GoToFightSlot2.Content = "Отправить в бой!";
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
                 GameState.GoToFightSlot2Clicked = false;
@@ -256,7 +268,6 @@ namespace Fight_For_Daedwin
             if (!GameState.GoToFightSlot3Clicked)
             {
                 CrewClass.CardInActionList.Add(CrewClass.Slot3);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота готов к бою");
                 GoToFightSlot3.Content = "Вернуть отряд!";
                 GoToFightAllSlot.IsEnabled = false;
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
@@ -265,7 +276,6 @@ namespace Fight_For_Daedwin
             else
             {
                 CrewClass.CardInActionList.Remove(CrewClass.Slot3);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot3.Name} из 3 слота возврашен");
                 GoToFightSlot3.Content = "Отправить в бой!";
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
                 GameState.GoToFightSlot3Clicked = false;
@@ -277,7 +287,6 @@ namespace Fight_For_Daedwin
             if (!GameState.GoToFightSlot4Clicked)
             {
                 CrewClass.CardInActionList.Add(CrewClass.Slot4);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота готов к бою");
                 GoToFightSlot4.Content = "Вернуть отряд!";
                 GoToFightAllSlot.IsEnabled = false;
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
@@ -286,7 +295,6 @@ namespace Fight_For_Daedwin
             else
             {
                 CrewClass.CardInActionList.Remove(CrewClass.Slot4);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot4.Name} из 4 слота возврашен");
                 GoToFightSlot4.Content = "Отправить в бой!";
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
                 GameState.GoToFightSlot4Clicked = false;
@@ -298,7 +306,6 @@ namespace Fight_For_Daedwin
             if (!GameState.GoToFightSlot5Clicked)
             {
                 CrewClass.CardInActionList.Add(CrewClass.Slot5);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота готов к бою");
                 GoToFightSlot5.Content = "Вернуть отряд!";
                 GoToFightAllSlot.IsEnabled = false;
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
@@ -307,7 +314,6 @@ namespace Fight_For_Daedwin
             else
             {
                 CrewClass.CardInActionList.Remove(CrewClass.Slot5);
-                UIClass.AddTextToLog(GameLog, $"Отряд {CrewClass.Slot5.Name} из 5 слота возврашен");
                 GoToFightSlot5.Content = "Отправить в бой!";
                 UIClass.UIUpdateSumCrewAttack(CrewDamage);
                 GameState.GoToFightSlot5Clicked = false;
@@ -451,7 +457,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void UseItem2_Click(object sender, RoutedEventArgs e)
@@ -514,7 +526,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void UseItem3_Click(object sender, RoutedEventArgs e)
@@ -577,7 +595,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void UseItem4_Click(object sender, RoutedEventArgs e)
@@ -640,7 +664,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void UseItem5_Click(object sender, RoutedEventArgs e)
@@ -703,7 +733,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void UseItem6_Click(object sender, RoutedEventArgs e)
@@ -766,7 +802,13 @@ namespace Fight_For_Daedwin
                                 CrewHealth4, CrewVitality4, CrewAttack4,
                                 CrewHealth5, CrewVitality5, CrewAttack5);
             UIClass.UIRefreshInventory(Item1, ImageItem1, Item2, ImageItem2, Item3, ImageItem3,
-                                Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6);
+                                            Item4, ImageItem4, Item5, ImageItem5, Item6, ImageItem6,
+                                            ItemHealthBuff1, ItemVitalityBuff1, ItemAttackBuff1,
+                                            ItemHealthBuff2, ItemVitalityBuff2, ItemAttackBuff2,
+                                            ItemHealthBuff3, ItemVitalityBuff3, ItemAttackBuff3,
+                                            ItemHealthBuff4, ItemVitalityBuff4, ItemAttackBuff4,
+                                            ItemHealthBuff5, ItemVitalityBuff5, ItemAttackBuff5,
+                                            ItemHealthBuff6, ItemVitalityBuff6, ItemAttackBuff6);
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)

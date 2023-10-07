@@ -41,9 +41,12 @@ namespace Fight_For_Daedwin
             ShopClass.UnitList = ShopClass.XMLParser(Path);
             ShopClass.RandomUnitToShop();
 
-            UIClass.UIAddUnitToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstSlot);
-            UIClass.UIAddUnitToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondSlot);
-            UIClass.UIAddUnitToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdSlot);
+            UIClass.UIAddUnitToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstSlot,
+                                            CardHealth1, CardVitality1, CardAttack1);
+            UIClass.UIAddUnitToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondSlot,
+                                            CardHealth2, CardVitality2, CardAttack2);
+            UIClass.UIAddUnitToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdSlot,
+                                            CardHealth3, CardVitality3, CardAttack3);
 
             BuyFirstSlot.IsEnabled = true;
             BuySecondSlot.IsEnabled = true;
@@ -98,11 +101,17 @@ namespace Fight_For_Daedwin
                     ShopClass.FromShopToInventory(ShopClass.FirstItemSlot);
 
                     UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
-                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
-                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
-                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
-                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
-                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
+                        ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                        ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                        ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                        ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                        ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff1, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff1, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff1,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff2, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff2, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff2,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff3, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff3, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff3,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff4, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff4, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff4,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff5, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff5, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff5,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff6, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff6, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff6);
                 }
                 else
                 {
@@ -210,11 +219,17 @@ namespace Fight_For_Daedwin
                     ShopClass.FromShopToInventory(ShopClass.SecondItemSlot);
 
                     UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
-                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
-                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
-                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
-                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
-                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
+                        ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                        ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                        ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                        ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                        ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff1, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff1, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff1,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff2, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff2, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff2,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff3, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff3, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff3,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff4, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff4, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff4,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff5, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff5, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff5,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff6, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff6, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff6);
                 }
                 else
                 {
@@ -322,11 +337,17 @@ namespace Fight_For_Daedwin
                     ShopClass.FromShopToInventory(ShopClass.ThirdItemSlot);
 
                     UIClass.UIRefreshInventory(((MainWindow)Application.Current.MainWindow).Item1, ((MainWindow)Application.Current.MainWindow).ImageItem1,
-                                          ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
-                                          ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
-                                          ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
-                                          ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
-                                          ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6);
+                        ((MainWindow)Application.Current.MainWindow).Item2, ((MainWindow)Application.Current.MainWindow).ImageItem2,
+                        ((MainWindow)Application.Current.MainWindow).Item3, ((MainWindow)Application.Current.MainWindow).ImageItem3,
+                        ((MainWindow)Application.Current.MainWindow).Item4, ((MainWindow)Application.Current.MainWindow).ImageItem4,
+                        ((MainWindow)Application.Current.MainWindow).Item5, ((MainWindow)Application.Current.MainWindow).ImageItem5,
+                        ((MainWindow)Application.Current.MainWindow).Item6, ((MainWindow)Application.Current.MainWindow).ImageItem6,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff1, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff1, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff1,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff2, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff2, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff2,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff3, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff3, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff3,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff4, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff4, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff4,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff5, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff5, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff5,
+                        ((MainWindow)Application.Current.MainWindow).ItemHealthBuff6, ((MainWindow)Application.Current.MainWindow).ItemVitalityBuff6, ((MainWindow)Application.Current.MainWindow).ItemAttackBuff6);
                 }
                 else
                 {
@@ -397,9 +418,12 @@ namespace Fight_For_Daedwin
 
                     ShopClass.RandomUnitToShop();
 
-                    UIClass.UIAddUnitToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstSlot);
-                    UIClass.UIAddUnitToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondSlot);
-                    UIClass.UIAddUnitToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdSlot);
+                    UIClass.UIAddUnitToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstSlot,
+                                                    CardHealth1, CardVitality1, CardAttack1);
+                    UIClass.UIAddUnitToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondSlot,
+                                                    CardHealth2, CardVitality2, CardAttack2);
+                    UIClass.UIAddUnitToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdSlot,
+                                                    CardHealth3, CardVitality3, CardAttack3);
 
                     BuyFirstSlot.Content = "Купить";
                     BuySecondSlot.Content = "Купить";
@@ -423,9 +447,12 @@ namespace Fight_For_Daedwin
 
                     ShopClass.RandomItemToShop();
 
-                    UIClass.UIAddItemToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstItemSlot);
-                    UIClass.UIAddItemToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondItemSlot);
-                    UIClass.UIAddItemToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdItemSlot);
+                    UIClass.UIAddItemToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstItemSlot,
+                                                    CardHealth1, CardVitality1, CardAttack1);
+                    UIClass.UIAddItemToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondItemSlot,
+                                                    CardHealth2, CardVitality2, CardAttack2);
+                    UIClass.UIAddItemToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdItemSlot,
+                                                    CardHealth3, CardVitality3, CardAttack3);
 
                     BuyFirstSlot.Content = "Купить";
                     BuySecondSlot.Content = "Купить";
@@ -470,7 +497,14 @@ namespace Fight_For_Daedwin
 
         private void NextStageButton_Click(object sender, RoutedEventArgs e)
         {
+            if(CrewClass.CrewSize == 0)
+            {
+                UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Необходимо выбрать хотя бы один отряд!");
+                return;
+            }
+
             GameState.CurentStage++;
+
             if (GameState.CurentStage == GameState.Stage.ItemShopStage)
             {
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки предметов началась");
@@ -480,9 +514,12 @@ namespace Fight_For_Daedwin
                 ShopClass.ItemList = ShopClass.XMLItemParser(Path);
                 ShopClass.RandomItemToShop();
 
-                UIClass.UIAddItemToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstItemSlot);
-                UIClass.UIAddItemToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondItemSlot);
-                UIClass.UIAddItemToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdItemSlot);
+                UIClass.UIAddItemToSlotInShop(FirstSlot, ImageFirstSlot, ShopClass.FirstItemSlot,
+                                                CardHealth1, CardVitality1, CardAttack1);
+                UIClass.UIAddItemToSlotInShop(SecondSlot, ImageSecondSlot, ShopClass.SecondItemSlot,
+                                                CardHealth2, CardVitality2, CardAttack2);
+                UIClass.UIAddItemToSlotInShop(ThirdSlot, ImageThirdSlot, ShopClass.ThirdItemSlot,
+                                                CardHealth3, CardVitality3, CardAttack3);
 
                 BuyFirstSlot.Content = "Купить";
                 BuySecondSlot.Content = "Купить";
@@ -494,6 +531,19 @@ namespace Fight_For_Daedwin
             }
             else if(GameState.CurentStage == GameState.Stage.SpellChoiseStage)
             {
+                BorderImageCard1.Visibility = Visibility.Hidden;
+                BorderImageCard2.Visibility = Visibility.Hidden;
+                BorderImageCard3.Visibility = Visibility.Hidden;
+                CardHealth1.Content = "";
+                CardVitality1.Content = "";
+                CardAttack1.Content = "";
+                CardHealth2.Content = "";
+                CardVitality2.Content = "";
+                CardAttack2.Content = "";
+                CardHealth3.Content = "";
+                CardVitality3.Content = "";
+                CardAttack3.Content = "";
+
                 UIClass.AddTextToLog(((MainWindow)Application.Current.MainWindow).GameLog, "Стадия покупки заклинания началась");
 
                 string FileName = "SpellDeck.xml";
